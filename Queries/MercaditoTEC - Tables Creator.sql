@@ -1,3 +1,4 @@
+
 /*
 --------------------------------------------------------------------
 MercaditoTEC
@@ -30,47 +31,51 @@ CREATE TABLE Persona(
 	idPersona						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre							VARCHAR(75)								NOT NULL,
 	apellidos						VARCHAR(150)							NOT NULL,
-	telefono						VARCHAR(75)								NOT NULL
+	telefono						VARCHAR(30)								NOT NULL
 )
 GO
 
 
 /****** Object:  Table Curso ******/
 CREATE TABLE Curso(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCurso							INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	nombre							VARCHAR(150) 							NOT NULL,
+	codigo							VARCHAR(30)								NOT NULL,
+	carrera							VARCHAR(150)							NOT NULL
 )
 GO
 
 
 /****** Object:  Table MetodoPago ******/
 CREATE TABLE MetodoPago(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idMetodoPago					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	metodoPago						VARCHAR(75)								NOT NULL,
+	puntaje							INT										NOT NULL
 )
 GO
 
 
 /****** Object:  Table Categoria ******/
 CREATE TABLE Categoria(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCategoria						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	categoria						VARCHAR(75)								NOT NULL
 )
 GO
 
 
 /****** Object:  Table Provincia ******/
 CREATE TABLE Provincia(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idProvincia						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	provincia						VARCHAR(75)								NOT NULL
 )
 GO
 
 
 /****** Object:  Table TasaCambio ******/
 CREATE TABLE TasaCambio(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idTasaCambio					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	tasaCambio						INT										NOT NULL,
+	fechaPublicacion				DATETIME2								NOT NULL
 )
 GO
 
@@ -79,40 +84,61 @@ GO
 
 /****** Object:  Table Estudiante ******/
 CREATE TABLE Estudiante(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idEstudiante					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idPersona						INT										NOT NULL,
+	correoInstitucional				VARCHAR(150)							NOT NULL,
+	contrasena						VARCHAR(75)								NOT NULL,
+	puntosCanje						INT										NOT NULL,
+	haIngresadoWeb					BIT										NOT NULL,
+	haIngresadoApp					BIT										NOT NULL,
+	FOREIGN KEY(idEstudiante)					REFERENCES Persona(idPersona)
 )
 GO
 
 
 /****** Object:  Table Canton ******/
 CREATE TABLE Canton(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCanton						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idProvincia						INT										NOT NULL,
+	canton							VARCHAR(75)								NOT NULL,
+	FOREIGN KEY(idProvincia)					REFERENCES Provincia(idProvincia)
 )
 GO
 
 
 /****** Object:  Table Empleador ******/
 CREATE TABLE Empleador(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idEmpleador						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idPersona						INT										NOT NULL,
+	correo							VARCHAR(150)							NOT NULL,
+	contrasena						VARCHAR(75)								NOT NULL,
+	puesto							VARCHAR(75)								NOT NULL,
+	telefonoEmpresa					VARCHAR(30)								NOT NULL,
+	correoEmpresa					VARCHAR(150)							NOT NULL,
+	verificado						BIT										NOT NULL,
+	FOREIGN KEY(idPersona)						REFERENCES Persona(idPersona)
 )
 GO
 
 
 /****** Object:  Table Administrador ******/
 CREATE TABLE Administrador(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idAdministrador					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idPersona						INT										NOT NULL,
+	usuario							VARCHAR(75)								NOT NULL,
+	contrasena						VARCHAR(75)								NOT NULL,
+	FOREIGN KEY(idPersona)						REFERENCES Persona(idPersona)
 )
 GO
 
 
 /****** Object:  Table EmpleadoLibreria ******/
 CREATE TABLE EmpleadoLibreria(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idEmpleadoLibreria				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idPersona						INT										NOT NULL,
+	usuario							VARCHAR(75)								NOT NULL,
+	contrasena						VARCHAR(75)								NOT NULL,
+	FOREIGN KEY(idPersona)						REFERENCES Persona(idPersona)
 )
 GO
 
@@ -121,56 +147,72 @@ GO
 
 /****** Object:  Table Tutor ******/
 CREATE TABLE Tutor(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idTutor							INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idEstudiante					INT										NOT NULL,
+	calificacionPromedio			INT										NOT NULL,
+	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
 
 
 /****** Object:  Table Tutorado ******/
 CREATE TABLE Tutorado(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idTutorado						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idEstudiante					INT										NOT NULL,
+	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
 
 
 /****** Object:  Table Vendedor ******/
 CREATE TABLE Vendedor(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idVendedor						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idEstudiante					INT										NOT NULL,
+	calificacionPromedioProductos	INT										NOT NULL,
+	calificacionPromedioServicios	INT										NOT NULL,
+	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
 
 
 /****** Object:  Table Ubicacion ******/
 CREATE TABLE Ubicacion(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idUbicacion						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idCanton						INT										NOT NULL,
+	distrito						VARCHAR(75)								NOT NULL,
+	FOREIGN KEY(idCanton)						 REFERENCES Canton(idCanton)
 )
 GO
 
 
 /****** Object:  Table Comprador ******/
 CREATE TABLE Comprador(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idComprador						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idEstudiante					INT										NOT NULL,
+	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
 
 
 /****** Object:  Table Aplicante ******/
 CREATE TABLE Aplicante(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idAplicante						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idEstudiante					INT										NOT NULL,
+	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante) 
 )
 GO
 
 
 /****** Object:  Table Canje ******/
 CREATE TABLE Canje(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCanje							INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idEstudiante					INT										NOT NULL,
+	idTasaCambio					INT										NOT NULL,
+	productoLibreria				VARCHAR(150)							NOT NULL,
+	puntosCanjeados					INT										NOT NULL,
+	fechaCanje						DATETIME2								NOT NULL,
+	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante),
+	FOREIGN KEY(idTasaCambio)					REFERENCES TasaCambio(idTasaCambio)
 )
 GO
 
@@ -179,32 +221,59 @@ GO
 
 /****** Object:  Table CursoTutor ******/
 CREATE TABLE CursoTutor(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCursoTutor					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idTutor							INT										NOT NULL,
+	idCurso							INT										NOT NULL,
+	notaObtenida					INT										NOT NULL,
+	temas							VARCHAR(500)							NOT NULL,
+	FOREIGN KEY(idTutor)						REFERENCES Tutor(idTutor),
+	FOREIGN KEY(idCurso)						REFERENCES Curso(idCurso)
 )
 GO
 
 
 /****** Object:  Table Producto ******/
 CREATE TABLE Producto(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idProducto						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idVendedor						INT										NOT NULL,
+	nombre							VARCHAR(150)							NOT NULL,
+	descripcion						VARCHAR(500)							NOT NULL,
+	idCategoria						INT										NOT NULL,
+	precio							INT										NOT NULL,
+	fechaPublicacion				DATETIME2								NOT NULL,
+	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
+	FOREIGN KEY(idCategoria)					REFERENCES Categoria(idCategoria)
 )
 GO
 
 
 /****** Object:  Table Servicio ******/
 CREATE TABLE Servicio(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idServicio						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idVendedor						INT										NOT NULL,
+	nombre							VARCHAR(150)							NOT NULL,
+	descripcion						VARCHAR(500)							NOT NULL,
+	precio							INT										NOT NULL,
+	fechaPublicacion				DATETIME2								NOT NULL,
+	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor)
 )
 GO
 
 
 /****** Object:  Table OferaLaboral ******/
-CREATE TABLE OferaLaboral(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+CREATE TABLE OfertaLaboral(
+	idOfertaLaboral					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idEmpleador						INT										NOT NULL,
+	nombrePuesto					VARCHAR(150)							NOT NULL,
+	responsabilidades				VARCHAR(500)							NOT NULL,
+	requerimientos					VARCHAR(500)							NOT NULL,
+	carrera							VARCHAR(150)							NOT NULL,
+	idUbicacion						INT										NOT NULL,
+	tiempo							VARCHAR(75)								NOT NULL,
+	link							VARCHAR(300)							NOT NULL,
+	fechaPublicacion				DATETIME2								NOT NULL,
+	FOREIGN KEY(idEmpleador)					REFERENCES Empleador(idEmpleador),
+	FOREIGN KEY(idUbicacion)					REFERENCES Ubicacion(idUbicacion)
 )
 GO
 
@@ -213,88 +282,136 @@ GO
 
 /****** Object:  Table PracticaTutor ******/
 CREATE TABLE PracticaTutor(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idPracticaTutor					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idCursoTutor					INT										NOT NULL,
+	nombre							VARCHAR(150)							NOT NULL,
+	descripcion						VARCHAR(500)							NOT NULL,
+	cantidadEjercicios				INT										NOT NULL,
+	dificultad						VARCHAR(75)								NOT NULL,
+	precio							INT										NOT NULL,
+	pdfPractica						VARCHAR(75)								NOT NULL,
+	pdfSolucion						VARCHAR(75)								NOT NULL,
+	FOREIGN KEY(idCursoTutor)					REFERENCES CursoTutor(idCursoTutor)
 )
 GO
 
 
 /****** Object:  Table CursoTutorado ******/
 CREATE TABLE CursoTutorado(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCursoTutorado					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idTutorado						INT										NOT NULL,
+	idCursoTutor					INT										NOT NULL,
+	FOREIGN KEY(idTutorado)						REFERENCES Tutorado(idTutorado),
+	FOREIGN KEY(idCursoTutor)					REFERENCES CursoTutor(idCursoTutor)
 )
 GO
 
 
 /****** Object:  Table MetodoPagoProducto ******/
 CREATE TABLE MetodoPagoProducto(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idMetodoPagoProducto			INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idProducto						INT										NOT NULL,
+	idMetodoPago					INT										NOT NULL,
+	numeroCuenta					VARCHAR(75)								NULL,
+	FOREIGN KEY(idProducto)						REFERENCES Producto(idProducto),
+	FOREIGN KEY(idMetodoPago)					REFERENCES MetodoPago(idMetodoPago)
 )
 GO
 
 
 /****** Object:  Table UbicacionProducto ******/
 CREATE TABLE UbicacionProducto(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idUbicacionProducto				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idProducto						INT										NOT NULL,
+	idUbicacion						INT										NOT NULL,
+	FOREIGN KEY(idProducto)						REFERENCES Producto(idProducto),
+	FOREIGN KEY(idUbicacion)					REFERENCES Ubicacion(idUbicacion)
 )
 GO
 
 
 /****** Object:  Table ImagenProducto ******/
 CREATE TABLE ImagenProducto(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idImagenProducto				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idProducto						INT										NOT NULL,
+	imagen							VARCHAR(75)								NOT NULL,
+	FOREIGN KEY(idProducto)						REFERENCES Producto(idProducto)
 )
 GO
 
 
 /****** Object:  Table MetodoPagoServicio ******/
 CREATE TABLE MetodoPagoServicio(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idMetodoPagoServicio			INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idServicio						INT										NOT NULL,
+	idMetodoPago					INT										NOT NULL,
+	numeroCuenta					VARCHAR(75)								NULL,
+	FOREIGN KEY(idServicio)						REFERENCES Servicio(idServicio),
+	FOREIGN KEY(idMetodoPago)					REFERENCES MetodoPago(idMetodoPago)
 )
 GO
 
 
 /****** Object:  Table UbicacionServicio ******/
 CREATE TABLE UbicacionServicio(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idUbicacionServicio				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idServicio						INT										NOT NULL,
+	idUbicacion						INT										NOT NULL,
+	FOREIGN KEY(idServicio)						REFERENCES Servicio(idServicio),
+	FOREIGN KEY(idUbicacion)					REFERENCES Ubicacion(idUbicacion)
 )
 GO
 
 
 /****** Object:  Table ImagenServicio ******/
 CREATE TABLE ImagenServicio(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idImagenServicio				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idServicio						INT										NOT NULL,
+	imagen							VARCHAR(75)								NOT NULL,
+	FOREIGN KEY(idServicio)						REFERENCES Servicio(idServicio)
 )
 GO
 
 
 /****** Object:  Table CompraProducto ******/
 CREATE TABLE CompraProducto(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCompraProducto				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idProducto						INT										NOT NULL,
+	idComprador						INT										NOT NULL,
+	confirmacionVendedor			BIT										NOT NULL,
+	confirmacionComprador			BIT										NOT NULL,
+	evaluacionCompletada			BIT										NOT NULL,
+	puntosCanjeObtenidos			INT										NOT NULL,
+	FOREIGN KEY(idProducto)						REFERENCES Producto(idProducto),
+	FOREIGN KEY(idComprador)					REFERENCES Comprador(idComprador)
 )
 GO
 
 
 /****** Object:  Table ContratacionServicio ******/
 CREATE TABLE ContratacionServicio(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idContratacionServicio			INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idServicio						INT										NOT NULL,
+	idComprador						INT										NOT NULL,
+	confirmacionVendedor			BIT										NOT NULL,
+	confirmacionComprador			BIT										NOT NULL,
+	evaluacionCompletada			BIT										NOT NULL,
+	puntosCanjeObtenidos			INT										NOT NULL,
+	FOREIGN KEY(idServicio)						REFERENCES Servicio(idServicio),
+	FOREIGN KEY(idComprador)					REFERENCES Comprador(idComprador)
 )
 GO
 
 
 /****** Object:  Table AplicanteOfertaLaboral ******/
 CREATE TABLE AplicanteOfertaLaboral(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idAplicanteOfertaLaboral		INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idOfertaLaboral					INT										NOT NULL,
+	idAplicante						INT										NOT NULL,
+	pdfCurriculum					VARCHAR(75)								NOT NULL,
+	fechaAplicacion					DATETIME2								NOT NULL,
+	FOREIGN KEY(idOfertaLaboral)				REFERENCES OfertaLaboral(idOfertaLaboral),
+	FOREIGN KEY(idAplicante)					REFERENCES Aplicante(idAplicante)
 )
 GO
 
@@ -303,48 +420,74 @@ GO
 
 /****** Object:  Table TemaPracticaTutor ******/
 CREATE TABLE TemaPracticaTutor(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idTemaPracticaTutor				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idPracticaTutor					INT										NOT NULL,
+	tema							VARCHAR(150)							NOT NULL,
+	FOREIGN KEY(idPracticaTutor)				REFERENCES PracticaTutor(idPracticaTutor)
 )
 GO
 
 
 /****** Object:  Table PracticaTutorMetodoPago ******/
 CREATE TABLE PracticaTutorMetodoPago(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idPracticaTutorMetodoPago		INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idPracticaTutor					INT										NOT NULL,
+	idMetodoPago					INT										NOT NULL,
+	numeroCuenta					VARCHAR(75)								NULL,
+	FOREIGN KEY(idPracticaTutor)				REFERENCES PracticaTutor(idPracticaTutor),
+	FOREIGN KEY(idMetodoPago)					REFERENCES MetodoPago(idMetodoPago)
 )
 GO
 
 
 /****** Object:  Table CompraPractica ******/
 CREATE TABLE CompraPractica(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idCompraPractica				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idPracticaTutor					INT										NOT NULL,
+	idTutorado						INT										NOT NULL,
+	confirmacionTutor				BIT										NOT NULL,
+	confirmacionTutorado			BIT										NOT NULL,
+	evaluacionCompletada			BIT										NOT NULL,
+	puntosCanjeObtenidos			INT										NOT NULL,
+	FOREIGN KEY(idPracticaTutor)				REFERENCES PracticaTutor(idPracticaTutor),
+	FOREIGN KEY(idTutorado)						REFERENCES Tutorado(idTutorado)
 )
 GO
 
 
 /****** Object:  Table PracticaTutorado ******/
 CREATE TABLE PracticaTutorado(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idPracticaTutorado				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idCursoTutorado					INT										NOT NULL,
+	idPracticaTutor					INT										NOT NULL,
+	FOREIGN KEY(idCursoTutorado)				REFERENCES CursoTutorado(idCursoTutorado),
+	FOREIGN KEY(idPracticaTutor)				REFERENCES PracticaTutor(idPracticaTutor)
 )
 GO
 
 
 /****** Object:  Table EvaluacionVendedorProducto ******/
 CREATE TABLE EvaluacionVendedorProducto(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idEvaluacionVendedorProducto	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idVendedor						INT										NOT NULL,
+	calificacion					INT										NOT NULL,
+	comentario						VARCHAR(500)							NOT NULL,
+	idCompraProducto				INT										NOT NULL,
+	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
+	FOREIGN KEY(idCompraProducto)				REFERENCES CompraProducto(idCompraProducto)
 )
 GO
 
 
 /****** Object:  Table EvaluacionVendedorServicio ******/
 CREATE TABLE EvaluacionVendedorServicio(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idEvaluacionVendedorServicio	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idVendedor						INT										NOT NULL,
+	calificacion					INT										NOT NULL,
+	comentario						VARCHAR(500)							NOT NULL,
+	idContratacionServicio			INT										NOT NULL,
+	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
+	FOREIGN KEY(idContratacionServicio)			REFERENCES ContratacionServicio(idContratacionServicio)
 )
 GO
 
@@ -353,8 +496,13 @@ GO
 
 /****** Object:  Table EvaluacionTutor ******/
 CREATE TABLE EvaluacionTutor(
-	id								INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	atributo						VARCHAR(75)								NOT NULL
+	idEvaluacionTutor				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	idTutor							INT										NOT NULL,
+	calificacion					INT										NOT NULL,
+	comentario						VARCHAR(500)							NOT NULL,
+	idCompraPractica				INT										NOT NULL,
+	FOREIGN KEY(idTutor)						REFERENCES Tutor(idTutor),
+	FOREIGN KEY(idCompraPractica)				REFERENCES CompraPractica(idCompraPractica)
 )
 GO
 
