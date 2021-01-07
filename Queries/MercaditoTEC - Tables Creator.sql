@@ -36,12 +36,10 @@ CREATE TABLE Persona(
 GO
 
 
-/****** Object:  Table Curso ******/
-CREATE TABLE Curso(
-	idCurso							INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	nombre							VARCHAR(150) 							NOT NULL,
-	codigo							VARCHAR(30)								NOT NULL,
-	carrera							VARCHAR(150)							NOT NULL
+/****** Object:  Table MetodoPago ******/
+CREATE TABLE Carrera(
+	idCarrera						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	nombre							VARCHAR(150)								NOT NULL,
 )
 GO
 
@@ -96,6 +94,17 @@ CREATE TABLE Estudiante(
 GO
 
 
+/****** Object:  Table Curso ******/
+CREATE TABLE Curso(
+	idCurso							INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+	nombre							VARCHAR(150) 							NOT NULL,
+	codigo							VARCHAR(30)								NOT NULL,
+	idCarrera						INT										NOT NULL,
+	FOREIGN KEY(idCarrera)						REFERENCES Carrera(idCarrera)
+)
+GO
+
+
 /****** Object:  Table Canton ******/
 CREATE TABLE Canton(
 	idCanton						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
@@ -111,6 +120,7 @@ CREATE TABLE Empleador(
 	idEmpleador						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idPersona						INT										NOT NULL,
 	correo							VARCHAR(150)							NOT NULL,
+	usuario							VARCHAR(75)								NOT NULL,
 	contrasena						VARCHAR(75)								NOT NULL,
 	puesto							VARCHAR(75)								NOT NULL,
 	telefonoEmpresa					VARCHAR(30)								NOT NULL,
@@ -267,12 +277,13 @@ CREATE TABLE OfertaLaboral(
 	nombrePuesto					VARCHAR(150)							NOT NULL,
 	responsabilidades				VARCHAR(500)							NOT NULL,
 	requerimientos					VARCHAR(500)							NOT NULL,
-	carrera							VARCHAR(150)							NOT NULL,
+	idCarrera						INT										NOT NULL,
 	idUbicacion						INT										NOT NULL,
-	tiempo							VARCHAR(75)								NOT NULL,
+	jornadaLaboral					VARCHAR(75)								NOT NULL,
 	link							VARCHAR(300)							NOT NULL,
 	fechaPublicacion				DATETIME2								NOT NULL,
 	FOREIGN KEY(idEmpleador)					REFERENCES Empleador(idEmpleador),
+	FOREIGN KEY(idCarrera)						REFERENCES Carrera(idCarrera),
 	FOREIGN KEY(idUbicacion)					REFERENCES Ubicacion(idUbicacion)
 )
 GO
