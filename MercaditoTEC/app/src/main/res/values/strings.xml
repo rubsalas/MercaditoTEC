@@ -4,4 +4,12 @@
     <string name="Correo_Institucional">Correo Institucional</string>
     <string name="Bienvenido">Bienvenido</string>
     <string name="Ingresar">Ingresar</string>
+    <string name="Registrar">Registrarse</string>
+    <string name="Paso1">Paso 1: Verificate como Estudiante</string>
+    <string name="Paso2">Paso 2: Completa tus datos personales</string>
+    <string name="Verificar">Verificar</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Apellidos">Apellidos</string>
+    <string name="Telefono">Número de Teléfono</string>
 </resources>
