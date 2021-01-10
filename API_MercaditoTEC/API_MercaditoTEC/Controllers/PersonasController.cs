@@ -103,7 +103,33 @@ namespace API_MercaditoTEC.Controllers
             //Guarda los cambios en la base de datos
             _repository.SaveChanges();
 
-            //Envia la confirmacion a donde viene el request sin contenido
+            //Envia la confirmacion a donde viene el request, sin contenido
+            return NoContent();
+        }
+
+        /*
+         * DELETE api/personas/{id}
+         * 
+         * Elimina la informacion de una fila de datos en la tabla Persona.
+         */
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            //Se obtiene la Persona, con id especifico, del repositorio
+            var personaModelFromRepo = _repository.GetById(id);
+            //Se verifica que exista la Persona obtenida con el id especifico
+            if (personaModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            //Llama a la funcion de Update en SqlPersonaRepo
+            _repository.Delete(personaModelFromRepo);
+
+            //Guarda los cambios en la base de datos
+            _repository.SaveChanges();
+
+            //Envia la confirmacion a donde viene el request, sin contenido
             return NoContent();
         }
     }

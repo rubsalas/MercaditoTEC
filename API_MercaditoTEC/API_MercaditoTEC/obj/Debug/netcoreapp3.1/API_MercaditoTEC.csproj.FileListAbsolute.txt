@@ -61,5 +61,6 @@ D:\Desktop - HDD\XTEC MercaditoTEC\API\API_MercaditoTEC\API_MercaditoTEC\bin\Deb
 D:\Desktop - HDD\XTEC MercaditoTEC\API\API_MercaditoTEC\API_MercaditoTEC\obj\Debug\netcoreapp3.1\API_MercaditoTEC.csprojAssemblyReference.cache
 D:\Desktop - HDD\XTEC MercaditoTEC\API\API_MercaditoTEC\API_MercaditoTEC\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\Desktop - HDD\XTEC MercaditoTEC\API\API_MercaditoTEC\API_MercaditoTEC\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Desktop - HDD\XTEC MercaditoTEC\API\API_MercaditoTEC\API_MercaditoTEC\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\Desktop - HDD\XTEC MercaditoTEC\API\API_MercaditoTEC\API_MercaditoTEC\obj\Debug\netcoreapp3.1\API_MercaditoTEC.csproj.CoreCompileInputs.cache
 D:\Desktop - HDD\XTEC MercaditoTEC\API\API_MercaditoTEC\API_MercaditoTEC\obj\Debug\netcoreapp3.1\API_MercaditoTEC.MvcApplicationPartsAssemblyInfo.cache

@@ -15,7 +15,6 @@ namespace API_MercaditoTEC.Data
             _context = context;
         }
 
-        
 
         /*
          * Retorna todas las personas de la base de datos.
@@ -44,11 +43,12 @@ namespace API_MercaditoTEC.Data
                 throw new ArgumentNullException(nameof(persona));
             }
 
+            //Crea la Persona en la base de datos por medio del context
             _context.Persona.Add(persona);
         }
 
         /*
-         * Actualiza los datos de una Persona en la base de datos
+         * Actualiza los datos de una Persona en la base de datos.
          */
         public void Update(Persona persona)
         {
@@ -56,7 +56,22 @@ namespace API_MercaditoTEC.Data
         }
 
         /*
-         * Guarda los cambios en la Base de Datos de SQLServer
+         * Elimina los datos de una Persona en la base de datos.
+         */
+        public void Delete(Persona persona)
+        {
+            // Verifica si la Persona existe
+            if (persona == null)
+            {
+                throw new ArgumentNullException(nameof(persona));
+            }
+
+            //Elimina la Persona de la base de datos por medio del context
+            _context.Persona.Remove(persona);
+        }
+
+        /*
+         * Guarda los cambios en la Base de Datos de SQLServer.
          */
         public bool SaveChanges()
         {
