@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mercadito TEC</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="Correo_Institucional">Correo Institucional</string>
+    <string name="Bienvenido">Bienvenido</string>
+    <string name="Ingresar">Ingresar</string>
+</resources>
