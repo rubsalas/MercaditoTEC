@@ -5,14 +5,11 @@ namespace API_MercaditoTEC.Data
 {
     public interface IPersonaRepo
     {
-        /*
-         * Retorna todas las personas de la base de datos.
-         */
+        bool SaveChanges();
+        
         IEnumerable<Persona> GetAll();
-
-        /*
-         * Retorna una sola persona por su id.
-         */
         Persona GetById(int id);
+        void Create(Persona persona);
+        void Update(Persona persona);
     }
 }

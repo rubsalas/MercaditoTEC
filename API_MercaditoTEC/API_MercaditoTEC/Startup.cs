@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API_MercaditoTEC.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,7 +25,6 @@ namespace API_MercaditoTEC
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -32,13 +32,15 @@ namespace API_MercaditoTEC
             //Llama a la función de conexion con la base de datos
             InitializeStorage(services);
 
-            services.AddScoped<IPersonaRepo, SqlPersonaRepo>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            //Llama a la función para ajustar los scopes
+            InitializeScope(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment()) 
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -61,6 +63,13 @@ namespace API_MercaditoTEC
             //SQLServer
             string SQLServerConnectionString = Configuration.GetConnectionString("MercaditoTECConnection");
             services.AddDbContext<MercaditoTECContext>(options => options.UseSqlServer(SQLServerConnectionString));
+        }
+
+        //Metodo para ajustar los scopes de los Repositorios y su respectiva Interfaz
+        private void InitializeScope(IServiceCollection services)
+        {
+            //Persona
+            services.AddScoped<IPersonaRepo, SqlPersonaRepo>();
         }
     }
 }

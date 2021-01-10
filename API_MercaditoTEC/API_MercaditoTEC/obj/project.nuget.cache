@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ad+c3zdGIB5JVvI0gIDuEKJVbX1WivfLDiCxrBNndAOStVHfRqqtZexLFjVlijdk7JvevrvwYY8spIt32M33pQ==",
+  "dgSpecHash": "Fc4pwTcnbpLCHbln0uiDssbVqi8ArSgoHVblKlqs5Wkh6xjSk6Um1oUY6JjUFVm2gjyrg7Qg4wC8lio5LlzNrw==",
   "success": true,
   "projectFilePath": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\API\\API_MercaditoTEC\\API_MercaditoTEC\\API_MercaditoTEC.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ruben Salas\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\Ruben Salas\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
@@ -65,7 +67,7 @@
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.private.uri\\4.3.2\\system.private.uri.4.3.2.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
