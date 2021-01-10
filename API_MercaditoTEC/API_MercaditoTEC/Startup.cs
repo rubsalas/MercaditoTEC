@@ -36,6 +36,9 @@ namespace API_MercaditoTEC
 
             //Llama a la función para ajustar los scopes
             InitializeScope(services);
+
+            //Llama a la funcion para habilitar CORS
+            EnableCORS(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,6 +47,8 @@ namespace API_MercaditoTEC
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("EnableCORS");
 
             app.UseHttpsRedirection();
 
@@ -57,6 +62,7 @@ namespace API_MercaditoTEC
             });
         }
 
+
         //Metodo para iniciar la conección a las bases de datos
         private void InitializeStorage(IServiceCollection services)
         {
@@ -65,11 +71,26 @@ namespace API_MercaditoTEC
             services.AddDbContext<MercaditoTECContext>(options => options.UseSqlServer(SQLServerConnectionString));
         }
 
+
         //Metodo para ajustar los scopes de los Repositorios y su respectiva Interfaz
         private void InitializeScope(IServiceCollection services)
         {
             //Persona
             services.AddScoped<IPersonaRepo, SqlPersonaRepo>();
         }
+
+
+        //Metodo para habilitar CORS
+        private void EnableCORS(IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                });
+            });
+        }
+
     }
 }
