@@ -36,10 +36,18 @@ CREATE TABLE Persona(
 GO
 
 
+/****** Object:  Table Datic ******/
+CREATE TABLE Datic(
+	correoInstitucional				VARCHAR(150) PRIMARY KEY				NOT NULL,
+	contrasena						VARCHAR(150)							NOT NULL
+)
+GO
+
+
 /****** Object:  Table MetodoPago ******/
 CREATE TABLE Carrera(
 	idCarrera						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	nombre							VARCHAR(150)								NOT NULL,
+	nombre							VARCHAR(150)							NOT NULL
 )
 GO
 
@@ -48,7 +56,7 @@ GO
 CREATE TABLE MetodoPago(
 	idMetodoPago					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	metodoPago						VARCHAR(75)								NOT NULL,
-	puntaje							INT										NOT NULL
+	puntaje							INT										NOT NULL		DEFAULT 0
 )
 GO
 
@@ -85,11 +93,11 @@ CREATE TABLE Estudiante(
 	idEstudiante					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idPersona						INT										NOT NULL,
 	correoInstitucional				VARCHAR(150)							NOT NULL,
-	contrasena						VARCHAR(75)								NOT NULL,
-	puntosCanje						INT										NOT NULL,
-	haIngresadoWeb					BIT										NOT NULL,
-	haIngresadoApp					BIT										NOT NULL,
-	FOREIGN KEY(idEstudiante)					REFERENCES Persona(idPersona)
+	puntosCanje						INT										NOT NULL		DEFAULT 0,
+	haIngresadoWeb					BIT										NOT NULL		DEFAULT 0,
+	haIngresadoApp					BIT										NOT NULL		DEFAULT 0,
+	FOREIGN KEY(idPersona)						REFERENCES Persona(idPersona),
+	FOREIGN KEY(correoInstitucional)			REFERENCES Datic(correoInstitucional)
 )
 GO
 
@@ -125,7 +133,7 @@ CREATE TABLE Empleador(
 	puesto							VARCHAR(75)								NOT NULL,
 	telefonoEmpresa					VARCHAR(30)								NOT NULL,
 	correoEmpresa					VARCHAR(150)							NOT NULL,
-	verificado						BIT										NOT NULL,
+	verificado						BIT										NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idPersona)						REFERENCES Persona(idPersona)
 )
 GO
@@ -159,7 +167,7 @@ GO
 CREATE TABLE Tutor(
 	idTutor							INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idEstudiante					INT										NOT NULL,
-	calificacionPromedio			INT										NOT NULL,
+	calificacionPromedio			INT										NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
@@ -178,8 +186,8 @@ GO
 CREATE TABLE Vendedor(
 	idVendedor						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idEstudiante					INT										NOT NULL,
-	calificacionPromedioProductos	INT										NOT NULL,
-	calificacionPromedioServicios	INT										NOT NULL,
+	calificacionPromedioProductos	INT										NOT NULL		DEFAULT 0,
+	calificacionPromedioServicios	INT										NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
@@ -389,10 +397,10 @@ CREATE TABLE CompraProducto(
 	idCompraProducto				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idProducto						INT										NOT NULL,
 	idComprador						INT										NOT NULL,
-	confirmacionVendedor			BIT										NOT NULL,
-	confirmacionComprador			BIT										NOT NULL,
-	evaluacionCompletada			BIT										NOT NULL,
-	puntosCanjeObtenidos			INT										NOT NULL,
+	confirmacionVendedor			BIT										NOT NULL		DEFAULT 0,
+	confirmacionComprador			BIT										NOT NULL		DEFAULT 0,
+	evaluacionCompletada			BIT										NOT NULL		DEFAULT 0,
+	puntosCanjeObtenidos			INT										NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idProducto)						REFERENCES Producto(idProducto),
 	FOREIGN KEY(idComprador)					REFERENCES Comprador(idComprador)
 )
@@ -404,10 +412,10 @@ CREATE TABLE ContratacionServicio(
 	idContratacionServicio			INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idServicio						INT										NOT NULL,
 	idComprador						INT										NOT NULL,
-	confirmacionVendedor			BIT										NOT NULL,
-	confirmacionComprador			BIT										NOT NULL,
-	evaluacionCompletada			BIT										NOT NULL,
-	puntosCanjeObtenidos			INT										NOT NULL,
+	confirmacionVendedor			BIT										NOT NULL		DEFAULT 0,
+	confirmacionComprador			BIT										NOT NULL		DEFAULT 0,
+	evaluacionCompletada			BIT										NOT NULL		DEFAULT 0,
+	puntosCanjeObtenidos			INT										NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idServicio)						REFERENCES Servicio(idServicio),
 	FOREIGN KEY(idComprador)					REFERENCES Comprador(idComprador)
 )
@@ -456,10 +464,10 @@ CREATE TABLE CompraPractica(
 	idCompraPractica				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idPracticaTutor					INT										NOT NULL,
 	idTutorado						INT										NOT NULL,
-	confirmacionTutor				BIT										NOT NULL,
-	confirmacionTutorado			BIT										NOT NULL,
-	evaluacionCompletada			BIT										NOT NULL,
-	puntosCanjeObtenidos			INT										NOT NULL,
+	confirmacionTutor				BIT										NOT NULL		DEFAULT 0,
+	confirmacionTutorado			BIT										NOT NULL		DEFAULT 0,
+	evaluacionCompletada			BIT										NOT NULL		DEFAULT 0,
+	puntosCanjeObtenidos			INT										NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idPracticaTutor)				REFERENCES PracticaTutor(idPracticaTutor),
 	FOREIGN KEY(idTutorado)						REFERENCES Tutorado(idTutorado)
 )
@@ -482,7 +490,7 @@ CREATE TABLE EvaluacionVendedorProducto(
 	idEvaluacionVendedorProducto	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idVendedor						INT										NOT NULL,
 	calificacion					INT										NOT NULL,
-	comentario						VARCHAR(500)							NOT NULL,
+	comentario						VARCHAR(500)							NULL,
 	idCompraProducto				INT										NOT NULL,
 	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
 	FOREIGN KEY(idCompraProducto)				REFERENCES CompraProducto(idCompraProducto)
@@ -495,7 +503,7 @@ CREATE TABLE EvaluacionVendedorServicio(
 	idEvaluacionVendedorServicio	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idVendedor						INT										NOT NULL,
 	calificacion					INT										NOT NULL,
-	comentario						VARCHAR(500)							NOT NULL,
+	comentario						VARCHAR(500)							NULL,
 	idContratacionServicio			INT										NOT NULL,
 	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
 	FOREIGN KEY(idContratacionServicio)			REFERENCES ContratacionServicio(idContratacionServicio)
@@ -510,7 +518,7 @@ CREATE TABLE EvaluacionTutor(
 	idEvaluacionTutor				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idTutor							INT										NOT NULL,
 	calificacion					INT										NOT NULL,
-	comentario						VARCHAR(500)							NOT NULL,
+	comentario						VARCHAR(500)							NULL,
 	idCompraPractica				INT										NOT NULL,
 	FOREIGN KEY(idTutor)						REFERENCES Tutor(idTutor),
 	FOREIGN KEY(idCompraPractica)				REFERENCES CompraPractica(idCompraPractica)

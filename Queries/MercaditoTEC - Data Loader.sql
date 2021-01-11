@@ -19,7 +19,48 @@ MercaditoTEC - Data Loader
 --------------------------------------------------------------------
 Ubicacion de Inserts por Tabla en Script Actual
 --------------------------------------------------------------------
-Persona...................................................31
+Persona...................................................72
+Datic.....................................................176
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
+x
 --------------------------------------------------------------------
 */
 
@@ -129,3 +170,182 @@ insert into Persona (nombre, apellidos, telefono) values ('Claudianus', 'Dunnet'
 insert into Persona (nombre, apellidos, telefono) values ('Horatius', 'Kinig', '8536-6888');
 insert into Persona (nombre, apellidos, telefono) values ('Cyb', 'Fancet', '4552-2514');
 insert into Persona (nombre, apellidos, telefono) values ('Kirstin', 'Tutton', '2421-1886');
+GO
+
+
+/****** Data:  Datic ******/
+insert into Datic (correoInstitucional, contrasena) values ('teanby@estudiantec.cr', '6VT87a');
+insert into Datic (correoInstitucional, contrasena) values ('auchinleck@estudiantec.cr', 'hVIt20');
+insert into Datic (correoInstitucional, contrasena) values ('edghinn@estudiantec.cr', 'aV5dGY');
+insert into Datic (correoInstitucional, contrasena) values ('rings@estudiantec.cr', '8FOywmH');
+insert into Datic (correoInstitucional, contrasena) values ('wichard@estudiantec.cr', 'KoD6wQYP');
+insert into Datic (correoInstitucional, contrasena) values ('hacking@estudiantec.cr', '4V3iGkGdP');
+insert into Datic (correoInstitucional, contrasena) values ('baress@estudiantec.cr', 'Lp4jUmljG');
+insert into Datic (correoInstitucional, contrasena) values ('denore@estudiantec.cr', 'YnzfUGcI6');
+insert into Datic (correoInstitucional, contrasena) values ('jirak@estudiantec.cr', 'W0lavE6E4Oy');
+insert into Datic (correoInstitucional, contrasena) values ('petrelli@estudiantec.cr', 'F3GwT9aesR');
+insert into Datic (correoInstitucional, contrasena) values ('brouwer@estudiantec.cr', 'I6ae9MxZ');
+insert into Datic (correoInstitucional, contrasena) values ('danilovitch@estudiantec.cr', 'zNCJV9');
+insert into Datic (correoInstitucional, contrasena) values ('rannigan@estudiantec.cr', 'WYqYy4F4M');
+insert into Datic (correoInstitucional, contrasena) values ('beevis@estudiantec.cr', 'cj8buj2ougVj');
+insert into Datic (correoInstitucional, contrasena) values ('langmaid@estudiantec.cr', '685oIN67WNEo');
+insert into Datic (correoInstitucional, contrasena) values ('tatersale@estudiantec.cr', 'lJsiCeHd');
+insert into Datic (correoInstitucional, contrasena) values ('lemmon@estudiantec.cr', 'j3x9W3KQRF');
+insert into Datic (correoInstitucional, contrasena) values ('mouat@estudiantec.cr', '4VH4Ght');
+insert into Datic (correoInstitucional, contrasena) values ('pevsner@estudiantec.cr', 'A4OZ31');
+insert into Datic (correoInstitucional, contrasena) values ('basezzi@estudiantec.cr', 'pUsaWvM');
+insert into Datic (correoInstitucional, contrasena) values ('romaynes@estudiantec.cr', '9mlrLqGB12FA');
+insert into Datic (correoInstitucional, contrasena) values ('moulster@estudiantec.cr', '0m9DD6W8d5ho');
+insert into Datic (correoInstitucional, contrasena) values ('biscomb@estudiantec.cr', 'UngiFq0D');
+insert into Datic (correoInstitucional, contrasena) values ('verrier@estudiantec.cr', 'WhV18mbd03bm');
+insert into Datic (correoInstitucional, contrasena) values ('cohalan@estudiantec.cr', 'lAuhps');
+insert into Datic (correoInstitucional, contrasena) values ('warcup@estudiantec.cr', 'b4qe48Yc');
+insert into Datic (correoInstitucional, contrasena) values ('harbison@estudiantec.cr', 'k1LhsJ83');
+insert into Datic (correoInstitucional, contrasena) values ('ebsworth@estudiantec.cr', 'fTf6VPZ2PIy');
+insert into Datic (correoInstitucional, contrasena) values ('pinnere@estudiantec.cr', 'fNgBzshQq');
+insert into Datic (correoInstitucional, contrasena) values ('ghelardi@estudiantec.cr', 'AhYaCOc05Oe7');
+insert into Datic (correoInstitucional, contrasena) values ('tomanek@estudiantec.cr', '1mCWLC9GpwSf');
+insert into Datic (correoInstitucional, contrasena) values ('beckson@estudiantec.cr', '3RId0RZBLiU');
+insert into Datic (correoInstitucional, contrasena) values ('buckby@estudiantec.cr', 'ns6N0LZW');
+insert into Datic (correoInstitucional, contrasena) values ('bilofsky@estudiantec.cr', 'Y6nvjFu');
+insert into Datic (correoInstitucional, contrasena) values ('fritchly@estudiantec.cr', 'tkBYJh6dVu9');
+insert into Datic (correoInstitucional, contrasena) values ('todman@estudiantec.cr', 'UVxzW7wbz');
+insert into Datic (correoInstitucional, contrasena) values ('pettet@estudiantec.cr', 'R9mY0T');
+insert into Datic (correoInstitucional, contrasena) values ('marke@estudiantec.cr', 'jwW0EqE');
+insert into Datic (correoInstitucional, contrasena) values ('tonepohl@estudiantec.cr', 'LYzwn6yS');
+insert into Datic (correoInstitucional, contrasena) values ('ollerenshaw@estudiantec.cr', 'eU5A5ZO3');
+insert into Datic (correoInstitucional, contrasena) values ('jacop@estudiantec.cr', '41U44JiFR');
+insert into Datic (correoInstitucional, contrasena) values ('clemencet@estudiantec.cr', 'xmplqG93d');
+insert into Datic (correoInstitucional, contrasena) values ('mussilli@estudiantec.cr', 'XU9MwNCu');
+insert into Datic (correoInstitucional, contrasena) values ('mclafferty@estudiantec.cr', 'wWXEsPoTdVu');
+insert into Datic (correoInstitucional, contrasena) values ('stacy@estudiantec.cr', 'H3Q9fuFr');
+insert into Datic (correoInstitucional, contrasena) values ('chivrall@estudiantec.cr', 'SUiIGctVR');
+insert into Datic (correoInstitucional, contrasena) values ('tann@estudiantec.cr', 'ESTrAy5z5');
+insert into Datic (correoInstitucional, contrasena) values ('bowdery@estudiantec.cr', '10nDCd8kWC');
+insert into Datic (correoInstitucional, contrasena) values ('stuttman@estudiantec.cr', 'SbPNVC8');
+insert into Datic (correoInstitucional, contrasena) values ('trusler@estudiantec.cr', 'IFPgEStzsiv');
+insert into Datic (correoInstitucional, contrasena) values ('sabberton@estudiantec.cr', '8j86dzEf');
+insert into Datic (correoInstitucional, contrasena) values ('cozins@estudiantec.cr', '73RvKrQZ8');
+insert into Datic (correoInstitucional, contrasena) values ('inett@estudiantec.cr', 'qX3Wo36D');
+insert into Datic (correoInstitucional, contrasena) values ('boate@estudiantec.cr', 'o8cnE8TrVXO');
+insert into Datic (correoInstitucional, contrasena) values ('davoren@estudiantec.cr', '6AZT5d');
+insert into Datic (correoInstitucional, contrasena) values ('jeenes@estudiantec.cr', 'T59rGqpqPCJF');
+insert into Datic (correoInstitucional, contrasena) values ('kenson@estudiantec.cr', 'Fo3hVzdkEd0');
+insert into Datic (correoInstitucional, contrasena) values ('fennelow@estudiantec.cr', 'AeB4A6');
+insert into Datic (correoInstitucional, contrasena) values ('smalls@estudiantec.cr', 'xZDAqGUHmiLU');
+insert into Datic (correoInstitucional, contrasena) values ('osbourn@estudiantec.cr', 'bhXVIivE');
+insert into Datic (correoInstitucional, contrasena) values ('jakubovsky@estudiantec.cr', 'P5DqJ0U3HPxn');
+insert into Datic (correoInstitucional, contrasena) values ('edwardson@estudiantec.cr', 'SFzeTvv');
+insert into Datic (correoInstitucional, contrasena) values ('mielnik@estudiantec.cr', '7JADGbkU');
+insert into Datic (correoInstitucional, contrasena) values ('lovitt@estudiantec.cr', 'xYQMj0jq9g0W');
+insert into Datic (correoInstitucional, contrasena) values ('helmke@estudiantec.cr', 'QMjgtgcYVf');
+insert into Datic (correoInstitucional, contrasena) values ('quin@estudiantec.cr', 'OEGHGjBHkU7e');
+insert into Datic (correoInstitucional, contrasena) values ('gouldeby@estudiantec.cr', 'LOYAaa');
+insert into Datic (correoInstitucional, contrasena) values ('budcock@estudiantec.cr', '7BOnZIXVV');
+insert into Datic (correoInstitucional, contrasena) values ('phlippsen@estudiantec.cr', 'gPnKIffmZPf');
+insert into Datic (correoInstitucional, contrasena) values ('whickman@estudiantec.cr', 'jg3cMynjwyE');
+insert into Datic (correoInstitucional, contrasena) values ('vedeneev@estudiantec.cr', 'oWFp0J5hpVu');
+insert into Datic (correoInstitucional, contrasena) values ('lack@estudiantec.cr', 'ihlO01Tzq');
+insert into Datic (correoInstitucional, contrasena) values ('ferencz@estudiantec.cr', 'MNNq6L');
+insert into Datic (correoInstitucional, contrasena) values ('thomtson@estudiantec.cr', 'qyYpySK');
+insert into Datic (correoInstitucional, contrasena) values ('rikkard@estudiantec.cr', 'ztptiJOOe85');
+insert into Datic (correoInstitucional, contrasena) values ('tuvey@estudiantec.cr', 'Ph3OYV');
+insert into Datic (correoInstitucional, contrasena) values ('endley@estudiantec.cr', 'zYnlv8jAltqs');
+insert into Datic (correoInstitucional, contrasena) values ('mayow@estudiantec.cr', 'Vg0HkD');
+insert into Datic (correoInstitucional, contrasena) values ('goby@estudiantec.cr', 'g2a7MWxmH');
+insert into Datic (correoInstitucional, contrasena) values ('wainman@estudiantec.cr', 'hQpgM6YwWy');
+insert into Datic (correoInstitucional, contrasena) values ('gemmill@estudiantec.cr', '7DvX4qUfUGL');
+insert into Datic (correoInstitucional, contrasena) values ('hofer@estudiantec.cr', 'eGTjItz9lv');
+insert into Datic (correoInstitucional, contrasena) values ('ricardon@estudiantec.cr', 'uinDbHDhrp');
+insert into Datic (correoInstitucional, contrasena) values ('flament@estudiantec.cr', 'sebZInJ');
+insert into Datic (correoInstitucional, contrasena) values ('fearey@estudiantec.cr', '3RH9pEgMpQs');
+insert into Datic (correoInstitucional, contrasena) values ('pipworth@estudiantec.cr', '0eoJTXGLcilO');
+insert into Datic (correoInstitucional, contrasena) values ('pritty@estudiantec.cr', '8sN4Bz3qKLv');
+insert into Datic (correoInstitucional, contrasena) values ('cawley@estudiantec.cr', 'WdXNQHO2');
+insert into Datic (correoInstitucional, contrasena) values ('kiddey@estudiantec.cr', 'iHFZAz1x');
+insert into Datic (correoInstitucional, contrasena) values ('kinset@estudiantec.cr', 'aTJzgJF');
+insert into Datic (correoInstitucional, contrasena) values ('birrane@estudiantec.cr', 'PVBYVZsz15WC');
+insert into Datic (correoInstitucional, contrasena) values ('choldcroft@estudiantec.cr', 'wXdTVPAIzrS');
+insert into Datic (correoInstitucional, contrasena) values ('thurborn@estudiantec.cr', 'vPDoDV');
+insert into Datic (correoInstitucional, contrasena) values ('mccaffery@estudiantec.cr', 'MG27e7');
+insert into Datic (correoInstitucional, contrasena) values ('ovell@estudiantec.cr', 'ClWQLQ');
+insert into Datic (correoInstitucional, contrasena) values ('mccormack@estudiantec.cr', '8Eex3WE5A');
+insert into Datic (correoInstitucional, contrasena) values ('hoyte@estudiantec.cr', '4XGCFE8AH');
+insert into Datic (correoInstitucional, contrasena) values ('hupka@estudiantec.cr', '5mjOIJTRxU');
+insert into Datic (correoInstitucional, contrasena) values ('firsby@estudiantec.cr', 'xUXvSuZt');
+insert into Datic (correoInstitucional, contrasena) values ('mibourne@estudiantec.cr', 'kmTXflUnUx');
+GO
+
+/**/
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (63, 'tatersale@estudiantec.cr', 3855, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (60, 'mccaffery@estudiantec.cr', 3608, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (41, 'mielnik@estudiantec.cr', 5259, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (81, 'moulster@estudiantec.cr', 4746, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (18, 'fearey@estudiantec.cr', 5449, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (36, 'ricardon@estudiantec.cr', 4506, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (58, 'stacy@estudiantec.cr', 103, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (29, 'marke@estudiantec.cr', 2209, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (92, 'pevsner@estudiantec.cr', 5450, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (91, 'thurborn@estudiantec.cr', 4282, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (13, 'budcock@estudiantec.cr', 5087, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (30, 'lack@estudiantec.cr', 3726, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (28, 'mayow@estudiantec.cr', 2072, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (15, 'mussilli@estudiantec.cr', 3530, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (48, 'inett@estudiantec.cr', 2644, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (70, 'rannigan@estudiantec.cr', 3919, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (82, 'goby@estudiantec.cr', 191, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (35, 'stuttman@estudiantec.cr', 4112, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (3, 'danilovitch@estudiantec.cr', 5843, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (68, 'baress@estudiantec.cr', 3642, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (57, 'biscomb@estudiantec.cr', 5199, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (80, 'stacy@estudiantec.cr', 4334, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (73, 'stuttman@estudiantec.cr', 4886, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (62, 'firsby@estudiantec.cr', 1338, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (16, 'sabberton@estudiantec.cr', 4281, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (96, 'fritchly@estudiantec.cr', 19, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (38, 'wichard@estudiantec.cr', 1451, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (43, 'stuttman@estudiantec.cr', 3716, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (59, 'rings@estudiantec.cr', 1109, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (99, 'buckby@estudiantec.cr', 4781, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (71, 'hoyte@estudiantec.cr', 4461, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (79, 'sabberton@estudiantec.cr', 433, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (69, 'tuvey@estudiantec.cr', 5309, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (87, 'langmaid@estudiantec.cr', 2912, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (14, 'auchinleck@estudiantec.cr', 2713, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (8, 'ollerenshaw@estudiantec.cr', 2525, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (4, 'jeenes@estudiantec.cr', 4988, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (6, 'phlippsen@estudiantec.cr', 1823, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (66, 'quin@estudiantec.cr', 3693, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (65, 'marke@estudiantec.cr', 3449, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (10, 'rings@estudiantec.cr', 5437, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (33, 'basezzi@estudiantec.cr', 4762, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (55, 'mibourne@estudiantec.cr', 5283, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (19, 'wichard@estudiantec.cr', 1172, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (75, 'choldcroft@estudiantec.cr', 2982, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (52, 'warcup@estudiantec.cr', 852, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (44, 'thomtson@estudiantec.cr', 1799, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (74, 'tonepohl@estudiantec.cr', 828, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (77, 'firsby@estudiantec.cr', 3208, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (54, 'jakubovsky@estudiantec.cr', 671, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (20, 'gouldeby@estudiantec.cr', 4403, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (21, 'gemmill@estudiantec.cr', 2051, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (7, 'tuvey@estudiantec.cr', 3004, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (27, 'hacking@estudiantec.cr', 82, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (98, 'choldcroft@estudiantec.cr', 4537, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (49, 'ghelardi@estudiantec.cr', 2151, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (46, 'mccormack@estudiantec.cr', 3799, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (94, 'helmke@estudiantec.cr', 228, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (76, 'lack@estudiantec.cr', 2327, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (56, 'mccormack@estudiantec.cr', 2829, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (32, 'fearey@estudiantec.cr', 251, 0, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (2, 'ebsworth@estudiantec.cr', 5380, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (11, 'pritty@estudiantec.cr', 1181, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (93, 'mouat@estudiantec.cr', 2047, 1, 0);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (100, 'baress@estudiantec.cr', 5771, 0, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (78, 'mielnik@estudiantec.cr', 4936, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (88, 'stuttman@estudiantec.cr', 363, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (97, 'beevis@estudiantec.cr', 4607, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (26, 'cohalan@estudiantec.cr', 1482, 1, 1);
+insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (89, 'cawley@estudiantec.cr', 1159, 0, 1);
+GO
+
