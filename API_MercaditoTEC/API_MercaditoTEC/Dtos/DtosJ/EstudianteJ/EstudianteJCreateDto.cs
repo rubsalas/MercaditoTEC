@@ -2,12 +2,8 @@
 
 namespace API_MercaditoTEC.Dtos.DtosJ.EstudianteJ
 {
-    public class EstudianteJReadDto
+    public class EstudianteJCreateDto
     {
-        [Key]
-        public int idEstudiante { get; set; }
-        [Required]
-        [MaxLength(75)]
         public string nombre { get; set; }
         [Required]
         [MaxLength(150)]
@@ -18,10 +14,5 @@ namespace API_MercaditoTEC.Dtos.DtosJ.EstudianteJ
         [Required]
         [MaxLength(150)]
         public string correoInstitucional { get; set; }
-        [Required]
-        [MaxLength(150)]
-        public string contrasena { get; set; }
-        [Required]
-        public int puntosCanje { get; set; }
     }
 }

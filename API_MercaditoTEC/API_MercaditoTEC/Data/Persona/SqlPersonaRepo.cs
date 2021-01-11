@@ -14,7 +14,6 @@ namespace API_MercaditoTEC.Data
             _context = context;
         }
 
-
         /*
          * Retorna todas las Personas de la base de datos.
          */
@@ -29,7 +28,34 @@ namespace API_MercaditoTEC.Data
          */
         public Persona GetById(int id)
         {
+            //Se retorna una Persona especifica
             return _context.Persona.FirstOrDefault(p => p.idPersona == id);
+        }
+
+        /*
+         * Retorna el idPersona de una Persona especifica.
+         */
+        public int GetId(string nombrePersona, string apellidosPersona, string telefonoPersona)
+        {
+            //Se obtienen todas las Persona
+            IEnumerable<Persona> personaItems = GetAll();
+
+            //Se itera atraves de todas las Personas
+            for(int i = 0; i < personaItems.Count(); i++)
+            {
+                //Se obtiene una Persona
+                Persona personaI = personaItems.ElementAt(i);
+                
+                //Se verifica que sea la Persona que se busca
+                if (personaI.nombre == nombrePersona && personaI.apellidos == apellidosPersona && personaI.telefono == telefonoPersona)
+                {
+                    // Si se encuentra, se retorna el idPersona deseado
+                    return personaI.idPersona;
+                }
+            }
+
+            //Si no se encuentra la persona se retorna un -1
+            return -1;
         }
 
         /*
@@ -37,7 +63,7 @@ namespace API_MercaditoTEC.Data
          */
         public void Create(Persona persona)
         {
-            //Se verifica si la Persona existe
+            //Se verifica si la Persona ingresada no es nula
             if (persona == null)
             {
                 throw new ArgumentNullException(nameof(persona));

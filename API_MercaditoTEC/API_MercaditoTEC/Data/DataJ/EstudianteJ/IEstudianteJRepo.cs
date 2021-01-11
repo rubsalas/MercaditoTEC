@@ -7,6 +7,7 @@ namespace API_MercaditoTEC.Data.DataJ
     {
         IEnumerable<EstudianteJ> GetAll();
         EstudianteJ GetById(int id);
+        int GetId(string correoInstitucional);
         void Create(EstudianteJ estudianteJ);
         void Update(EstudianteJ estudianteJ);
         void Delete(EstudianteJ estudianteJ);

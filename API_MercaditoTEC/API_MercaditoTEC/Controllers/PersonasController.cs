@@ -38,19 +38,19 @@ namespace API_MercaditoTEC.Controllers
          * 
          * Obtiene los datos de una sola fila de la tabla Persona con un id especifico.
          */
-        [HttpGet("{id}", Name="GetById")]
-        public ActionResult <PersonaReadDto> GetById(int id)
+        [HttpGet("{id}", Name="GetByIdPersona")]
+        public ActionResult<PersonaReadDto> GetById(int id)
         {
-            //Trae de la base de datos la Persona con el id especificado
+            //Se trae de la base de datos la Persona con el id especificado
             var personaItem = _repository.GetById(id);
 
-            //Verifica si este existe
+            //Se verifica si este existe
             if(personaItem != null)
             {
                 return Ok(_mapper.Map<PersonaReadDto>(personaItem));
             }
 
-            //Sino existe envia un NotFound
+            //Si no existe envia un NotFound
             return NotFound();
         }
 
@@ -60,10 +60,10 @@ namespace API_MercaditoTEC.Controllers
          * Crea una nueva fila con datos en la tabla Persona.
          */
         [HttpPost]
-        public ActionResult <PersonaReadDto> Create(PersonaCreateDto personaCreateDto)
+        public ActionResult<PersonaReadDto> Create(PersonaCreateDto personaCreateDto)
         {
             //Mappea la Persona creada a un Modelo Persona
-            var personaModel = _mapper.Map<Persona>(personaCreateDto);
+            Persona personaModel = _mapper.Map<Persona>(personaCreateDto);
             //Crea la Persona nueva en la base de datos
             _repository.Create(personaModel);
             //Guarda los cambios en la base de datos

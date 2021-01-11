@@ -72,12 +72,14 @@ namespace API_MercaditoTEC
             services.AddDbContext<MercaditoTECContext>(options => options.UseSqlServer(SQLServerConnectionString));
         }
 
-
+        
         //Metodo para ajustar los scopes de los Repositorios y su respectiva Interfaz
         private void InitializeScope(IServiceCollection services)
         {
             //Persona
             services.AddScoped<IPersonaRepo, SqlPersonaRepo>();
+            //Datic
+            services.AddScoped<IDaticRepo, SqlDaticRepo>();
             //Estudiante
             services.AddScoped<IEstudianteRepo, SqlEstudianteRepo>();
 

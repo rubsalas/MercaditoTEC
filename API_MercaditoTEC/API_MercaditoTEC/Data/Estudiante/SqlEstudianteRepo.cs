@@ -33,6 +33,32 @@ namespace API_MercaditoTEC.Data
         }
 
         /*
+         * Retorna el idEstudiante de un Estudiante especifico.
+         */
+        public int GetId(string correoInstitucional)
+        {
+            //Se obtienen todos los Estudiantes
+            IEnumerable<Estudiante> estudianteItems = GetAll();
+
+            //Se itera atraves de todos los Estudiantes
+            for (int i = 0; i < estudianteItems.Count(); i++)
+            {
+                //Se obtiene un Estudiante
+                Estudiante estudianteI = estudianteItems.ElementAt(i);
+
+                //Se verifica que sea el Estudiante que se busca
+                if (estudianteI.correoInstitucional == correoInstitucional)
+                {
+                    //Si se encuentra, se retorna el idEstudiante deseado
+                    return estudianteI.idEstudiante;
+                }
+            }
+
+            //Si no se encuentra la persona se retorna un -1
+            return -1;
+        }
+
+        /*
          * Ingresa a la base de datos un nuevo Estudiante.
          */
         public void Create(Estudiante estudiante)

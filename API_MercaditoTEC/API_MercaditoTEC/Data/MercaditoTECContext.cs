@@ -11,11 +11,23 @@ namespace API_MercaditoTEC.Data
              
         }
 
-        //Tables
+        /*
+         * Tables
+         */
+
+        /* Morado */
         public DbSet<Persona> Persona { get; set; }
+        public DbSet<Datic> Datic { get; set; }
+
+        /* Rosado */
         public DbSet<Estudiante> Estudiante { get; set; }
 
-        //Joints
+
+        /*
+         * Joints
+         */
+
+        /* Rosado */
         public DbSet<EstudianteJ> EstudianteJ { get; set; }
     }
 }

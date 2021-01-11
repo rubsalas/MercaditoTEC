@@ -16,5 +16,8 @@ namespace API_MercaditoTEC.Models
         [Required]
         [MaxLength(150)]
         public string apellidos { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string telefono { get; set; }
     }
 }
