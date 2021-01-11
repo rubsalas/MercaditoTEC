@@ -10,11 +10,9 @@ namespace API_MercaditoTEC.Models
     {
         [Key]
         public int idPersona { get; set; }
-
         [Required]
         [MaxLength(75)]
         public string nombre { get; set; }
-
         [Required]
         [MaxLength(150)]
         public string apellidos { get; set; }

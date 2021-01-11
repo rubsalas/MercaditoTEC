@@ -1,0 +1,28 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API_MercaditoTEC.Models.ModelsJ
+{
+    public class EstudianteJ
+    {
+        [Key]
+        public int idEstudiante { get; set; }
+        [Required]
+        [MaxLength(75)]
+        public string nombre { get; set; }
+        [Required]
+        [MaxLength(150)]
+        public string apellidos { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string telefono { get; set; }
+        [Required]
+        [MaxLength(150)]
+        public string correoInstitucional { get; set; }
+        [Required]
+        public int puntosCanje { get; set; }
+        [Required]
+        public bool haIngresadoWeb { get; set; }
+        [Required]
+        public bool haIngresadoApp { get; set; }
+    }
+}

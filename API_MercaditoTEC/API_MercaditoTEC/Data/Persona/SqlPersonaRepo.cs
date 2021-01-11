@@ -1,5 +1,4 @@
 ﻿using API_MercaditoTEC.Models;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +16,11 @@ namespace API_MercaditoTEC.Data
 
 
         /*
-         * Retorna todas las personas de la base de datos.
+         * Retorna todas las Personas de la base de datos.
          */
         public IEnumerable<Persona> GetAll()
         {
+            //Se retorna una lista de todas las Personas
             return _context.Persona.ToList();
         }
 
@@ -37,13 +37,13 @@ namespace API_MercaditoTEC.Data
          */
         public void Create(Persona persona)
         {
-            // Verifica si la Persona existe
+            //Se verifica si la Persona existe
             if (persona == null)
             {
                 throw new ArgumentNullException(nameof(persona));
             }
 
-            //Crea la Persona en la base de datos por medio del context
+            //Se crea la Persona en la base de datos por medio del context
             _context.Persona.Add(persona);
         }
 
@@ -60,13 +60,13 @@ namespace API_MercaditoTEC.Data
          */
         public void Delete(Persona persona)
         {
-            // Verifica si la Persona existe
+            //Se verifica si la Persona existe
             if (persona == null)
             {
                 throw new ArgumentNullException(nameof(persona));
             }
 
-            //Elimina la Persona de la base de datos por medio del context
+            //Se elimina la Persona de la base de datos por medio del context
             _context.Persona.Remove(persona);
         }
 

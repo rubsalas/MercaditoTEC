@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API_MercaditoTEC.Data;
+using API_MercaditoTEC.Data.DataJ;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -77,6 +78,11 @@ namespace API_MercaditoTEC
         {
             //Persona
             services.AddScoped<IPersonaRepo, SqlPersonaRepo>();
+            //Estudiante
+            services.AddScoped<IEstudianteRepo, SqlEstudianteRepo>();
+
+            //EstudianteJ
+            services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();
         }
 
 

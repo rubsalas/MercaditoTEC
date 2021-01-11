@@ -3,7 +3,6 @@ using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Dtos.Persona;
 using API_MercaditoTEC.Models;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_MercaditoTEC.Controllers
@@ -75,7 +74,6 @@ namespace API_MercaditoTEC.Controllers
 
             //Retorna un ActionResult 201 Created al hacer el Post, con la PersonaRead
             return CreatedAtRoute(nameof(GetById), new { Id = personaReadDto.idPersona }, personaReadDto);
-            //return Ok(personaReadDto);
         }
 
         /*
