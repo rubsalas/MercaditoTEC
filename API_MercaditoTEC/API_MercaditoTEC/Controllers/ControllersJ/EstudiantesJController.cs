@@ -48,7 +48,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * con un id especifico.
          */
         [Route("api/estudiantesJ/{id}")]
-        [HttpGet]//("{id}", Name = "GetByIdEstudianteJ")]
+        [HttpGet]
         public ActionResult<EstudianteJReadDto> GetById(int id)
         {
             //Se trae de la base de datos el EstudianteJ con el id especificado
