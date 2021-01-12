@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- main/API_MercaditoTEC
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -13,5 +13,5 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build API_MercaditoTEC --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
