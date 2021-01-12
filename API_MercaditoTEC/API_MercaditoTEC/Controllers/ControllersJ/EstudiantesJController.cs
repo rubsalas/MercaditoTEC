@@ -66,7 +66,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * Obtiene los datos de login del Estudiante.
          */
         [Route("api/estudiantesJ/Login")]
-        [HttpGet]
+        [HttpPost]
         public ActionResult<EstudianteJReadDto> GetLogin(EstudianteJLoginDto estudianteJLoginDto)
         {
             //Se obtiene el correoInstitucional proveido
