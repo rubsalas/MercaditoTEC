@@ -21,6 +21,7 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
 
             CreateMap<EstudianteJCreateDto, EstudianteJ>();
 
+            CreateMap<EstudianteJ, EstudianteJGuideDto>();
         }
 
     }

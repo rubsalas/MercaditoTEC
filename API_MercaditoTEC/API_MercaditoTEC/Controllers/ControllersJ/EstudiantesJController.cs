@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Data.DataJ;
 using API_MercaditoTEC.Dtos.DtosJ.EstudianteJ;
 using API_MercaditoTEC.Models.ModelsJ;
@@ -11,17 +12,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_MercaditoTEC.Controllers.ControllersJ
 {
-    [Route("api/estudiantesJ")]
+    //[Route("api/estudiantesJ")]
     [ApiController]
     public class EstudiantesJController : ControllerBase
     {
         private readonly IEstudianteJRepo _repository;
         private readonly IMapper _mapper;
+        private readonly IDaticRepo _daticRepository;
 
-        public EstudiantesJController(IEstudianteJRepo repository, IMapper mapper)
+        public EstudiantesJController(IEstudianteJRepo repository, IMapper mapper, IDaticRepo daticRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _daticRepository = daticRepository;
         }
 
         /*
@@ -29,6 +32,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * 
          * Obtiene todos los datos de todas las filas de las tablas Persona y Estudiante.
          */
+        [Route("api/estudiantesJ")]
         [HttpGet]
         public ActionResult<IEnumerable<EstudianteJReadDto>> GetAll()
         {
@@ -43,7 +47,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * Obtiene los datos de una sola fila de las tablas Persona y Estudiante,
          * con un id especifico.
          */
-        [HttpGet("{id}", Name = "GetByIdEstudianteJ")]
+        [Route("api/estudiantesJ/{id}")]
+        [HttpGet]//("{id}", Name = "GetByIdEstudianteJ")]
         public ActionResult<EstudianteJReadDto> GetById(int id)
         {
             //Se trae de la base de datos el EstudianteJ con el id especificado
@@ -60,10 +65,59 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         }
 
         /*
+         * GET api/estudiantesLogin
+         * 
+         * Obtiene los datos de login del Estudiante.
+         */
+        [Route("api/estudiantesJ/Login")]
+        [HttpGet]
+        public ActionResult<EstudianteJReadDto> GetLogin(EstudianteJLoginDto estudianteJLoginDto)
+        {
+            //Se obtiene el correoInstitucional proveido
+            string correoInstitucional = estudianteJLoginDto.correoInstitucional;
+
+            //Trae de la base de datos el correoInstitucional y la contrasena registrada en Datic
+            var daticItem = _daticRepository.GetByCorreo(correoInstitucional);
+
+            //Trae de la base de datos el idEstudiante registrado con el correo
+            int idEstudiante = _repository.GetId(correoInstitucional);
+
+            //Se verifica que exista el correo del Estudiante en la tabla de Datic
+            if (daticItem != null)
+            {
+                
+                //Se verifica que el estudiante este registrado en el sistema
+                if (idEstudiante != -1)
+                {
+                    //Se trae de la base de datos el EstudianteJ con el id especificado
+                    var estudianteJItem = _repository.GetById(idEstudiante);
+
+                    //Se verifica que la contrasena es correcta
+                    if (estudianteJLoginDto.contrasena == daticItem.contrasena)
+                    {
+                        //Retorna un EstudianteGuideJDto con la informacion de si ha ingresado a las plataformas
+                        return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItem));
+                    }
+
+                    //Si la contrasena esta mal
+                    return Ok(false);
+                }
+
+                //Si no esta registrado envia un NotFound true
+                return NotFound(true);
+
+            }
+
+            //Si no existe envia un NotFound false
+            return NotFound(false);
+        }
+
+        /*
          * POST api/estudiantesJ
          * 
          * Crea una nueva Persona y un Estudiante con el correo institucional ya verificado en Datic.
          */
+        [Route("api/estudiantesJ")]
         [HttpPost]
         public ActionResult<EstudianteJReadDto> Create(EstudianteJCreateDto estudianteJCreateDto)
         {

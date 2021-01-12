@@ -131,7 +131,7 @@ namespace API_MercaditoTEC.Data.DataJ
             _personaRepository.SaveChanges();
 
             //Mappea el EstudianteJ obtenido a un Modelo Estudiante
-            var estudianteModel = _mapper.Map<Estudiante>(estudianteJ);
+            Estudiante estudianteModel = _mapper.Map<Estudiante>(estudianteJ);
 
             //Se agrega el idPersona de la persona recien creada al Modelo Estudiante
             estudianteModel.idPersona = _personaRepository.GetId(personaModel.nombre, personaModel.apellidos, personaModel.telefono);
