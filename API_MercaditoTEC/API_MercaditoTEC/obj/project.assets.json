@@ -5475,11 +5475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\API\\API_MercaditoTEC\\API_MercaditoTEC\\API_MercaditoTEC.csproj",
+      "projectUniqueName": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\main\\API_MercaditoTEC\\API_MercaditoTEC\\API_MercaditoTEC.csproj",
       "projectName": "API_MercaditoTEC",
-      "projectPath": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\API\\API_MercaditoTEC\\API_MercaditoTEC\\API_MercaditoTEC.csproj",
+      "projectPath": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\main\\API_MercaditoTEC\\API_MercaditoTEC\\API_MercaditoTEC.csproj",
       "packagesPath": "C:\\Users\\Ruben Salas\\.nuget\\packages\\",
-      "outputPath": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\API\\API_MercaditoTEC\\API_MercaditoTEC\\obj\\",
+      "outputPath": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\main\\API_MercaditoTEC\\API_MercaditoTEC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ruben Salas\\AppData\\Roaming\\NuGet\\NuGet.Config",
