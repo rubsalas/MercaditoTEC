@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Data.DataJ;
 using API_MercaditoTEC.Dtos.DtosJ.EstudianteJ;
 using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_MercaditoTEC.Controllers.ControllersJ
