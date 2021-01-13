@@ -155,6 +155,23 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         [HttpPost]
         public ActionResult<EstudianteJReadDto> RegisterStudent(EstudianteJCreateDto estudianteJCreateDto)
         {
+            //Se crea la respuesta por enviar
+            Response response = new Response("EstudiantesJ", "api/estudiantesJ/Registro", "HttpPost", "Registro Estudiante");
+
+            //Se intentara obtener un idEstudiante para verificar si ya existe
+            int idEstudiantePorRegistrar = _repository.GetId(estudianteJCreateDto.correoInstitucional);
+
+            //Se debe revisar que el Estudiante no este ya registrado
+            if (idEstudiantePorRegistrar == -1)
+            {
+                /*
+                 * Como el estudiante ya esta registrado
+                 * Se agrega un value de -1 al response
+                 */
+                response.setValue(-1);
+                return Ok(response);
+            }
+
             //Mappea el Estudiante creado a un Modelo EstudianteJ
             EstudianteJ estudianteJModel = _mapper.Map<EstudianteJ>(estudianteJCreateDto);
             //Crea el EstudianteJ nuevo en la base de datos
@@ -162,22 +179,17 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Guarda los cambios en la base de datos
             _repository.SaveChanges(); //No implementado para EstudianteJ
 
-            //Se crea la respuesta por enviar
-            Response response = new Response("EstudiantesJ", "api/estudiantesJ/Registro", "HttpPost", "Registro Estudiante");
-
             //Se obtiene el idEstudiante recien creado
             int idEstudianteJ = _repository.GetId(estudianteJCreateDto.correoInstitucional);
 
             //Se revisa si se completo el registro
             if (idEstudianteJ == -1)
             {
-                //No se registro el estudiante
-
                 /*
                  * Como no se registro el estudiante
                  * Se agrega un value de 0 al response
                  */
-                response.setValue(1);
+                response.setValue(0);
                 return Ok(response);
             }
 

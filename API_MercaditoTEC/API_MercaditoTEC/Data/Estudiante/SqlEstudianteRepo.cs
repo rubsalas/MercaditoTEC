@@ -54,7 +54,7 @@ namespace API_MercaditoTEC.Data
                 }
             }
 
-            //Si no se encuentra la persona se retorna un -1
+            //Si no se encuentra el Estudiante se retorna un -1
             return -1;
         }
 
