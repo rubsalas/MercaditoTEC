@@ -67,7 +67,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          */
         [Route("api/estudiantesJ/Login")]
         [HttpPost]
-        public ActionResult<EstudianteJReadDto> GetLogin(EstudianteJLoginDto estudianteJLoginDto)
+        public ActionResult<EstudianteJReadDto> LoginStudent(EstudianteJLoginDto estudianteJLoginDto)
         {
             //Se obtiene el correoInstitucional proveido
             string correoInstitucional = estudianteJLoginDto.correoInstitucional;
@@ -78,34 +78,72 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Trae de la base de datos el idEstudiante registrado con el correo
             int idEstudiante = _repository.GetId(correoInstitucional);
 
+            //NO - Contendra el EstudianteJ por enviar como respuesta si hay un error
+            EstudianteJ estudianteJItemError = new EstudianteJ();
+
+            //Se crea la respuesta por enviar
+            Response response = new Response("EstudiantesJ", "api/estudiantesJ/Login", "HttpPost", "Login Estudiante");
+
             //Se verifica que exista el correo del Estudiante en la tabla de Datic
             if (daticItem != null)
             {
                 
-                //Se verifica que el estudiante este registrado en el sistema
+                //Se verifica que el estudiante este registrado en el sistema de MercaditoTEC
                 if (idEstudiante != -1)
                 {
-                    //Se trae de la base de datos el EstudianteJ con el id especificado
-                    var estudianteJItem = _repository.GetById(idEstudiante);
 
                     //Se verifica que la contrasena es correcta
                     if (estudianteJLoginDto.contrasena == daticItem.contrasena)
                     {
+                        //Se trae de la base de datos el EstudianteJ con el id especificado
+                        //var estudianteJItem = _repository.GetById(idEstudiante);
+
                         //Retorna un EstudianteGuideJDto con la informacion de si ha ingresado a las plataformas
-                        return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItem));
+                        //return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItem));
+
+                        /*
+                         * Como se verifica exitosamente el login de estudiante
+                         * Se agrega un value del idEstudiante que ha hecho login al response
+                         */
+                        response.setValue(idEstudiante);
+                        return Ok(response);
                     }
 
                     //Si la contrasena esta mal
-                    return Ok(false);
+
+                    //NO - Se ingresa como idEstudiante un 0
+                    //estudianteJItemError.idEstudiante = 0;
+
+                    //NO - Se convierte a un estudianteJGuideDto para enviarse como JSON
+                    //return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItemError));
+
+                    /*
+                    * Como la contrasena es incorrecta
+                    * Se agrega un value de 0 al response
+                    */
+                    response.setValue(0);
+                    return Ok(response);
                 }
 
-                //Si no esta registrado envia un NotFound true
-                return NotFound(true);
+                //Si no esta registrado, pero si existe en Datic, envia un NotFound true
+                //return NotFound(true);
 
             }
 
             //Si no existe envia un NotFound false
-            return NotFound(false);
+
+            //NO - Se ingresa como idEstudiante un -1
+            //estudianteJItemError.idEstudiante = -1;
+
+            //NO - Se convierte a un estudianteJGuideDto para enviarse como JSON
+            //return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItemError));
+
+            /*
+             * Como no existe en al tabla de Datic
+             * Se agrega un value de -1 al response
+             */
+            response.setValue(-1);
+            return Ok(response);
         }
 
         /*
@@ -113,9 +151,9 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * 
          * Crea una nueva Persona y un Estudiante con el correo institucional ya verificado en Datic.
          */
-        [Route("api/estudiantesJ")]
+        [Route("api/estudiantesJ/Registro")]
         [HttpPost]
-        public ActionResult<EstudianteJReadDto> Create(EstudianteJCreateDto estudianteJCreateDto)
+        public ActionResult<EstudianteJReadDto> RegisterStudent(EstudianteJCreateDto estudianteJCreateDto)
         {
             //Mappea el Estudiante creado a un Modelo EstudianteJ
             EstudianteJ estudianteJModel = _mapper.Map<EstudianteJ>(estudianteJCreateDto);
@@ -124,17 +162,40 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Guarda los cambios en la base de datos
             _repository.SaveChanges(); //No implementado para EstudianteJ
 
-            //Mappea el Modelo del EstudianteJ a un EstudianteJRead para retornarlo
-            var estudianteJReadDto = _mapper.Map<EstudianteJReadDto>(estudianteJModel);
+            //Se crea la respuesta por enviar
+            Response response = new Response("EstudiantesJ", "api/estudiantesJ/Registro", "HttpPost", "Registro Estudiante");
 
             //Se obtiene el idEstudiante recien creado
             int idEstudianteJ = _repository.GetId(estudianteJCreateDto.correoInstitucional);
 
-            //Se le ingresa el idEstudiante al EstudianteJRead
-            estudianteJReadDto.idEstudiante = idEstudianteJ;
+            //Se revisa si se completo el registro
+            if (idEstudianteJ == -1)
+            {
+                //No se registro el estudiante
+
+                /*
+                 * Como no se registro el estudiante
+                 * Se agrega un value de 0 al response
+                 */
+                response.setValue(1);
+                return Ok(response);
+            }
+
+            //Se obtiene el estudiante de la base de datos
+            //EstudianteJ estudianteRegistrado = _repository.GetById(idEstudianteJ);
+
+            //Mappea el Modelo del EstudianteJ a un EstudianteJRead para retornarlo
+            //var estudianteJReadDto = _mapper.Map<EstudianteJReadDto>(estudianteRegistrado);
 
             //Retorna un ActionResult 201 Created al hacer el Post, con el EstudianteJRead
-            return Ok(estudianteJReadDto);
+            //return Ok(estudianteJReadDto);
+
+            /*
+             * Como se registro el estudiante exitosamente
+             * Se agrega un value del idEstudiante que ha hecho login al response
+             */
+            response.setValue(idEstudianteJ);
+            return Ok(response);
         }
     }
 }

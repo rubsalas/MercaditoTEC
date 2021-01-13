@@ -19,9 +19,10 @@ namespace API_MercaditoTEC.Dtos.DtosJ.EstudianteJ
         [MaxLength(150)]
         public string correoInstitucional { get; set; }
         [Required]
-        [MaxLength(150)]
-        public string contrasena { get; set; }
-        [Required]
         public int puntosCanje { get; set; }
+        [Required]
+        public bool haIngresadoWeb { get; set; }
+        [Required]
+        public bool haIngresadoApp { get; set; }
     }
 }
