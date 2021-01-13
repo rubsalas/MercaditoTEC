@@ -162,7 +162,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             int idEstudiantePorRegistrar = _repository.GetId(estudianteJCreateDto.correoInstitucional);
 
             //Se debe revisar que el Estudiante no este ya registrado
-            if (idEstudiantePorRegistrar == -1)
+            if (idEstudiantePorRegistrar != -1)
             {
                 /*
                  * Como el estudiante ya esta registrado
