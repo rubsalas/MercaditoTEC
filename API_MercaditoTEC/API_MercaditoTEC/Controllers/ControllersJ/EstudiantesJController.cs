@@ -2,6 +2,7 @@
 using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Data.DataJ;
 using API_MercaditoTEC.Dtos.DtosJ.EstudianteJ;
+using API_MercaditoTEC.Models;
 using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,14 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         private readonly IEstudianteJRepo _repository;
         private readonly IMapper _mapper;
         private readonly IDaticRepo _daticRepository;
+        private readonly IEstudianteRepo _estudianteRepository;
 
-        public EstudiantesJController(IEstudianteJRepo repository, IMapper mapper, IDaticRepo daticRepository)
+        public EstudiantesJController(IEstudianteJRepo repository, IMapper mapper, IDaticRepo daticRepository, IEstudianteRepo estudianteRepository)
         {
             _repository = repository;
             _mapper = mapper;
             _daticRepository = daticRepository;
+            _estudianteRepository = estudianteRepository;
         }
 
         /*
@@ -87,7 +90,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Se verifica que exista el correo del Estudiante en la tabla de Datic
             if (daticItem != null)
             {
-                
+
                 //Se verifica que el estudiante este registrado en el sistema de MercaditoTEC
                 if (idEstudiante != -1)
                 {
@@ -95,11 +98,6 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                     //Se verifica que la contrasena es correcta
                     if (estudianteJLoginDto.contrasena == daticItem.contrasena)
                     {
-                        //Se trae de la base de datos el EstudianteJ con el id especificado
-                        //var estudianteJItem = _repository.GetById(idEstudiante);
-
-                        //Retorna un EstudianteGuideJDto con la informacion de si ha ingresado a las plataformas
-                        //return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItem));
 
                         /*
                          * Como se verifica exitosamente el login de estudiante
@@ -109,14 +107,6 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                         return Ok(response);
                     }
 
-                    //Si la contrasena esta mal
-
-                    //NO - Se ingresa como idEstudiante un 0
-                    //estudianteJItemError.idEstudiante = 0;
-
-                    //NO - Se convierte a un estudianteJGuideDto para enviarse como JSON
-                    //return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItemError));
-
                     /*
                     * Como la contrasena es incorrecta
                     * Se agrega un value de 0 al response
@@ -125,18 +115,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                     return Ok(response);
                 }
 
-                //Si no esta registrado, pero si existe en Datic, envia un NotFound true
-                //return NotFound(true);
-
             }
-
-            //Si no existe envia un NotFound false
-
-            //NO - Se ingresa como idEstudiante un -1
-            //estudianteJItemError.idEstudiante = -1;
-
-            //NO - Se convierte a un estudianteJGuideDto para enviarse como JSON
-            //return Ok(_mapper.Map<EstudianteJGuideDto>(estudianteJItemError));
 
             /*
              * Como no existe en al tabla de Datic
@@ -193,15 +172,6 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 return Ok(response);
             }
 
-            //Se obtiene el estudiante de la base de datos
-            //EstudianteJ estudianteRegistrado = _repository.GetById(idEstudianteJ);
-
-            //Mappea el Modelo del EstudianteJ a un EstudianteJRead para retornarlo
-            //var estudianteJReadDto = _mapper.Map<EstudianteJReadDto>(estudianteRegistrado);
-
-            //Retorna un ActionResult 201 Created al hacer el Post, con el EstudianteJRead
-            //return Ok(estudianteJReadDto);
-
             /*
              * Como se registro el estudiante exitosamente
              * Se agrega un value del idEstudiante que ha hecho login al response
@@ -209,5 +179,96 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             response.setValue(idEstudianteJ);
             return Ok(response);
         }
+
+
+        /*
+         * PUT api/estudiantesJ/Guia
+         * 
+         * Confirma con el API para que se guarde que el estudiante ya vio la guia en el cliente especifico.
+         */
+        [Route("api/estudiantesJ/Guia")]
+        [HttpPut]
+        public ActionResult<EstudianteJReadDto> GuideConfirmation(EstudianteJGuideDto estudianteJGuideDto)
+        {
+            //Se obtiene el Estudiante, con id especifico, del repositorio
+            Estudiante estudiante = _estudianteRepository.GetById(estudianteJGuideDto.idEstudiante);
+
+            //Se crea la respuesta por enviar
+            Response response = new Response("EstudiantesJ", "api/estudiantesJ/Guia", "HttpPost", "Guia Estudiante");
+
+            //Se verifica si el estudiante existe
+            if (estudiante == null)
+            {
+                /*
+                 * Como el estudiante por actualizar no existe
+                 * Se agrega un value de -1 al response
+                 */
+                response.setValue(-1);
+                return Ok(response);
+            }
+            else
+            {
+                //No se esta verificando si ya tiene haIngresado = true
+
+                //Se verifica de donde viene la confirmacion de la guia
+                if (estudianteJGuideDto.cliente == "Web")
+                {
+                    estudiante.haIngresadoWeb = true;
+                }
+                else if (estudianteJGuideDto.cliente == "App")
+                {
+                    estudiante.haIngresadoApp = true;
+                }
+                else
+                {
+                    /*
+                    * Como no viene especificado el cliente
+                    * Se agrega un value de 0 al response
+                    */
+                    response.setValue(0);
+                    return Ok(response);
+                }
+
+                //Guarda los cambios en la base de datos
+                _estudianteRepository.SaveChanges();
+            }
+
+            /*
+             * Como se actualiza exitosamente al Estudiante
+             * Se agrega un value de 1 al response
+             */
+            response.setValue(1);
+            return Ok(response);
+        }
+
+
+        /*
+         * 
+         */
+        [Route("api/estudiantesJ/{id}")]
+        [HttpPut]
+        public ActionResult Update(int id, EstudianteJUpdateDto estudianteJUpdateDto)
+        {
+
+            //FALTA IMPLEMENTAR ESTE Update
+
+            //ESTO ES UNA PRUEBA PARA "GuideConfirmation"
+
+            //Se obtiene el Estudiante, con id especifico, del repositorio
+            Estudiante estudianteModelFromRepo = _estudianteRepository.GetById(id);
+            //Se verifica que exista el Estudiante obtenido con el id especifico
+            if (estudianteModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            estudianteModelFromRepo.haIngresadoWeb = estudianteJUpdateDto.haIngresadoWeb;
+
+            _estudianteRepository.SaveChanges();
+
+            return Ok(estudianteModelFromRepo);
+
+        }
+
     }
 }

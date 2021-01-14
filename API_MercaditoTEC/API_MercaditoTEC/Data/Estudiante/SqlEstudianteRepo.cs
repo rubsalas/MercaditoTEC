@@ -78,7 +78,7 @@ namespace API_MercaditoTEC.Data
          */
         public void Update(Estudiante estudiante)
         {
-            //De esto se encarga el DbContext
+            //throw new NotImplementedException();
         }
 
         /*
@@ -104,6 +104,5 @@ namespace API_MercaditoTEC.Data
             return (_context.SaveChanges() >= 0);
         }
 
-        
     }
 }

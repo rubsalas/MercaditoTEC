@@ -79,6 +79,7 @@ namespace API_MercaditoTEC.Data
         public void Update(Persona persona)
         {
             //De esto se encarga el DbContext
+            //_context.Persona.Update(persona);
         }
 
         /*

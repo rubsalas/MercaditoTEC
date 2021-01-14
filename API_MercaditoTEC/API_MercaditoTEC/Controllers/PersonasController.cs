@@ -85,7 +85,7 @@ namespace API_MercaditoTEC.Controllers
         public ActionResult Update(int id, PersonaUpdateDto personaUpdateDto)
         {
             //Se obtiene la Persona, con id especifico, del repositorio
-            var personaModelFromRepo = _repository.GetById(id);
+            Persona personaModelFromRepo = _repository.GetById(id);
             //Se verifica que exista la Persona obtenida con el id especifico
             if (personaModelFromRepo == null)
             {
@@ -96,6 +96,7 @@ namespace API_MercaditoTEC.Controllers
             _mapper.Map(personaUpdateDto, personaModelFromRepo);
 
             //Llama a la funcion de Update en SqlPersonaRepo
+            //No hace nada
             _repository.Update(personaModelFromRepo);
 
             //Guarda los cambios en la base de datos

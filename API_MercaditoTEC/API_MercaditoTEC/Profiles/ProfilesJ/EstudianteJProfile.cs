@@ -20,6 +20,8 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             CreateMap<EstudianteJ, Estudiante>();
 
             CreateMap<EstudianteJCreateDto, EstudianteJ>();
+
+            CreateMap<EstudianteJUpdateDto, EstudianteJ>();
         }
 
     }

@@ -80,27 +80,19 @@ namespace API_MercaditoTEC.Data.DataJ
             //Se mappea la parte de Estudiante al EstudianteJ
             EstudianteJ estudianteJItem = _mapper.Map<EstudianteJ>(estudianteItem);
 
-            //Mappeo de Persona
+            if (estudianteJItem != null)
+            {
+                //Mappeo de Persona
 
-            //Se obtiene el idPersona del Estudiante
-            int idPersona = estudianteItem.idPersona;
+                //Se obtiene el idPersona del Estudiante
+                int idPersona = estudianteItem.idPersona;
 
-            //Se obtiene la Persona especifica del Estudiante
-            Persona personaItem = _personaRepository.GetById(idPersona);
+                //Se obtiene la Persona especifica del Estudiante
+                Persona personaItem = _personaRepository.GetById(idPersona);
 
-            //Se mappea la Persona al EstudianteJ
-            _mapper.Map(personaItem, estudianteJItem);
-
-            //Mappeo de Datic
-
-            //Se obtiene el correoInstitucional del Estudiante
-            string correoInstitucional = estudianteItem.correoInstitucional;
-
-            //Se obtiene la informacion de Datic especifica del Estudiante
-            Datic daticItem = _daticRepository.GetByCorreo(correoInstitucional);
-
-            //Se mappea la contrasena de Datic al EstudianteJ
-            _mapper.Map(daticItem, estudianteJItem);
+                //Se mappea la Persona al EstudianteJ
+                _mapper.Map(personaItem, estudianteJItem);
+            }
 
             return estudianteJItem;
         }
@@ -144,7 +136,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public void Update(EstudianteJ estudianteJ)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Delete(EstudianteJ estudianteJ)
@@ -155,7 +147,7 @@ namespace API_MercaditoTEC.Data.DataJ
         public bool SaveChanges()
         {
             //throw new NotImplementedException();
-            return true;
+            return _estudianteRepository.SaveChanges();
         }
     }
 }
