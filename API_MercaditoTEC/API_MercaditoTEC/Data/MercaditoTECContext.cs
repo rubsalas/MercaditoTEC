@@ -8,7 +8,7 @@ namespace API_MercaditoTEC.Data
     {
         public MercaditoTECContext(DbContextOptions<MercaditoTECContext> options) : base(options)
         {
-             
+
         }
 
         /*
@@ -18,6 +18,7 @@ namespace API_MercaditoTEC.Data
         /* Morado */
         public DbSet<Persona> Persona { get; set; }
         public DbSet<Datic> Datic { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
 
         /* Rosado */
         public DbSet<Estudiante> Estudiante { get; set; }

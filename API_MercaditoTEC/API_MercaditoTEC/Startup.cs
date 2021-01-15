@@ -80,6 +80,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IPersonaRepo, SqlPersonaRepo>();
             //Datic
             services.AddScoped<IDaticRepo, SqlDaticRepo>();
+            //Categoria
+            services.AddScoped<ICategoriaRepo, SqlCategoriaRepo>();
             //Estudiante
             services.AddScoped<IEstudianteRepo, SqlEstudianteRepo>();
 

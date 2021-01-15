@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_MercaditoTEC.Controllers
 {
-    [Route("api/personas")]
+    //[Route("api/personas")]
     [ApiController]
     public class PersonasController : ControllerBase
     {
@@ -23,8 +23,9 @@ namespace API_MercaditoTEC.Controllers
         /*
          * GET api/personas
          * 
-         * Obtiene todas los datos de todas las filas de la tabla Persona.
+         * Obtiene todos los datos de todas las filas de la tabla Persona.
          */
+        [Route("api/personas")]
         [HttpGet]
         public ActionResult<IEnumerable<PersonaReadDto>> GetAll()
         {
@@ -38,7 +39,8 @@ namespace API_MercaditoTEC.Controllers
          * 
          * Obtiene los datos de una sola fila de la tabla Persona con un id especifico.
          */
-        [HttpGet("{id}", Name="GetByIdPersona")]
+        [Route("api/personas/{id}")]
+        [HttpGet]
         public ActionResult<PersonaReadDto> GetById(int id)
         {
             //Se trae de la base de datos la Persona con el id especificado
@@ -59,6 +61,7 @@ namespace API_MercaditoTEC.Controllers
          * 
          * Crea una nueva fila con datos en la tabla Persona.
          */
+        [Route("api/personas")]
         [HttpPost]
         public ActionResult<PersonaReadDto> Create(PersonaCreateDto personaCreateDto)
         {
@@ -81,7 +84,8 @@ namespace API_MercaditoTEC.Controllers
          * 
          * Actualiza la informacion de una fila de datos en la tabla Persona.
          */
-        [HttpPut("{id}")]
+        [Route("api/personas/{id}")]
+        [HttpPut]
         public ActionResult Update(int id, PersonaUpdateDto personaUpdateDto)
         {
             //Se obtiene la Persona, con id especifico, del repositorio
@@ -111,7 +115,8 @@ namespace API_MercaditoTEC.Controllers
          * 
          * Elimina la informacion de una fila de datos en la tabla Persona.
          */
-        [HttpDelete("{id}")]
+        [Route("api/personas/{id}")]
+        [HttpDelete]
         public ActionResult Delete(int id)
         {
             //Se obtiene la Persona, con id especifico, del repositorio

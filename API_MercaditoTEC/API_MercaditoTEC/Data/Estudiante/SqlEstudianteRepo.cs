@@ -15,6 +15,7 @@ namespace API_MercaditoTEC.Data
             _context = context;
         }
 
+
         /*
          * Retorna todas los Estudiantes de la base de datos.
          */
@@ -25,7 +26,7 @@ namespace API_MercaditoTEC.Data
         }
 
         /*
-         * Retorna un solo estudiante por su id.
+         * Retorna un solo Estudiante por su id.
          */
         public Estudiante GetById(int id)
         {
@@ -78,7 +79,7 @@ namespace API_MercaditoTEC.Data
          */
         public void Update(Estudiante estudiante)
         {
-            //throw new NotImplementedException();
+            //De esto se encarga el DbContext
         }
 
         /*

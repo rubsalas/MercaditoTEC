@@ -63,6 +63,24 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             return NotFound();
         }
 
+
+        /*
+         * GET api/estudiantesJ/Perfil/{id}
+         * 
+         * Obtiene los datos completos del Estudiante para mostrarlos en el Perfil
+         * con un id especifico.
+         */
+        [Route("api/estudiantesJ/Perfil/{id}")]
+        [HttpGet]
+        public ActionResult<EstudianteJReadDto> GetPerfil(int id)
+        {
+            //FALTA IMPLEMENTAR
+
+            //DEFINIR QUE VA EN CADA PERFIL ESPECIFICAMENTE
+
+            return NoContent();
+        }
+
         /*
          * GET api/estudiantesLogin
          * 

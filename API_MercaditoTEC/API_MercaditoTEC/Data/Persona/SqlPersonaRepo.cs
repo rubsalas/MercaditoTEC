@@ -14,6 +14,7 @@ namespace API_MercaditoTEC.Data
             _context = context;
         }
 
+
         /*
          * Retorna todas las Personas de la base de datos.
          */
@@ -24,7 +25,7 @@ namespace API_MercaditoTEC.Data
         }
 
         /*
-         * Retorna una sola persona por su id.
+         * Retorna una sola Persona por su id.
          */
         public Persona GetById(int id)
         {
@@ -79,7 +80,6 @@ namespace API_MercaditoTEC.Data
         public void Update(Persona persona)
         {
             //De esto se encarga el DbContext
-            //_context.Persona.Update(persona);
         }
 
         /*
