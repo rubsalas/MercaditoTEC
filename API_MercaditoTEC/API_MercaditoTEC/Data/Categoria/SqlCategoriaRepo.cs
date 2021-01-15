@@ -14,13 +14,12 @@ namespace API_MercaditoTEC.Data
             _context = context;
         }
 
-
         /*
          * Retorna todas las Categorias de la base de datos.
          */
         public IEnumerable<Categoria> GetAll()
         {
-            //Se retorna una lista de todos las Categorias.
+            //Se retorna una lista de todas las Categorias.
             return _context.Categoria.ToList();
         }
 
@@ -33,7 +32,7 @@ namespace API_MercaditoTEC.Data
         }
 
         /*
-         * Retorna la Categoria con el correo indicado.
+         * Retorna la Categoria con el nombre indicado.
          */
         public Categoria GetByNombre(string nombre)
         {
@@ -73,7 +72,7 @@ namespace API_MercaditoTEC.Data
          */
         public void Create(Categoria categoria)
         {
-            //Se verifica si la categoria existe
+            //Se verifica si la Categoria existe
             if (categoria == null)
             {
                 throw new ArgumentNullException(nameof(categoria));

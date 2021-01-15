@@ -7,6 +7,7 @@ namespace API_MercaditoTEC.Data
     {
         IEnumerable<Categoria> GetAll();
         Categoria GetById(int id);
+        Categoria GetByNombre(string nombre);
         int GetId(string nombre);
         void Create(Categoria categoria);
         void Update(Categoria categoria);
