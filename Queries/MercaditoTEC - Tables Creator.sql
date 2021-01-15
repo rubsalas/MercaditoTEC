@@ -16,12 +16,12 @@ MercaditoTEC - Objects Creator
 
 
 /****** Object:  Database MercaditoTEC ******/
-CREATE DATABASE [MercaditoTEC]
-GO
+--CREATE DATABASE [MercaditoTEC]
+--GO
 
 
-USE [MercaditoTEC]
-GO
+--USE [MercaditoTEC]
+--GO
 
 
 /* Morado */
@@ -55,8 +55,7 @@ GO
 /****** Object:  Table MetodoPago ******/
 CREATE TABLE MetodoPago(
 	idMetodoPago					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	metodoPago						VARCHAR(75)								NOT NULL,
-	puntaje							INT										NOT NULL		DEFAULT 0
+	nombre							VARCHAR(75)								NOT NULL
 )
 GO
 
@@ -64,7 +63,8 @@ GO
 /****** Object:  Table Categoria ******/
 CREATE TABLE Categoria(
 	idCategoria						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	categoria						VARCHAR(75)								NOT NULL
+	nombre							VARCHAR(75)								NOT NULL,
+	puntaje							INT										NOT NULL
 )
 GO
 
@@ -72,7 +72,7 @@ GO
 /****** Object:  Table Provincia ******/
 CREATE TABLE Provincia(
 	idProvincia						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	provincia						VARCHAR(75)								NOT NULL
+	nombre							VARCHAR(75)								NOT NULL
 )
 GO
 
@@ -80,7 +80,7 @@ GO
 /****** Object:  Table TasaCambio ******/
 CREATE TABLE TasaCambio(
 	idTasaCambio					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	tasaCambio						INT										NOT NULL,
+	monto							INT										NOT NULL,
 	fechaPublicacion				DATETIME2								NOT NULL
 )
 GO
@@ -117,7 +117,7 @@ GO
 CREATE TABLE Canton(
 	idCanton						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idProvincia						INT										NOT NULL,
-	canton							VARCHAR(75)								NOT NULL,
+	nomnbre							VARCHAR(75)								NOT NULL,
 	FOREIGN KEY(idProvincia)					REFERENCES Provincia(idProvincia)
 )
 GO
@@ -343,6 +343,7 @@ CREATE TABLE UbicacionProducto(
 	idUbicacionProducto				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idProducto						INT										NOT NULL,
 	idUbicacion						INT										NOT NULL,
+	descripcion						VARCHAR(500)							NOT NULL,
 	FOREIGN KEY(idProducto)						REFERENCES Producto(idProducto),
 	FOREIGN KEY(idUbicacion)					REFERENCES Ubicacion(idUbicacion)
 )
@@ -376,6 +377,7 @@ CREATE TABLE UbicacionServicio(
 	idUbicacionServicio				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idServicio						INT										NOT NULL,
 	idUbicacion						INT										NOT NULL,
+	descripcion						VARCHAR(500)							NOT NULL,
 	FOREIGN KEY(idServicio)						REFERENCES Servicio(idServicio),
 	FOREIGN KEY(idUbicacion)					REFERENCES Ubicacion(idUbicacion)
 )

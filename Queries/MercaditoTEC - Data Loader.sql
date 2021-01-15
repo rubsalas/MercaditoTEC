@@ -23,10 +23,10 @@ Persona...................................................72
 Datic.....................................................176
 x
 x
+Categoria.................................................x
 x
 x
-x
-x
+Estudiante.................................................x
 x
 x
 x
@@ -65,8 +65,8 @@ x
 */
 
 
-USE [MercaditoTEC]
-GO
+--USE [MercaditoTEC]
+--GO
 
 
 /****** Data:  Persona ******/
@@ -276,7 +276,42 @@ insert into Datic (correoInstitucional, contrasena) values ('firsby@estudiantec.
 insert into Datic (correoInstitucional, contrasena) values ('mibourne@estudiantec.cr', 'kmTXflUnUx');
 GO
 
-/**/
+
+/****** Data:  Carrera ******/
+
+
+/****** Data:  MetodoPago ******/
+
+
+/****** Data:  Categoria ******/
+insert into Categoria (nombre, puntaje) values ('Electrodomésticos', 448);
+insert into Categoria (nombre, puntaje) values ('Juguetes', 185);
+insert into Categoria (nombre, puntaje) values ('Joyas', 365);
+insert into Categoria (nombre, puntaje) values ('Oficina', 174);
+insert into Categoria (nombre, puntaje) values ('Mascotas', 205);
+insert into Categoria (nombre, puntaje) values ('Arte', 419);
+insert into Categoria (nombre, puntaje) values ('Herramientas', 323);
+insert into Categoria (nombre, puntaje) values ('Muebles', 130);
+insert into Categoria (nombre, puntaje) values ('Celulares', 394);
+insert into Categoria (nombre, puntaje) values ('Videojuegos', 147);
+insert into Categoria (nombre, puntaje) values ('Fotografía', 396);
+insert into Categoria (nombre, puntaje) values ('Deportes', 166);
+insert into Categoria (nombre, puntaje) values ('Instrumentos Musicales', 429);
+insert into Categoria (nombre, puntaje) values ('Audio y Video', 155);
+insert into Categoria (nombre, puntaje) values ('Ropa y Accesorios', 377);
+insert into Categoria (nombre, puntaje) values ('Salud', 234);
+insert into Categoria (nombre, puntaje) values ('Computacion', 155);
+insert into Categoria (nombre, puntaje) values ('Libros', 435);
+insert into Categoria (nombre, puntaje) values ('Comestibles', 187);
+
+
+/****** Data:  Provincia ******/
+
+
+/****** Data:  TasaCambio ******/
+
+
+/****** Data:  Estudiante ******/
 insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (63, 'tatersale@estudiantec.cr', 3855, 1, 0);
 insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (60, 'mccaffery@estudiantec.cr', 3608, 1, 0);
 insert into Estudiante (idPersona, correoInstitucional, puntosCanje, haIngresadoWeb, haIngresadoApp) values (41, 'mielnik@estudiantec.cr', 5259, 0, 1);
