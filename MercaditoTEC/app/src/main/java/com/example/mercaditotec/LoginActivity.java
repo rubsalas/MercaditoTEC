@@ -20,7 +20,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Communication.HttpRequests;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,15 +34,11 @@ public class LoginActivity extends AppCompatActivity {
         contrasena = findViewById(R.id.Password);
 
         findViewById(R.id.Ingresar).setOnClickListener(v -> {
-            HttpRequests com = new HttpRequests();
             try {
                 LoginEstudiante(this, correo.getText().toString(), contrasena.getText().toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            /*Intent intent = new Intent (v.getContext(), MainActivity.class);
-            startActivityForResult(intent, 0);*/
 
         });
 
@@ -59,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         credenciales.put("correoInstitucional", email);
         credenciales.put("contrasena", contrasena);
 
-        // prepare the Request
+
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST, "https://mercaditotec.azurewebsites.net/api/estudiantesJ/Login", credenciales,
                 new Response.Listener<JSONObject>()
                 {

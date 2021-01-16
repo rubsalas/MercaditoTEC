@@ -6,11 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".GuideActivity">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/BtnConfirmar"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Soy la guia"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="402dp" />
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="658dp"
+        android:layout_marginBottom="53dp"
+        android:text="@string/Confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BtnOmitir"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="658dp"
+        android:layout_marginBottom="53dp"
+        android:text="@string/Omitir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/BtnConfirmar"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
