@@ -4,6 +4,7 @@ using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace API_MercaditoTEC.Controllers.ControllersJ
 {
@@ -55,6 +56,62 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
             //Si no existe envia un NotFound
             return NotFound();
+        }
+
+        /*
+         * GET api/productosJ/Vendedor/{idVendedor}
+         * 
+         * Obtiene los ProductosJ de un vendedor en especifico
+         */
+        [Route("api/productosJ/Vendedor/{idVendedor}")]
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductoJReadDto>> GetByVendedor(int idVendedor)
+        {
+            //Se obtienen todos los ProductosJ
+            IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
+
+            //Esta es la lista que se retornara, cambiar Dto si se hace un diferente, aqui
+            List<ProductoJReadDto> productoJItemsByVendedor = new List<ProductoJReadDto>();
+
+            //Se iterara sobre todos los productos y quedaran solo los de un vendedor especifico
+            for (int i = 0; i < productoJItems.Count(); i++)
+            {
+                //Revisa que se cumpla el idVendedor
+                if (productoJItems.ElementAt(i).idVendedor == idVendedor)
+                {
+                    productoJItemsByVendedor.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
+                }
+            }
+
+            return Ok(productoJItemsByVendedor);
+        }
+
+        /*
+         * GET api/productosJ/Categoria/{idCategoria}
+         * 
+         * Obtiene los ProductosJ de una Categoria en especifico
+         */
+        [Route("api/productosJ/Categoria/{idCategoria}")]
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductoJReadDto>> GetByCategoria(int idCategoria)
+        {
+            //Se obtienen todos los ProductosJ
+            IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
+
+            //Esta es la lista que se retornara, cambiar Dto si se hace un diferente, aqui
+            List<ProductoJReadDto> productoJItemsByCategoria = new List<ProductoJReadDto>();
+
+            //Se iterara sobre todos los productos y quedaran solo los de una Categoria especifica
+            for (int i = 0; i < productoJItems.Count(); i++)
+            {
+                //Revisa que se cumpla el idCategoria
+                if (productoJItems.ElementAt(i).idCategoria == idCategoria)
+                {
+                    productoJItemsByCategoria.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
+                }
+            }
+
+            return Ok(productoJItemsByCategoria);
         }
 
     }
