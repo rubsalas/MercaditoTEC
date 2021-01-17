@@ -11,12 +11,14 @@ namespace API_MercaditoTEC.Data.DataJ
     {
         private readonly MercaditoTECContext _context;
         private readonly IProductoRepo _productoRepo;
+        private readonly IVendedorJRepo _vendedorJRepo;
         private readonly IMapper _mapper;
 
-        public SqlProductoJRepo(MercaditoTECContext context, IProductoRepo productoRepo, IMapper mapper)
+        public SqlProductoJRepo(MercaditoTECContext context, IProductoRepo productoRepo, IVendedorJRepo vendedorJRepo, IMapper mapper)
         {
             _context = context;
             _productoRepo = productoRepo;
+            _vendedorJRepo = vendedorJRepo;
             _mapper = mapper;
         }
 
@@ -28,13 +30,28 @@ namespace API_MercaditoTEC.Data.DataJ
             IEnumerable<Producto> productosItems = _productoRepo.GetAll();
 
             //Se mappea la parte de Producto al ProductoJ
-            IEnumerable<ProductoJ> productoJItems = _mapper.Map<IEnumerable<ProductoJ>>(productosItems);
+            IEnumerable<ProductoJ> productosJItems = _mapper.Map<IEnumerable<ProductoJ>>(productosItems);
 
-            /*
-             * Iteracion para mappear demas atributos a productosJItems
-             */
+            //Se itera atraves de todos los productos para mapearlos con su respectiva informacion restante de ProductosJ
+            for (int i = 0; i < productosJItems.Count(); i++)
+            {
+                //Mappeo de Vendedor
 
-            return productoJItems.ToList();
+                //Se obtiene el idVendedor del ProductoJ
+                int idVendedor = productosJItems.ElementAt(i).idVendedor;
+
+                //Se obtiene el VendedorJ especifico del Producto
+                VendedorJ vendedorJItem = _vendedorJRepo.GetById(idVendedor);
+
+                //Se mappea el VendedorJ al ProductoJ a mano por ser nombres diferentes
+                //productoJItem.idVendedor = idVendedor;
+                productosJItems.ElementAt(i).nombreVendedor = vendedorJItem.nombre + ' ' + vendedorJItem.apellidos;
+                productosJItems.ElementAt(i).calificacionPromedioVendedor = vendedorJItem.calificacionPromedioProductos;
+
+                //Continuar Mappeos
+            }
+
+            return productosJItems.ToList();
 
         }
 
@@ -51,11 +68,27 @@ namespace API_MercaditoTEC.Data.DataJ
             //Se mappea la parte de Estudiante al EstudianteJ
             ProductoJ productoJItem = _mapper.Map<ProductoJ>(productoItem);
 
-            /*
-             * Mappear demas atributos a produtoJItem
-             */
+            //Si el Producto existe
+            if (productoJItem != null)
+            {
+                //Mappeo de Vendedor
 
-            return productoJItem;
+                //Se obtiene el idVendedor del ProductoJ
+                int idVendedor = productoJItem.idVendedor;
+
+                //Se obtiene el VendedorJ especifico del Producto
+                VendedorJ vendedorJItem = _vendedorJRepo.GetById(idVendedor);
+
+                //Se mappea el VendedorJ al ProductoJ a mano por ser nombres diferentes
+                //productoJItem.idVendedor = idVendedor;
+                productoJItem.nombreVendedor = vendedorJItem.nombre + ' ' + vendedorJItem.apellidos;
+                productoJItem.calificacionPromedioVendedor = vendedorJItem.calificacionPromedioProductos;
+
+                //Continuar Mappeos
+
+            }
+
+                return productoJItem;
         }
 
         public int GetId(string nombre)

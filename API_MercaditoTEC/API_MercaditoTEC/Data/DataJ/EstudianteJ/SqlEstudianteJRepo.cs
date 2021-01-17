@@ -80,6 +80,7 @@ namespace API_MercaditoTEC.Data.DataJ
             //Se mappea la parte de Estudiante al EstudianteJ
             EstudianteJ estudianteJItem = _mapper.Map<EstudianteJ>(estudianteItem);
 
+            //Si el Estudiante existe
             if (estudianteJItem != null)
             {
                 //Mappeo de Persona

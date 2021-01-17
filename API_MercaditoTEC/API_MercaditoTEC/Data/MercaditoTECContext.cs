@@ -38,6 +38,9 @@ namespace API_MercaditoTEC.Data
         /* Rosado */
         public DbSet<EstudianteJ> EstudianteJ { get; set; }
 
+        /* Rojo */
+        public DbSet<VendedorJ> VendedorJ { get; set; }
+
         /* Anaranjado */
         public DbSet<ProductoJ> ProductoJ { get; set; }
     }

@@ -10,8 +10,11 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
         public ProductoJProfile()
         {
             CreateMap<Producto, ProductoJ>();
+            CreateMap<VendedorJ, ProductoJ>();
 
             CreateMap<ProductoJ, ProductoJReadDto>();
+
+            
         }
     }
 }

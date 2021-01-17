@@ -93,6 +93,8 @@ namespace API_MercaditoTEC
 
             //EstudianteJ
             services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();
+            //VendedorJ
+            services.AddScoped<IVendedorJRepo, SqlVendedorJRepo>();
             //ProductoJ
             services.AddScoped<IProductoJRepo, SqlProductoJRepo>();
         }
