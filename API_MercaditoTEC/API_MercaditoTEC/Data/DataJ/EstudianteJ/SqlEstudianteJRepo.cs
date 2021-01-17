@@ -68,7 +68,7 @@ namespace API_MercaditoTEC.Data.DataJ
         }
 
         /*
-         * Retorna un Estudiante con la informacion de Persona, Estudiante y Datic.
+         * Retorna un Estudiante con la informacion de Persona y Estudiante.
          */
         public EstudianteJ GetById(int id)
         {

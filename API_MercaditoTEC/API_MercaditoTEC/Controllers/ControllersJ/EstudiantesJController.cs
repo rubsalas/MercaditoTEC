@@ -44,7 +44,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * GET api/estudiantesJ/{id}
          * 
          * Obtiene los datos de una sola fila de las tablas Persona y Estudiante,
-         * con un id especifico.
+         * con un id especifico de Estudiante.
          */
         [Route("api/estudiantesJ/{id}")]
         [HttpGet]

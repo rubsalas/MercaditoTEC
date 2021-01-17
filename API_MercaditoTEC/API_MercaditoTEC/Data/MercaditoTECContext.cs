@@ -18,6 +18,7 @@ namespace API_MercaditoTEC.Data
         /* Morado */
         public DbSet<Persona> Persona { get; set; }
         public DbSet<Datic> Datic { get; set; }
+        public DbSet<MetodoPago> MetodoPago { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
 
         /* Rosado */
@@ -36,5 +37,8 @@ namespace API_MercaditoTEC.Data
 
         /* Rosado */
         public DbSet<EstudianteJ> EstudianteJ { get; set; }
+
+        /* Anaranjado */
+        public DbSet<ProductoJ> ProductoJ { get; set; }
     }
 }
