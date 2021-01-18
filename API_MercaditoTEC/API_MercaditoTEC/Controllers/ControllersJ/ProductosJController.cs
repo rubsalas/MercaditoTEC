@@ -14,11 +14,13 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
     {
         private readonly IProductoJRepo _repository;
         private readonly IMapper _mapper;
+        private readonly IVendedorJRepo _vendedorJRepository;
 
-        public ProductosJController(IProductoJRepo repository, IMapper mapper)
+        public ProductosJController(IProductoJRepo repository, IMapper mapper, IVendedorJRepo vendedorJRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _vendedorJRepository = vendedorJRepository;
         }
 
         /*
@@ -63,9 +65,9 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * 
          * Obtiene los ProductosJ de un vendedor en especifico
          */
-        [Route("api/productosJ/Vendedor/{idVendedor}")]
+        [Route("api/productosJ/Estudiante/{idEstudiante}")]
         [HttpGet]
-        public ActionResult<IEnumerable<ProductoJReadDto>> GetByVendedor(int idVendedor)
+        public ActionResult<IEnumerable<ProductoJReadDto>> GetByEstudiante(int idEstudiante)
         {
             //Se obtienen todos los ProductosJ
             IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
@@ -76,6 +78,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Se iterara sobre todos los productos y quedaran solo los de un vendedor especifico
             for (int i = 0; i < productoJItems.Count(); i++)
             {
+                int idVendedor = _vendedorJRepository.GetId(idEstudiante);
+
                 //Revisa que se cumpla el idVendedor
                 if (productoJItems.ElementAt(i).idVendedor == idVendedor)
                 {

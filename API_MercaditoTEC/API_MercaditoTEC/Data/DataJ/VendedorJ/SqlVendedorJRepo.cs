@@ -94,7 +94,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public int GetId(int idEstudiante)
         {
-            throw new NotImplementedException();
+            return _vendedorRepo.GetId(idEstudiante);
         }
 
         public void Create(VendedorJ vendedorJ)
