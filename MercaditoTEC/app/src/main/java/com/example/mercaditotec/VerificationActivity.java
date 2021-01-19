@@ -52,7 +52,7 @@ public class VerificationActivity extends AppCompatActivity {
         credenciales.put("contrasena", contrasena);
 
         // prepare the Request
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST, "https://mercaditotec.azurewebsites.net/api/datic", credenciales,
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST, Constants.getInstance().getURL()+"/datic", credenciales,
                 new Response.Listener<JSONObject>()
                 {
                     @Override

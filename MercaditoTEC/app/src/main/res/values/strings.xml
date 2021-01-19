@@ -26,4 +26,15 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="Mensajes">Mensajes</string>
+    <string name="MisProductos">Mis Productos</string>
+    <string name="MisServicios">Mis Servicios</string>
+    <string name="Productos">Productos</string>
+    <string name="Servicios">Servicios</string>
+    <string name="Perfil">Perfil</string>
+    <string name="Salir">Salir</string>
+    <string name="Inicio">Inicio</string>
+
+    <string name="Compras">Compras</string>
+    <string name="Ventas">Ventas</string>
 </resources>

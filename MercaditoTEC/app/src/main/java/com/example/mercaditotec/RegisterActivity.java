@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST,
-                "https://mercaditotec.azurewebsites.net/api/estudiantesJ/Registro", estudiante,
+                Constants.getInstance().getURL()+"/estudiantesJ/Registro", estudiante,
                 new Response.Listener<JSONObject>()
                 {
                     @Override

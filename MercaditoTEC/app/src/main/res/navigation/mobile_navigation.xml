@@ -12,14 +12,33 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.mercaditotec.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/messagesFragment"
+        android:name="com.example.mercaditotec.ui.Messages.MessagesFragment"
+        android:label="@string/Mensajes"
+        tools:layout="@layout/messages_fragment" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.mercaditotec.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/myProductsFragment"
+        android:name="com.example.mercaditotec.ui.MyProducts.MyProductsFragment"
+        android:label="@string/MisProductos"
+        tools:layout="@layout/my_products_fragment" />
+    <fragment
+        android:id="@+id/myServicesFragment"
+        android:name="com.example.mercaditotec.ui.MyServices.MyServicesFragment"
+        android:label="@string/MisServicios"
+        tools:layout="@layout/my_services_fragment" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.mercaditotec.ui.Products.ProductsFragment"
+        android:label="@string/Productos"
+        tools:layout="@layout/products_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mercaditotec.ui.Profile.ProfileFragment"
+        android:label="@string/Perfil"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.example.mercaditotec.ui.Services.ServicesFragment"
+        android:label="@string/Servicios"
+        tools:layout="@layout/services_fragment" />
 </navigation>

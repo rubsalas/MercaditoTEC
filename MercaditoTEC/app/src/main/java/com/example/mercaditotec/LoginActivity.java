@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,7 +31,8 @@ public class LoginActivity extends AppCompatActivity {
 
         correo = findViewById(R.id.Correo_Institucional);
         contrasena = findViewById(R.id.Password);
-
+        correo.setText("");
+        contrasena.setText("");
         findViewById(R.id.Ingresar).setOnClickListener(v -> {
             try {
                 LoginEstudiante(this, correo.getText().toString(), contrasena.getText().toString());
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         credenciales.put("contrasena", contrasena);
 
 
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST, "https://mercaditotec.azurewebsites.net/api/estudiantesJ/Login", credenciales,
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST, Constants.getInstance().getURL()+"/estudiantesJ/Login", credenciales,
                 new Response.Listener<JSONObject>()
                 {
                     @Override
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // prepare the Request
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, "https://mercaditotec.azurewebsites.net/api/estudiantesJ/"+id, null,
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, Constants.getInstance().getURL()+"/estudiantesJ/"+id, null,
                 new Response.Listener<JSONObject>()
                 {
                     @Override
@@ -114,9 +114,15 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             if(response.getBoolean("haIngresadoApp")){
                                 Intent intent = new Intent (context, MainActivity.class);
+                                intent.putExtra("id", response.getString("idEstudiante"));
+                                intent.putExtra("correo", response.getString("correoInstitucional"));
+                                intent.putExtra("nombreC", response.getString("nombre")
+                                        +" "+response.getString("apellidos"));
+                                Constants.getInstance().setId(Integer.parseInt(id));
                                 startActivityForResult(intent, 0);
                             }else{
                                 Intent intent = new Intent (context, GuideActivity.class);
+                                intent.putExtra("id", response.getString("idEstudiante"));
                                 startActivityForResult(intent, 0);
                             }
                         } catch (JSONException e) {
