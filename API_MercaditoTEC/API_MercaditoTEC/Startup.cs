@@ -92,6 +92,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IProductoRepo, SqlProductoRepo>();
             //MetodopagoProducto
             services.AddScoped<IMetodoPagoProductoRepo, SqlMetodoPagoProductoRepo>();
+            //ImagenProducto
+            services.AddScoped<IImagenProductoRepo, SqlImagenProductoRepo>();
 
             //EstudianteJ
             services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();

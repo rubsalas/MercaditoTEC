@@ -1,6 +1,8 @@
-﻿using API_MercaditoTEC.Data.DataJ;
+﻿using API_MercaditoTEC.Data;
+using API_MercaditoTEC.Data.DataJ;
 using API_MercaditoTEC.Dtos.DtosJ;
 using API_MercaditoTEC.Dtos.DtosJ.ProductoJ;
+using API_MercaditoTEC.Models;
 using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +19,16 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         private readonly IMapper _mapper;
         private readonly IVendedorJRepo _vendedorJRepository;
         private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
+        private readonly IImagenProductoRepo _imagenProductoRepo;
 
         public ProductosJController(IProductoJRepo repository, IMapper mapper, IVendedorJRepo vendedorJRepository,
-            IMetodoPagoProductoJRepo metodoPagoProductoJRepo)
+            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo)
         {
             _repository = repository;
             _mapper = mapper;
             _vendedorJRepository = vendedorJRepository;
             _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
+            _imagenProductoRepo = imagenProductoRepo;
         }
 
         /*
@@ -37,6 +41,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         public ActionResult<IEnumerable<ProductoJReadDto>> GetAll()
         {
             IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
+
+            //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
 
             return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
         }
@@ -57,6 +63,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Se verifica si este existe
             if (productoJItem != null)
             {
+                //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
+
                 return Ok(_mapper.Map<ProductoJReadDto>(productoJItem));
             }
 
@@ -87,6 +95,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 //Revisa que se cumpla el idVendedor
                 if (productoJItems.ElementAt(i).idVendedor == idVendedor)
                 {
+                    //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
+
                     productoJItemsByVendedor.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
                 }
             }
@@ -115,6 +125,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 //Revisa que se cumpla el idCategoria
                 if (productoJItems.ElementAt(i).idCategoria == idCategoria)
                 {
+                    //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
+
                     productoJItemsByCategoria.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
                 }
             }
@@ -123,17 +135,26 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         }
 
         /*
-         * GET api/productosJ
+         * GET api/productosJ/Test
          * 
          * TEST
          */
         [Route("api/productosJ/Test")]
         [HttpGet]
-        public ActionResult<IEnumerable<MetodoPagoProductoJ>> GetTest()
+        public ActionResult<IEnumerable<ImagenProducto>> GetTest()
         {
+            /*
+            //Test de MetodoPagoProductoJReadDto
             IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = _metodoPagoProductoJRepo.GetAll();
-
             return Ok(_mapper.Map<IEnumerable<MetodoPagoProductoJReadDto>>(metodoPagoProductoJItems));
+            */
+
+            //Test de MetodoPagoProductoJReadDto
+            IEnumerable<ImagenProducto> Items = _imagenProductoRepo.GetAll();
+            return Ok(Items);
+            
+
+            //return NoContent();
         }
 
     }

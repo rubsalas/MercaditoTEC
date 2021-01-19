@@ -28,10 +28,12 @@ namespace API_MercaditoTEC.Data
         public DbSet<Vendedor> Vendedor { get; set; }
 
         /* Anaranjado */
+        
         public DbSet<Producto> Producto { get; set; }
 
         /* Amarillo */
         public DbSet<MetodoPagoProducto> MetodoPagoProducto { get; set; }
+        public DbSet<ImagenProducto> ImagenProducto { get; set; }
 
 
         /*
@@ -45,6 +47,7 @@ namespace API_MercaditoTEC.Data
         public DbSet<VendedorJ> VendedorJ { get; set; }
 
         /* Anaranjado */
+        
         public DbSet<ProductoJ> ProductoJ { get; set; }
 
         /* Amarillo */

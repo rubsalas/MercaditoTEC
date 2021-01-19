@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_MercaditoTEC.Models.ModelsJ
 {
@@ -30,7 +31,7 @@ namespace API_MercaditoTEC.Models.ModelsJ
         //public IEnumerable<UbicacionProducto> ubicaciones { get; set; }
 
         public IEnumerable<MetodoPagoProductoJ> metodosPago { get; set; }
-        
-        //public IEnumerable<string> fotos { get; set; }
+        [ForeignKey("idProducto")]
+        public IEnumerable<ImagenProducto> imagenes { get; set; }
     }
 }

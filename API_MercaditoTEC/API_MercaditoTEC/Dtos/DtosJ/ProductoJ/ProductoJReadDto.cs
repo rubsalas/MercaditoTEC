@@ -1,4 +1,5 @@
-﻿using API_MercaditoTEC.Models.ModelsJ;
+﻿using API_MercaditoTEC.Models;
+using API_MercaditoTEC.Models.ModelsJ;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,7 +31,6 @@ namespace API_MercaditoTEC.Dtos.DtosJ.ProductoJ
         //Lugares de Entrega
 
         public IEnumerable<MetodoPagoProductoJ> metodosPago { get; set; }
-
-        //Fotos
+        public IEnumerable<ImagenProducto> imagenes { get; set; }
     }
 }

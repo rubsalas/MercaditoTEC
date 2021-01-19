@@ -40,18 +40,18 @@ namespace API_MercaditoTEC.Data
             IEnumerable<MetodoPagoProducto> metodoPagoProducto = GetAll();
 
             //Se crea una nueva lista donde se dejaran los MetodoPagoProducto especificos
-            List<MetodoPagoProducto> metodoPagoProductoEspecifico = new List<MetodoPagoProducto>();
+            List<MetodoPagoProducto> metodoPagoProductoEspecificos = new List<MetodoPagoProducto>();
 
             for (int i = 0; i < metodoPagoProducto.Count(); i++)
             {
                 //Se obtiene de la lista de MetodoPagoProducto los que correspondan al idProducto indicado
                 if (metodoPagoProducto.ElementAt(i).idProducto == idProducto)
                 {
-                    metodoPagoProductoEspecifico.Add(metodoPagoProducto.ElementAt(i));
+                    metodoPagoProductoEspecificos.Add(metodoPagoProducto.ElementAt(i));
                 }
             }
 
-            return metodoPagoProductoEspecifico;
+            return metodoPagoProductoEspecificos;
         }
 
         public void Create(MetodoPagoProducto metodoPagoProducto)
@@ -76,7 +76,5 @@ namespace API_MercaditoTEC.Data
         {
             return (_context.SaveChanges() >= 0);
         }
-
-        
     }
 }
