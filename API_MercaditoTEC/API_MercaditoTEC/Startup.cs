@@ -1,4 +1,4 @@
-using System;
+                using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -90,6 +90,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IVendedorRepo, SqlVendedorRepo>();
             //Producto
             services.AddScoped<IProductoRepo, SqlProductoRepo>();
+            //MetodopagoProducto
+            services.AddScoped<IMetodoPagoProductoRepo, SqlMetodoPagoProductoRepo>();
 
             //EstudianteJ
             services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();
@@ -97,6 +99,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IVendedorJRepo, SqlVendedorJRepo>();
             //ProductoJ
             services.AddScoped<IProductoJRepo, SqlProductoJRepo>();
+            //MetodopagoProductoJ
+            services.AddScoped<IMetodoPagoProductoJRepo, SqlMetodoPagoProductoJRepo>();
         }
 
 

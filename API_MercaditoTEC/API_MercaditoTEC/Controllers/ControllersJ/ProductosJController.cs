@@ -1,4 +1,5 @@
 ﻿using API_MercaditoTEC.Data.DataJ;
+using API_MercaditoTEC.Dtos.DtosJ;
 using API_MercaditoTEC.Dtos.DtosJ.ProductoJ;
 using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
@@ -15,12 +16,15 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         private readonly IProductoJRepo _repository;
         private readonly IMapper _mapper;
         private readonly IVendedorJRepo _vendedorJRepository;
+        private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
 
-        public ProductosJController(IProductoJRepo repository, IMapper mapper, IVendedorJRepo vendedorJRepository)
+        public ProductosJController(IProductoJRepo repository, IMapper mapper, IVendedorJRepo vendedorJRepository,
+            IMetodoPagoProductoJRepo metodoPagoProductoJRepo)
         {
             _repository = repository;
             _mapper = mapper;
             _vendedorJRepository = vendedorJRepository;
+            _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
         }
 
         /*
@@ -116,6 +120,20 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             return Ok(productoJItemsByCategoria);
+        }
+
+        /*
+         * GET api/productosJ
+         * 
+         * TEST
+         */
+        [Route("api/productosJ/Test")]
+        [HttpGet]
+        public ActionResult<IEnumerable<MetodoPagoProductoJ>> GetTest()
+        {
+            IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = _metodoPagoProductoJRepo.GetAll();
+
+            return Ok(_mapper.Map<IEnumerable<MetodoPagoProductoJReadDto>>(metodoPagoProductoJItems));
         }
 
     }

@@ -12,16 +12,25 @@ namespace API_MercaditoTEC.Data.DataJ
         private readonly MercaditoTECContext _context;
         private readonly IProductoRepo _productoRepo;
         private readonly IVendedorJRepo _vendedorJRepo;
+        private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
         private readonly IMapper _mapper;
 
-        public SqlProductoJRepo(MercaditoTECContext context, IProductoRepo productoRepo, IVendedorJRepo vendedorJRepo, IMapper mapper)
+        /*
+         * Retorna todos los ProductosJ con la informacion de ....
+         */
+        public SqlProductoJRepo(MercaditoTECContext context, IProductoRepo productoRepo, IVendedorJRepo vendedorJRepo,
+            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IMapper mapper)
         {
             _context = context;
             _productoRepo = productoRepo;
             _vendedorJRepo = vendedorJRepo;
+            _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
             _mapper = mapper;
         }
 
+        /*
+         * Retorna todos los ProductoJ con la informacion de Producto, Vendedor, MetodoPagoProductos, ....
+         */
         public IEnumerable<ProductoJ> GetAll()
         {
             //Mappeo de Productos
@@ -48,6 +57,14 @@ namespace API_MercaditoTEC.Data.DataJ
                 productosJItems.ElementAt(i).nombreVendedor = vendedorJItem.nombre + ' ' + vendedorJItem.apellidos;
                 productosJItems.ElementAt(i).calificacionPromedioVendedor = vendedorJItem.calificacionPromedioProductos;
 
+                //Mappeo de MetodoPagoProducto
+
+                //Se obtienen los MetodoPagoProductoJ
+                IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = _metodoPagoProductoJRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea el MetodoPagoProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).metodosPago = metodoPagoProductoJItems;
+
                 //Continuar Mappeos
             }
 
@@ -56,7 +73,7 @@ namespace API_MercaditoTEC.Data.DataJ
         }
 
         /*
-         * Retorna un Producto con la informacion de Producto, ....
+         * Retorna un ProductoJ con la informacion de Producto, Vendedor, MetodoPagoProductos, ....
          */
         public ProductoJ GetById(int id)
         {
@@ -83,6 +100,14 @@ namespace API_MercaditoTEC.Data.DataJ
                 //productoJItem.idVendedor = idVendedor;
                 productoJItem.nombreVendedor = vendedorJItem.nombre + ' ' + vendedorJItem.apellidos;
                 productoJItem.calificacionPromedioVendedor = vendedorJItem.calificacionPromedioProductos;
+
+                //Mappeo de MetodoPagoProducto
+
+                //Se obtienen los MetodoPagoProductoJ
+                IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = _metodoPagoProductoJRepo.GetByProducto(productoJItem.idProducto);
+
+                //Se mappea el MetodoPagoProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productoJItem.metodosPago = metodoPagoProductoJItems;
 
                 //Continuar Mappeos
 

@@ -1,5 +1,4 @@
 ﻿using API_MercaditoTEC.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,9 +13,13 @@ namespace API_MercaditoTEC.Data
             _context = context;
         }
 
+        /*
+         * Retorna todos los MetodoPago de la base de datos.
+         */
         public IEnumerable<MetodoPago> GetAll()
         {
-            throw new NotImplementedException();
+            //Se retorna una lista de todos los MetodoPago.
+            return _context.MetodoPago.ToList();
         }
 
         /*
@@ -29,7 +32,7 @@ namespace API_MercaditoTEC.Data
         }
 
         /*
-         * Retorna el Vendedor con el nombre indicado.
+         * Retorna el MetodoPago con el nombre indicado.
          */
         public MetodoPago GetByNombre(string nombre)
         {
@@ -37,9 +40,12 @@ namespace API_MercaditoTEC.Data
             return _context.MetodoPago.FirstOrDefault(mP => mP.nombre == nombre);
         }
 
+        /*
+         * Retorna el idMetodoPago de un MetodoPago especifico.
+         */
         public int GetId(string nombre)
         {
-            throw new NotImplementedException();
+            return _context.MetodoPago.FirstOrDefault(mp => mp.nombre == nombre).idMetodoPago;
         }
     }
 }

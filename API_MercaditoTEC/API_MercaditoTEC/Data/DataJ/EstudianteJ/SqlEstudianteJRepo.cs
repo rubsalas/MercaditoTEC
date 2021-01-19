@@ -107,7 +107,7 @@ namespace API_MercaditoTEC.Data.DataJ
             return _estudianteRepository.GetId(correoInstitucional);
         }
 
-            public void Create(EstudianteJ estudianteJ)
+        public void Create(EstudianteJ estudianteJ)
         {
             //Se verifica si el EstudianteJ ingresado no es nulo
             if (estudianteJ == null)

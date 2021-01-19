@@ -45,6 +45,8 @@ namespace API_MercaditoTEC.Data
          */
         public int GetId(int idEstudiante)
         {
+            //SE DEBE VERIFICAR PRIMERO QUE EL ESTUDIANTE EXISTA
+
             //Se obtiene el idVendedor de un Vendedor especifico
             int idVendedor = _context.Vendedor.FirstOrDefault(v => v.idEstudiante == idEstudiante).idVendedor;
 

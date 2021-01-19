@@ -30,6 +30,9 @@ namespace API_MercaditoTEC.Data
         /* Anaranjado */
         public DbSet<Producto> Producto { get; set; }
 
+        /* Amarillo */
+        public DbSet<MetodoPagoProducto> MetodoPagoProducto { get; set; }
+
 
         /*
          * Joints
@@ -43,5 +46,8 @@ namespace API_MercaditoTEC.Data
 
         /* Anaranjado */
         public DbSet<ProductoJ> ProductoJ { get; set; }
+
+        /* Amarillo */
+        //public DbSet<MetodoPagoProductoJ> MetodoPagoProductoJ { get; set; }
     }
 }

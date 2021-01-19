@@ -1,4 +1,6 @@
-﻿using System;
+﻿using API_MercaditoTEC.Models.ModelsJ;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace API_MercaditoTEC.Dtos.DtosJ.ProductoJ
@@ -24,8 +26,11 @@ namespace API_MercaditoTEC.Dtos.DtosJ.ProductoJ
         public int precio { get; set; }
         [Required]
         public DateTime fechaPublicacion { get; set; }
+
         //Lugares de Entrega
-        //Metodos de Pago
+
+        public IEnumerable<MetodoPagoProductoJ> metodosPago { get; set; }
+
         //Fotos
     }
 }
