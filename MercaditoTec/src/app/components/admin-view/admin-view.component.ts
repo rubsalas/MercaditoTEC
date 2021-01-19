@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Person } from 'src/app/modelos/person';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-admin-view',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminViewComponent implements OnInit {
 
-  constructor() { }
+  notFound = false;
+  person: Person | undefined; 
 
-  ngOnInit(): void {
+  constructor(private personService: PersonService) { }
+
+  ngOnInit() {
+  }
+
+  getPerson(personId: string) {
+    this.notFound = false;
+    //this.person = null;
+
+    this.personService.getPerson(personId).subscribe((personFromTheAPI : Person) => {
+      this.person = personFromTheAPI;
+    }, (err: any) => {
+      console.error(err);
+      this.notFound = true;
+    });
   }
 
 }

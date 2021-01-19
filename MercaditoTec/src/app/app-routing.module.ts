@@ -7,11 +7,13 @@ import { LoginViewComponent } from './components/user/login-view/login-view.comp
 import { ProfileViewComponent } from './components/user/profile-view/profile-view.component';
 import { RegisterViewComponent } from './components/user/register-view/register-view.component';
 import { HomepageComponent } from './components/shared-comp/homepage/homepage.component';
+import { VerifyRegisterComponent } from './components/user/verify-register/verify-register.component';
 
 const routes: Routes = [
   {path: '', component:LoginViewComponent},
   {path: 'homepage', component:HomepageComponent},
   {path: 'registerview', component:RegisterViewComponent},
+  {path: 'verifyRegister', component:VerifyRegisterComponent},
   {path: 'profileview', component:ProfileViewComponent},
   {path: 'adminview', component:AdminViewComponent},
   {path: 'employerview', component:EmployerViewComponent},

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/modelos/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  notFound = false;
+  user: User | undefined; 
 
-  ngOnInit(): void {
+  constructor(private userService: UserService) { }
+
+  ngOnInit() {
+
   }
 
+  getUser(userId: string) {
+    this.notFound = false;
+    //this.user = null; 
+
+    this.userService.getUser(userId).subscribe((userFromTheAPI : User) => {
+      this.user = userFromTheAPI;
+    }, (err: any) => {
+      console.error(err);
+      this.notFound = true;
+    });
+  }
 }

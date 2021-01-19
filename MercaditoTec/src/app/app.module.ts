@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginViewComponent } from './components/user/login-view/login-view.component';
@@ -15,6 +16,7 @@ import { LibraryViewComponent } from './components/library-view/library-view.com
 
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
+import { VerifyRegisterComponent } from './components/user/verify-register/verify-register.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { FormsModule }   from '@angular/forms';
     ProfileViewComponent,
     AdminViewComponent,
     EmployerViewComponent,
-    LibraryViewComponent
+    LibraryViewComponent,
+    VerifyRegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
