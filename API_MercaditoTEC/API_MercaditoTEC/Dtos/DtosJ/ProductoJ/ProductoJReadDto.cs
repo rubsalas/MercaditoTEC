@@ -12,8 +12,8 @@ namespace API_MercaditoTEC.Dtos.DtosJ.ProductoJ
         public int idProducto { get; set; }
         [Required]
         public int idVendedor { get; set; }
-        public string nombreVendedor { get; set; } //Persona //Estudiante //Vendedor
-        public Single calificacionPromedioVendedor { get; set; } //Vendedor //Cambiar por calificacionVendedorProductos
+        public string nombreVendedor { get; set; }
+        public Single calificacionPromedioVendedor { get; set; }
         [Required]
         [MaxLength(150)]
         public string nombre { get; set; }
@@ -27,9 +27,7 @@ namespace API_MercaditoTEC.Dtos.DtosJ.ProductoJ
         public int precio { get; set; }
         [Required]
         public DateTime fechaPublicacion { get; set; }
-
-        //Lugares de Entrega
-
+        public IEnumerable<UbicacionProductoJ> ubicaciones { get; set; }
         public IEnumerable<MetodoPagoProductoJ> metodosPago { get; set; }
         public IEnumerable<ImagenProducto> imagenes { get; set; }
     }

@@ -20,23 +20,23 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         private readonly IVendedorJRepo _vendedorJRepository;
         private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
         private readonly IImagenProductoRepo _imagenProductoRepo;
-        private readonly IUbicacionJRepo _ubicacionJRepo;
+        private readonly IUbicacionProductoJRepo _ubicacionProductoJRepo;
 
         public ProductosJController(IProductoJRepo repository, IMapper mapper, IVendedorJRepo vendedorJRepository,
-            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IUbicacionJRepo ubicacionJRepo)
+            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IUbicacionProductoJRepo ubicacionProductoJRepo)
         {
             _repository = repository;
             _mapper = mapper;
             _vendedorJRepository = vendedorJRepository;
             _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
             _imagenProductoRepo = imagenProductoRepo;
-            _ubicacionJRepo = ubicacionJRepo;
+            _ubicacionProductoJRepo = ubicacionProductoJRepo;
         }
 
         /*
          * GET api/productosJ
          * 
-         * Obtiene todos los datos de todas las filas de las tablas Producto, ... .
+         * Obtiene todos los datos de todas las filas de las tablas que forman ProductoJ.
          */
         [Route("api/productosJ")]
         [HttpGet]
@@ -44,7 +44,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         {
             IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
 
-            //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
+            //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
 
             return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
         }
@@ -52,7 +52,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         /*
          * GET api/productosJ/{id}
          * 
-         * Obtiene los datos de una sola fila de las tablas Producto, ...,
+         * Obtiene los datos de una sola fila de las tablas que forman ProductoJ
          * con un id especifico de Producto.
          */
         [Route("api/productosJ/{idProducto}")]
@@ -65,7 +65,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Se verifica si este existe
             if (productoJItem != null)
             {
-                //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
+                //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
 
                 return Ok(_mapper.Map<ProductoJReadDto>(productoJItem));
             }
@@ -97,7 +97,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 //Revisa que se cumpla el idVendedor
                 if (productoJItems.ElementAt(i).idVendedor == idVendedor)
                 {
-                    //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
+                    //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
 
                     productoJItemsByVendedor.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
                 }
@@ -127,7 +127,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 //Revisa que se cumpla el idCategoria
                 if (productoJItems.ElementAt(i).idCategoria == idCategoria)
                 {
-                    //Aqui es donde se podria cambiar al MetodoPagoProductoReadDto
+                    //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
 
                     productoJItemsByCategoria.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
                 }
@@ -159,7 +159,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
 
             //Test de MetodoPagoProductoJReadDto
-            IEnumerable<UbicacionJ> Items = _ubicacionJRepo.GetAll();
+            IEnumerable<UbicacionProductoJ> Items = _ubicacionProductoJRepo.GetAll();
             return Ok(Items);
 
 

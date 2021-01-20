@@ -10,7 +10,7 @@ namespace API_MercaditoTEC.Models.ModelsJ
         public int idProducto { get; set; }
         [Required]
         public int idUbicacion { get; set; }
-        //public UbicacionJ ubicacion { get; set; }
+        public UbicacionJ ubicacion { get; set; }
         [MaxLength(75)]
         public string descripcion { get; set; }
     }

@@ -115,6 +115,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IProductoJRepo, SqlProductoJRepo>();
             //MetodopagoProductoJ
             services.AddScoped<IMetodoPagoProductoJRepo, SqlMetodoPagoProductoJRepo>();
+            //UbicacionProductoJ
+            services.AddScoped<IUbicacionProductoJRepo, SqlUbicacionProductoJRepo>();
         }
 
         /*

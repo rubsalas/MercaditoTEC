@@ -27,9 +27,7 @@ namespace API_MercaditoTEC.Models.ModelsJ
         public int precio { get; set; }
         [Required]
         public DateTime fechaPublicacion { get; set; }
-
-        //public IEnumerable<UbicacionProductoJ> ubicaciones { get; set; }
-
+        public IEnumerable<UbicacionProductoJ> ubicaciones { get; set; }
         public IEnumerable<MetodoPagoProductoJ> metodosPago { get; set; }
         [ForeignKey("idProducto")]
         public IEnumerable<ImagenProducto> imagenes { get; set; }

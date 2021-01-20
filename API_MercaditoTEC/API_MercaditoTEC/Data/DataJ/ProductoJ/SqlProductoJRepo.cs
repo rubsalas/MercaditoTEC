@@ -14,19 +14,22 @@ namespace API_MercaditoTEC.Data.DataJ
         private readonly IVendedorJRepo _vendedorJRepo;
         private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
         private readonly IImagenProductoRepo _imagenProductoRepo;
+        private readonly IUbicacionProductoJRepo _ubicacionProductoJRepo;
         private readonly IMapper _mapper;
 
         /*
          * Retorna todos los ProductosJ con la informacion de ....
          */
         public SqlProductoJRepo(MercaditoTECContext context, IProductoRepo productoRepo, IVendedorJRepo vendedorJRepo,
-            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IMapper mapper)
+            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IUbicacionProductoJRepo ubicacionProductoJRepo,
+            IMapper mapper)
         {
             _context = context;
             _productoRepo = productoRepo;
             _vendedorJRepo = vendedorJRepo;
             _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
             _imagenProductoRepo = imagenProductoRepo;
+            _ubicacionProductoJRepo = ubicacionProductoJRepo;
             _mapper = mapper;
         }
 
@@ -75,7 +78,13 @@ namespace API_MercaditoTEC.Data.DataJ
                 //Se mappea la ImagenProducto al ProductoJ correspondiente a mano por ser nombres diferentes
                 productosJItems.ElementAt(i).imagenes = imagenProductoItems;
 
-                //Continuar Mappeos
+                //Mappeo de UbicacionProducto
+
+                //Se obtienen las UbicacionProducto
+                IEnumerable<UbicacionProductoJ> ubicacionProductoJItems = _ubicacionProductoJRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea la UbicacionProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).ubicaciones = ubicacionProductoJItems;
             }
 
             return productosJItems.ToList();
@@ -126,8 +135,13 @@ namespace API_MercaditoTEC.Data.DataJ
                 //Se mappea la ImagenProducto al ProductoJ correspondiente a mano por ser nombres diferentes
                 productoJItem.imagenes = imagenProductoItems;
 
-                //Continuar Mappeos
+                //Mappeo de UbicacionProducto
 
+                //Se obtienen las UbicacionProducto
+                IEnumerable<UbicacionProductoJ> ubicacionProductoJItems = _ubicacionProductoJRepo.GetByProducto(productoJItem.idProducto);
+
+                //Se mappea la UbicacionProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productoJItem.ubicaciones = ubicacionProductoJItems;
             }
 
                 return productoJItem;

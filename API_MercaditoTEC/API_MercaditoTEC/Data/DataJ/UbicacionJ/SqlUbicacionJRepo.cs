@@ -38,7 +38,7 @@ namespace API_MercaditoTEC.Data.DataJ
             //Se mappea la parte de Ubicacion a UbicacionJ
             IEnumerable<UbicacionJ> ubicacionJItems = _mapper.Map<IEnumerable<UbicacionJ>>(ubicacionItems);
 
-            //Se itera atraves de todos los MetodoPagoProducto para mapearlos con su respectiva informacion restante de MetodoPagoProductoJ
+            //Se itera atraves de todos los ubicacionJItems para mapearlos con su respectiva informacion restante de Canton y Provincia
             for (int i = 0; i < ubicacionJItems.Count(); i++)
             {
                 //Mappeo de Canton
