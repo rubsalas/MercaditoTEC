@@ -7,6 +7,8 @@ namespace API_MercaditoTEC.Models
         [Key]
         public int idCanton { get; set; }
         [Required]
+        public int idProvincia { get; set; }
+        [Required]
         [MaxLength(75)]
         public string nombre { get; set; }
     }

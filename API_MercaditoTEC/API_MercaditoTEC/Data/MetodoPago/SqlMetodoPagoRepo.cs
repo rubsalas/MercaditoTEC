@@ -36,7 +36,7 @@ namespace API_MercaditoTEC.Data
          */
         public MetodoPago GetByNombre(string nombre)
         {
-            //Se retorna el Vendedor especifico
+            //Se retorna el MetodoPago especifico
             return _context.MetodoPago.FirstOrDefault(mP => mP.nombre == nombre);
         }
 

@@ -63,8 +63,9 @@ namespace API_MercaditoTEC
             });
         }
 
-
-        //Metodo para iniciar la conección a las bases de datos
+        /*
+         * Metodo para iniciar la conexión a las bases de datos
+         */
         private void InitializeStorage(IServiceCollection services)
         {
             //SQLServer
@@ -72,8 +73,9 @@ namespace API_MercaditoTEC
             services.AddDbContext<MercaditoTECContext>(options => options.UseSqlServer(SQLServerConnectionString));
         }
 
-        
-        //Metodo para ajustar los scopes de los Repositorios y su respectiva Interfaz
+        /*
+         * Metodo para ajustar los scopes de los Repositorios y su respectiva Interfaz
+         */
         private void InitializeScope(IServiceCollection services)
         {
             //Persona
@@ -84,14 +86,22 @@ namespace API_MercaditoTEC
             services.AddScoped<IMetodoPagoRepo, SqlMetodoPagoRepo>();
             //Categoria
             services.AddScoped<ICategoriaRepo, SqlCategoriaRepo>();
+            //Provincia
+            services.AddScoped<IProvinciaRepo, SqlProvinciaRepo>();
             //Estudiante
             services.AddScoped<IEstudianteRepo, SqlEstudianteRepo>();
+            //Canton
+            services.AddScoped<ICantonRepo, SqlCantonRepo>();
             //Vendedor
             services.AddScoped<IVendedorRepo, SqlVendedorRepo>();
+            //Ubicacion
+            services.AddScoped<IUbicacionRepo, SqlUbicacionRepo>();
             //Producto
             services.AddScoped<IProductoRepo, SqlProductoRepo>();
             //MetodopagoProducto
             services.AddScoped<IMetodoPagoProductoRepo, SqlMetodoPagoProductoRepo>();
+            //UbicacionProducto
+            services.AddScoped<IUbicacionProductoRepo, SqlUbicacionProductoRepo>();
             //ImagenProducto
             services.AddScoped<IImagenProductoRepo, SqlImagenProductoRepo>();
 
@@ -99,14 +109,17 @@ namespace API_MercaditoTEC
             services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();
             //VendedorJ
             services.AddScoped<IVendedorJRepo, SqlVendedorJRepo>();
+            //UbicacionJ
+            services.AddScoped<IUbicacionJRepo, SqlUbicacionJRepo>();
             //ProductoJ
             services.AddScoped<IProductoJRepo, SqlProductoJRepo>();
             //MetodopagoProductoJ
             services.AddScoped<IMetodoPagoProductoJRepo, SqlMetodoPagoProductoJRepo>();
         }
 
-
-        //Metodo para habilitar CORS
+        /*
+         * Metodo para habilitar CORS
+         */
         private void EnableCORS(IServiceCollection services)
         {
             services.AddCors(options =>

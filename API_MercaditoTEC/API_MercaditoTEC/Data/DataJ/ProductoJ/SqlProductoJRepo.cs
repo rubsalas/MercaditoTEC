@@ -79,7 +79,6 @@ namespace API_MercaditoTEC.Data.DataJ
             }
 
             return productosJItems.ToList();
-
         }
 
         /*

@@ -13,7 +13,7 @@ namespace API_MercaditoTEC.Dtos.DtosJ.ProductoJ
         [Required]
         public int idVendedor { get; set; }
         public string nombreVendedor { get; set; } //Persona //Estudiante //Vendedor
-        public Single calificacionPromedioVendedor { get; set; } //Vendedor
+        public Single calificacionPromedioVendedor { get; set; } //Vendedor //Cambiar por calificacionVendedorProductos
         [Required]
         [MaxLength(150)]
         public string nombre { get; set; }

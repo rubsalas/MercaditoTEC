@@ -20,15 +20,17 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         private readonly IVendedorJRepo _vendedorJRepository;
         private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
         private readonly IImagenProductoRepo _imagenProductoRepo;
+        private readonly IUbicacionJRepo _ubicacionJRepo;
 
         public ProductosJController(IProductoJRepo repository, IMapper mapper, IVendedorJRepo vendedorJRepository,
-            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo)
+            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IUbicacionJRepo ubicacionJRepo)
         {
             _repository = repository;
             _mapper = mapper;
             _vendedorJRepository = vendedorJRepository;
             _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
             _imagenProductoRepo = imagenProductoRepo;
+            _ubicacionJRepo = ubicacionJRepo;
         }
 
         /*
@@ -53,12 +55,12 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          * Obtiene los datos de una sola fila de las tablas Producto, ...,
          * con un id especifico de Producto.
          */
-        [Route("api/productosJ/{id}")]
+        [Route("api/productosJ/{idProducto}")]
         [HttpGet]
-        public ActionResult<ProductoJReadDto> GetById(int id)
+        public ActionResult<ProductoJReadDto> GetById(int idProducto)
         {
             //Se trae de la base de datos el EstudianteJ con el id especificado
-            ProductoJ productoJItem = _repository.GetById(id);
+            ProductoJ productoJItem = _repository.GetById(idProducto);
 
             //Se verifica si este existe
             if (productoJItem != null)
@@ -149,10 +151,17 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             return Ok(_mapper.Map<IEnumerable<MetodoPagoProductoJReadDto>>(metodoPagoProductoJItems));
             */
 
+            /*
             //Test de MetodoPagoProductoJReadDto
             IEnumerable<ImagenProducto> Items = _imagenProductoRepo.GetAll();
             return Ok(Items);
-            
+            */
+
+
+            //Test de MetodoPagoProductoJReadDto
+            IEnumerable<UbicacionJ> Items = _ubicacionJRepo.GetAll();
+            return Ok(Items);
+
 
             //return NoContent();
         }
