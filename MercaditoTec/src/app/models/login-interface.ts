@@ -1,4 +1,4 @@
-export class DaticInterface {
+export class LoginInterface {
     correoInstitucional?: string;
     contrasena?: string;
 }

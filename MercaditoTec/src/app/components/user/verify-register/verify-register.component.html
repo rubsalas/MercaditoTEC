@@ -15,13 +15,14 @@
                 </div>
                 <div class="form-group">
                   <label class="text-left">Correo Institucional</label>
-                  <input type="email" id="correoInstitucional" name="correoInstitucional" class="form-control text-center" placeholder="user@estudiantec.cr" [(ngModel)]="datic.correoInstitucional" required>
+                  <input type="email" id="correoInstitucional" name="correoInstitucional" class="form-control text-center" placeholder="user@estudiantec.cr" [(ngModel)]="login.correoInstitucional" required>
                 </div>
                 <div class="form-group">
                   <label>Contraseña</label>
-                  <input type="password" id="contrasena" name="contrasena" class="form-control text-center" placeholder="* * * * * * * *" [(ngModel)]="datic.contrasena" required>
+                  <input type="password" id="contrasena" name="contrasena" class="form-control text-center" placeholder="* * * * * * * *" [(ngModel)]="login.contrasena" required>
                 </div>
-                <button routerLink="/registerview" type="submit" class="btn btn-lg btn-success btn-block text-center">Verificar</button>
+                <button type="submit" class="btn btn-lg btn-success btn-block text-center" >Verificar</button>
+                <button routerLink="/registerview" class="btn btn-lg btn-block text-center" >Contiuar</button>
                 <div class="form-group">
                   <a routerLink="/" class="form-control login-user text-center"> Regresar </a>
                 </div>
@@ -33,5 +34,3 @@
     </div>
   </div>
 </section>
-
-

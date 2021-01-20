@@ -1,6 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,3 +43,4 @@ import { VerifyRegisterComponent } from './components/user/verify-register/verif
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DaticService } from 'src/app/services/datic.service';
-import { DaticInterface } from 'src/app/modelos/datic-interface';
+import { LoginService } from 'src/app/services/login.service';
+import { LoginInterface } from 'src/app/models/login-interface';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -10,9 +10,9 @@ import { NgForm } from '@angular/forms';
 })
 export class VerifyRegisterComponent implements OnInit {
 
-  constructor(public daticService: DaticService) { }
+  constructor(public loginService: LoginService) { }
 
-  public datic: DaticInterface = {
+  public login: LoginInterface = {
     correoInstitucional: '',
     contrasena: ''
   };
@@ -26,11 +26,11 @@ export class VerifyRegisterComponent implements OnInit {
     if (form.valid) {
       console.log(
         'Informacion a enviar \n  Correo Institucional: '
-        +this.datic.correoInstitucional
+        +this.login.correoInstitucional
         +' , Contraseña: '
-        +this.datic.contrasena)
+        +this.login.contrasena);
 
-      return this.daticService.postDatic(this.datic);
+      return this.loginService.postDatic(this.login);
     }
   }
 
