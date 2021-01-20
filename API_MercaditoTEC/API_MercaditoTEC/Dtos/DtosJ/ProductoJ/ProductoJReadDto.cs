@@ -22,6 +22,7 @@ namespace API_MercaditoTEC.Dtos.DtosJ.ProductoJ
         public string descripcion { get; set; }
         [Required]
         public int idCategoria { get; set; }
+        public int puntosCanje { get; set; } //Categoria
         //Puntos de canje
         [Required]
         public int precio { get; set; }

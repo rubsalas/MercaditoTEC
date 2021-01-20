@@ -1,5 +1,4 @@
 ﻿using API_MercaditoTEC.Models;
-using API_MercaditoTEC.Models.ModelsJ;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_MercaditoTEC.Data
@@ -17,6 +16,7 @@ namespace API_MercaditoTEC.Data
         public DbSet<MetodoPago> MetodoPago { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Provincia> Provincia { get; set; }
+        public DbSet<TasaCambio> TasaCambio { get; set; }
 
         /* Rosado */
         public DbSet<Estudiante> Estudiante { get; set; }

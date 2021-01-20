@@ -15,6 +15,7 @@ namespace API_MercaditoTEC.Data.DataJ
         private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
         private readonly IImagenProductoRepo _imagenProductoRepo;
         private readonly IUbicacionProductoJRepo _ubicacionProductoJRepo;
+        private readonly ICategoriaRepo _categoriaRepo;
         private readonly IMapper _mapper;
 
         /*
@@ -22,7 +23,7 @@ namespace API_MercaditoTEC.Data.DataJ
          */
         public SqlProductoJRepo(MercaditoTECContext context, IProductoRepo productoRepo, IVendedorJRepo vendedorJRepo,
             IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IUbicacionProductoJRepo ubicacionProductoJRepo,
-            IMapper mapper)
+            ICategoriaRepo categoriaRepo, IMapper mapper)
         {
             _context = context;
             _productoRepo = productoRepo;
@@ -30,6 +31,7 @@ namespace API_MercaditoTEC.Data.DataJ
             _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
             _imagenProductoRepo = imagenProductoRepo;
             _ubicacionProductoJRepo = ubicacionProductoJRepo;
+            _categoriaRepo = categoriaRepo;
             _mapper = mapper;
         }
 
@@ -85,6 +87,14 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Se mappea la UbicacionProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
                 productosJItems.ElementAt(i).ubicaciones = ubicacionProductoJItems;
+
+                //Mappeo de Categoria
+
+                //Se obtiene la Categoria
+                Categoria categoriaItem = _categoriaRepo.GetById(productosJItems.ElementAt(i).idCategoria);
+
+                //Se mappean los puntos de Canje al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).puntosCanje = categoriaItem.puntaje;
             }
 
             return productosJItems.ToList();
@@ -142,6 +152,14 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Se mappea la UbicacionProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
                 productoJItem.ubicaciones = ubicacionProductoJItems;
+
+                //Mappeo de Categoria
+
+                //Se obtiene la Categoria
+                Categoria categoriaItem = _categoriaRepo.GetById(productoJItem.idCategoria);
+
+                //Se mappean los puntos de Canje al ProductoJ correspondiente a mano por ser nombres diferentes
+                productoJItem.puntosCanje = categoriaItem.puntaje;
             }
 
                 return productoJItem;

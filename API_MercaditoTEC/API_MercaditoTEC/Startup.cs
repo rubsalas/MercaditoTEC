@@ -88,6 +88,8 @@ namespace API_MercaditoTEC
             services.AddScoped<ICategoriaRepo, SqlCategoriaRepo>();
             //Provincia
             services.AddScoped<IProvinciaRepo, SqlProvinciaRepo>();
+            //TasaCambio
+            services.AddScoped<ITasaCambioRepo, SqlTasaCambioRepo>();
             //Estudiante
             services.AddScoped<IEstudianteRepo, SqlEstudianteRepo>();
             //Canton

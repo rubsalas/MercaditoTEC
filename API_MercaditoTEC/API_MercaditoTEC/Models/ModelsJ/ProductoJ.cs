@@ -22,7 +22,7 @@ namespace API_MercaditoTEC.Models.ModelsJ
         public string descripcion { get; set; }
         [Required]
         public int idCategoria { get; set; }
-        //Puntos de canje
+        public int puntosCanje { get; set; } //Categoria
         [Required]
         public int precio { get; set; }
         [Required]
