@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace API_MercaditoTEC.Models.ModelsJ
 {
@@ -27,5 +28,9 @@ namespace API_MercaditoTEC.Models.ModelsJ
         public bool haIngresadoWeb { get; set; }
         [Required]
         public bool haIngresadoApp { get; set; }
+        public Single calificacionPromedioTutor { get; set; }
+        public int cantidadAplicaciones { get; set; }
+        public Single calificacionPromedioProductos { get; set; }
+        public Single calificacionPromedioServicios { get; set; }
     }
 }

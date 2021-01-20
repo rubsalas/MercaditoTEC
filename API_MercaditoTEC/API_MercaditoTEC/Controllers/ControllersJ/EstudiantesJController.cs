@@ -74,11 +74,17 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         [HttpGet]
         public ActionResult<EstudianteJReadDto> GetPerfil(int id)
         {
-            //FALTA IMPLEMENTAR
+            //Se trae de la base de datos el EstudianteJ con el id especificado
+            var estudianteJItem = _repository.GetById(id);
 
-            //DEFINIR QUE VA EN CADA PERFIL ESPECIFICAMENTE
+            //Se verifica si este existe
+            if (estudianteJItem != null)
+            {
+                return Ok(_mapper.Map<EstudianteJProfileDto>(estudianteJItem));
+            }
 
-            return NoContent();
+            //Si no existe envia un NotFound
+            return NotFound();
         }
 
         /*

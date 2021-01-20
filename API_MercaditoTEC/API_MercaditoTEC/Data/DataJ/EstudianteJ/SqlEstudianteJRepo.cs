@@ -62,6 +62,14 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Se mappea la contrasena de Datic al EstudianteJ correspondiente
                 _mapper.Map(daticItem, estudianteJItems.ElementAt(i));
+
+                //Mappeo de Datic
+
+                //Mappeo Tutor
+
+                //Mappeo de Aplicaciones
+
+                //Mappeo de Vendedor
             }
 
             return estudianteJItems.ToList();

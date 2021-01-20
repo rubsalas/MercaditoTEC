@@ -14,6 +14,8 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             CreateMap<Datic, EstudianteJ>();
 
             CreateMap<EstudianteJ, EstudianteJReadDto>();
+            CreateMap<EstudianteJ, EstudianteJProfileDto>();
+
             CreateMap<EstudianteJCreateDto, EstudianteJ>();
 
             CreateMap<EstudianteJ, Persona>();

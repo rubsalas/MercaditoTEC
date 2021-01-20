@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API_MercaditoTEC.Dtos.DtosJ.EstudianteJ
 {
-    public class EstudianteJReadDto
+    public class EstudianteJProfileDto
     {
         [Key]
         public int idEstudiante { get; set; }
@@ -21,10 +21,6 @@ namespace API_MercaditoTEC.Dtos.DtosJ.EstudianteJ
         public string correoInstitucional { get; set; }
         [Required]
         public int puntosCanje { get; set; }
-        [Required]
-        public bool haIngresadoWeb { get; set; }
-        [Required]
-        public bool haIngresadoApp { get; set; }
         public Single calificacionPromedioTutor { get; set; }
         public int cantidadAplicaciones { get; set; }
         public Single calificacionPromedioProductos { get; set; }
