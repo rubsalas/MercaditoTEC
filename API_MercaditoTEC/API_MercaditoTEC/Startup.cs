@@ -82,6 +82,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IPersonaRepo, SqlPersonaRepo>();
             //Datic
             services.AddScoped<IDaticRepo, SqlDaticRepo>();
+            //Carrera
+            services.AddScoped<ICarreraRepo, SqlCarreraRepo>();
             //MetodoPago
             services.AddScoped<IMetodoPagoRepo, SqlMetodoPagoRepo>();
             //Categoria

@@ -13,6 +13,7 @@ namespace API_MercaditoTEC.Data
         /* Morado */
         public DbSet<Persona> Persona { get; set; }
         public DbSet<Datic> Datic { get; set; }
+        public DbSet<Carrera> Carrera { get; set; }
         public DbSet<MetodoPago> MetodoPago { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Provincia> Provincia { get; set; }
