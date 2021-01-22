@@ -44,7 +44,7 @@ CREATE TABLE Datic(
 GO
 
 
-/****** Object:  Table MetodoPago ******/
+/****** Object:  Table Carrera ******/
 CREATE TABLE Carrera(
 	idCarrera						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	nombre							VARCHAR(150)							NOT NULL
@@ -80,7 +80,7 @@ GO
 /****** Object:  Table TasaCambio ******/
 CREATE TABLE TasaCambio(
 	idTasaCambio					INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
-	monto							INT										NOT NULL,
+	monto							REAL									NOT NULL,
 	fechaPublicacion				DATETIME2								NOT NULL
 )
 GO
@@ -117,7 +117,7 @@ GO
 CREATE TABLE Canton(
 	idCanton						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idProvincia						INT										NOT NULL,
-	nomnbre							VARCHAR(75)								NOT NULL,
+	nombre							VARCHAR(75)								NOT NULL,
 	FOREIGN KEY(idProvincia)					REFERENCES Provincia(idProvincia)
 )
 GO
@@ -167,7 +167,7 @@ GO
 CREATE TABLE Tutor(
 	idTutor							INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idEstudiante					INT										NOT NULL,
-	calificacionPromedio			INT										NOT NULL		DEFAULT 0,
+	calificacionPromedioTutor		REAL									NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
@@ -186,8 +186,8 @@ GO
 CREATE TABLE Vendedor(
 	idVendedor						INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idEstudiante					INT										NOT NULL,
-	calificacionPromedioProductos	INT										NOT NULL		DEFAULT 0,
-	calificacionPromedioServicios	INT										NOT NULL		DEFAULT 0,
+	calificacionPromedioProductos	REAL									NOT NULL		DEFAULT 0,
+	calificacionPromedioServicios	REAL									NOT NULL		DEFAULT 0,
 	FOREIGN KEY(idEstudiante)					REFERENCES Estudiante(idEstudiante)
 )
 GO
@@ -354,7 +354,7 @@ GO
 CREATE TABLE ImagenProducto(
 	idImagenProducto				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idProducto						INT										NOT NULL,
-	imagen							VARCHAR(75)								NOT NULL,
+	imagen							VARCHAR(300)							NOT NULL,
 	FOREIGN KEY(idProducto)						REFERENCES Producto(idProducto)
 )
 GO
@@ -491,7 +491,7 @@ GO
 CREATE TABLE EvaluacionVendedorProducto(
 	idEvaluacionVendedorProducto	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idVendedor						INT										NOT NULL,
-	calificacion					INT										NOT NULL,
+	calificacion					REAL									NOT NULL,
 	comentario						VARCHAR(500)							NULL,
 	idCompraProducto				INT										NOT NULL,
 	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
@@ -504,7 +504,7 @@ GO
 CREATE TABLE EvaluacionVendedorServicio(
 	idEvaluacionVendedorServicio	INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idVendedor						INT										NOT NULL,
-	calificacion					INT										NOT NULL,
+	calificacion					REAL									NOT NULL,
 	comentario						VARCHAR(500)							NULL,
 	idContratacionServicio			INT										NOT NULL,
 	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
@@ -519,7 +519,7 @@ GO
 CREATE TABLE EvaluacionTutor(
 	idEvaluacionTutor				INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idTutor							INT										NOT NULL,
-	calificacion					INT										NOT NULL,
+	calificacion					REAL									NOT NULL,
 	comentario						VARCHAR(500)							NULL,
 	idCompraPractica				INT										NOT NULL,
 	FOREIGN KEY(idTutor)						REFERENCES Tutor(idTutor),
