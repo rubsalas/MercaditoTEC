@@ -88,41 +88,6 @@ namespace API_MercaditoTEC.Data.DataJ
         /*
          * Retorna una lista de MetodoPagoProductoJ de un unico Producto indicado.
          */
-        /*public IEnumerable<MetodoPagoProductoJ> GetByProducto(int idProducto)
-        {
-            //Mappeo de MetodoPagoProducto
-
-            //Se retorna una lista de todos los MetodoPagoProducto
-            IEnumerable<MetodoPagoProducto> metodoPagoProductoItems = _metodoPagoProductoRepo.GetAll();
-
-            //Se mappea la parte de MetodoPagoProducto a MetodoPagoProductoJ
-            IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItemsByProducto = _mapper.Map<IEnumerable<MetodoPagoProductoJ>>(metodoPagoProductoItems);
-
-            //Se itera atraves de todos los MetodoPagoProducto para mapearlos con su respectiva informacion restante de MetodoPagoProductoJ
-            for (int i = 0; i < metodoPagoProductoJItemsByProducto.Count(); i++)
-            {
-                //Se verifica que se ingresen solo los del Producto indicado
-                if (metodoPagoProductoJItemsByProducto.ElementAt(i).idProducto == idProducto)
-                {
-                    //Mappeo de MetodoPago
-
-                    //Se obtiene el idMetodoPago de MetodoPagoProducto
-                    int idMetodoPago = metodoPagoProductoJItemsByProducto.ElementAt(i).idMetodoPago;
-
-                    //Se obtiene el MetodoPago especifico de MetodoPagoProducto
-                    MetodoPago metodoPagoItem = _metodoPagoRepo.GetById(idMetodoPago);
-
-                    //Se mappea el MetodoPago al MetodoPagoProductoJ correspondiente
-                    _mapper.Map(metodoPagoItem, metodoPagoProductoJItemsByProducto.ElementAt(i));
-                }
-            }
-
-            return metodoPagoProductoJItemsByProducto.ToList();
-        }*/
-
-        /*
-         * Retorna una lista de MetodoPagoProductoJ de un unico Producto indicado.
-         */
         public IEnumerable<MetodoPagoProductoJ> GetByProducto(int idProducto)
         {
             //Mappeo de MetodoPagoProducto
@@ -150,9 +115,8 @@ namespace API_MercaditoTEC.Data.DataJ
 
             return metodoPagoProductoJItemsByProducto.ToList();
         }
-        
 
-            public void Create(MetodoPagoProductoJ metodoPagoProductoJ)
+        public void Create(MetodoPagoProductoJ metodoPagoProductoJ)
         {
             throw new NotImplementedException();
         }

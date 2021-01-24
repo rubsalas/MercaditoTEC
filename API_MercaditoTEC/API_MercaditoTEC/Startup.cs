@@ -94,8 +94,12 @@ namespace API_MercaditoTEC
             services.AddScoped<ITasaCambioRepo, SqlTasaCambioRepo>();
             //Estudiante
             services.AddScoped<IEstudianteRepo, SqlEstudianteRepo>();
+            //Curso
+            services.AddScoped<ICursoRepo, SqlCursoRepo>();
             //Canton
             services.AddScoped<ICantonRepo, SqlCantonRepo>();
+            //Tutor
+            services.AddScoped<ITutorRepo, SqlTutorRepo>();
             //Vendedor
             services.AddScoped<IVendedorRepo, SqlVendedorRepo>();
             //Ubicacion
@@ -111,6 +115,8 @@ namespace API_MercaditoTEC
 
             //EstudianteJ
             services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();
+            //CursoJ
+            services.AddScoped<ICursoJRepo, SqlCursoJRepo>();
             //VendedorJ
             services.AddScoped<IVendedorJRepo, SqlVendedorJRepo>();
             //UbicacionJ

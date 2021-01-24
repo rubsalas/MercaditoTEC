@@ -1,6 +1,5 @@
 ﻿using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Data.DataJ;
-using API_MercaditoTEC.Dtos.DtosJ;
 using API_MercaditoTEC.Dtos.DtosJ.ProductoJ;
 using API_MercaditoTEC.Models;
 using API_MercaditoTEC.Models.ModelsJ;
@@ -59,7 +58,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         [HttpGet]
         public ActionResult<ProductoJReadDto> GetById(int idProducto)
         {
-            //Se trae de la base de datos el EstudianteJ con el id especificado
+            //Se trae de la base de datos el ProductoJ con el id especificado
             ProductoJ productoJItem = _repository.GetById(idProducto);
 
             //Se verifica si este existe
