@@ -13,15 +13,19 @@ namespace API_MercaditoTEC.Data.DataJ
         private readonly IPersonaRepo _personaRepository;
         private readonly IEstudianteRepo _estudianteRepository;
         private readonly IDaticRepo _daticRepository;
+        private readonly ITutorRepo _tutorRepo;
+        private readonly IVendedorRepo _vendedorRepo;
         private readonly IMapper _mapper;
 
         public SqlEstudianteJRepo(MercaditoTECContext context, IPersonaRepo personaRepository, IEstudianteRepo estudianteRepository, 
-                                  IDaticRepo daticRepository, IMapper mapper)
+                                  IDaticRepo daticRepository, ITutorRepo tutorRepo, IVendedorRepo vendedorRepo, IMapper mapper)
         {
             _context = context;
             _personaRepository = personaRepository;
             _estudianteRepository = estudianteRepository;
             _daticRepository = daticRepository;
+            _tutorRepo = tutorRepo;
+            _vendedorRepo = vendedorRepo;
             _mapper = mapper;
         }
         
@@ -41,6 +45,9 @@ namespace API_MercaditoTEC.Data.DataJ
             //Se itera atraves de todos los estudiantes para mapearlos con su respectiva informacion de la Persona y contrasena de Datic
             for (int i = 0; i < estudianteItems.Count(); i++)
             {
+                //Se obtiene el idEstudiante
+                int idEstudianteI = estudianteItems.ElementAt(i).idEstudiante;
+
                 //Mappeo de Persona
 
                 //Se obtiene el idPersona del Estudiante
@@ -63,13 +70,23 @@ namespace API_MercaditoTEC.Data.DataJ
                 //Se mappea la contrasena de Datic al EstudianteJ correspondiente
                 _mapper.Map(daticItem, estudianteJItems.ElementAt(i));
 
-                //Mappeo de Datic
-
                 //Mappeo Tutor
+
+                //Se obtiene el Tutor
+                Tutor tutorItem = _tutorRepo.GetByEstudiante(idEstudianteI);
+
+                //Se mapper el Tutor al EstudianteJ
+                _mapper.Map(tutorItem, estudianteJItems.ElementAt(i));
 
                 //Mappeo de Aplicaciones
 
                 //Mappeo de Vendedor
+
+                //Se obtiene el Vendedor
+                Vendedor vendedorItem = _vendedorRepo.GetByEstudiante(idEstudianteI);
+
+                //Se mapper el Vendedor al EstudianteJ
+                _mapper.Map(vendedorItem, estudianteJItems.ElementAt(i));
             }
 
             return estudianteJItems.ToList();

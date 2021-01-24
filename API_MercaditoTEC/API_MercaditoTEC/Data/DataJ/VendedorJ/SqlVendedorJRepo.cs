@@ -11,49 +11,50 @@ namespace API_MercaditoTEC.Data.DataJ
     {
         private readonly MercaditoTECContext _context;
         private readonly IVendedorRepo _vendedorRepo;
+        private readonly IPersonaRepo _personaRepo;
         private readonly IEstudianteJRepo _estudianteJRepo;
         private readonly IMapper _mapper;
 
-        public SqlVendedorJRepo(MercaditoTECContext context, IVendedorRepo vendedorRepo, IEstudianteJRepo estudianteJRepo,
+        public SqlVendedorJRepo(MercaditoTECContext context, IVendedorRepo vendedorRepo, IPersonaRepo personaRepo, IEstudianteJRepo estudianteJRepo,
             IMapper mapper)
         {
             _context = context;
             _vendedorRepo = vendedorRepo;
+            _personaRepo = personaRepo;
             _estudianteJRepo = estudianteJRepo;
             _mapper = mapper;
         }
 
         /*
          * Retorna todos los VendedorJ con la informacion de Vendedor y EstudianteJ.
-         * 
-         * ESTO PODRIA FALLAR SI NO ESTAN TODOS SEGUIDOS :(
          */
         public IEnumerable<VendedorJ> GetAll()
         {
-            //Crea una lista de VendedorJ
-            List<VendedorJ> vendedoresJ = new List<VendedorJ>();
 
-            //Asigna el primer valor de la lista con el primer vendedor
-            vendedoresJ.Add(GetById(1));
+            //Mappeo de Vendedor
 
-            //Se usara esta variable para eliminar el ultimo valor de la lista
-            int n = 1;
+            //Se retorna una lista de todos los Vendedores
+            IEnumerable<Vendedor> vendedorItems = _vendedorRepo.GetAll();
 
-            //Se iran agregando los vendedores hasta que no se encuentren mas en la base de datos
-            for (int i = 0; vendedoresJ[i] != null; i++)
+            //Se mappea la parte de Vendedor a VendedorJ
+            IEnumerable<VendedorJ> vendedorJItems = _mapper.Map<IEnumerable<VendedorJ>>(vendedorItems);
+
+            //Se itera atraves de todos los Vendedores para mapearlos con su respectiva informacion restante de VendedorJ
+            for (int i = 0; i < vendedorJItems.Count(); i++)
             {
-                //Se asigna el siguiente espacio de la lsita con el siguiente VendedorJ
-                vendedoresJ.Add(GetById(n+1));
+                //Mappeo de EstudianteJ
 
-                //Se actualiza la variable n
-                n = n + 1;
+                //Se obtiene el idEstudiante de VendedorJ
+                int idEstudiante = vendedorJItems.ElementAt(i).idEstudiante;
+
+                //Se obtiene el EstudianteJ especifico del VendedorJ
+                EstudianteJ estudianteJItem = _estudianteJRepo.GetById(idEstudiante);
+
+                //Se mappea el EstudianteJ al VendedorJ correspondiente
+                _mapper.Map(estudianteJItem, vendedorJItems.ElementAt(i));
             }
 
-            //Se elimina el ultimo VendedorJ, que es null
-            vendedoresJ.RemoveAt(n-1);
-
-            //Se retorna la lista de VendedoresJ
-            return vendedoresJ;
+            return vendedorJItems.ToList();
         }
 
         /*
@@ -80,7 +81,7 @@ namespace API_MercaditoTEC.Data.DataJ
                 //Se obtiene el EstudianteJ especifico del idEstudiante
                 EstudianteJ estudianteJItem = _estudianteJRepo.GetById(idEstudianteJ);
 
-                //Se mappea la Persona al EstudianteJ
+                //Se mappea la EstudianteJ al VendedorJ
                 _mapper.Map(estudianteJItem, vendedorJItem);
             }
 
