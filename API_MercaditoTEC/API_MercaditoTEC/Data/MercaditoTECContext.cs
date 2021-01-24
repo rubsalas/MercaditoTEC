@@ -30,6 +30,7 @@ namespace API_MercaditoTEC.Data
         public DbSet<Ubicacion> Ubicacion { get; set; }
 
         /* Anaranjado */
+        public DbSet<CursoTutor> CursoTutor { get; set; }
         public DbSet<Producto> Producto { get; set; }
 
         /* Amarillo */
