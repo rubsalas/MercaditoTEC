@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mercaditotec.Constants;
 import com.example.mercaditotec.GuideActivity;
 import com.example.mercaditotec.MainActivity;
 import com.example.mercaditotec.R;
@@ -41,8 +42,11 @@ public class MyProductsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        View vista = inflater.inflate(R.layout.my_products_fragment, container, false);
 
-        return inflater.inflate(R.layout.my_products_fragment, container, false);
+        SolicitarMisProductos(vista.getContext());
+
+        return vista;
     }
 
     @Override
@@ -51,19 +55,19 @@ public class MyProductsFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(MyProductsViewModel.class);
         // TODO: Use the ViewModel
     }
-    public void SolicitarMisProductos(Context context, String id){
+    public void SolicitarMisProductos(Context context){
         // Initialize a new RequestQueue instance
         RequestQueue requestQueue = Volley.newRequestQueue(context);
 
         // Initialize a new JsonArrayRequest instance
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
-                "https://mercaditotec.azurewebsites.net/api/productosJ/Estudiante/9",
+                Constants.getInstance().getURL()+"productosJ/Estudiante/9",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("TAG", response.toString());
+                        Log.d("Soy este we", response.toString());
                     }
                 },
                 new Response.ErrorListener(){

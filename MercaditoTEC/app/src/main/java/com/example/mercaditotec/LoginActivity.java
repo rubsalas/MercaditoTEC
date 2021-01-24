@@ -31,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
 
         correo = findViewById(R.id.Correo_Institucional);
         contrasena = findViewById(R.id.Password);
-        correo.setText("");
-        contrasena.setText("");
+        correo.setText("teanby@estudiantec.cr");
+        contrasena.setText("6VT87a");
         findViewById(R.id.Ingresar).setOnClickListener(v -> {
             try {
                 LoginEstudiante(this, correo.getText().toString(), contrasena.getText().toString());
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         credenciales.put("contrasena", contrasena);
 
 
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST, Constants.getInstance().getURL()+"/estudiantesJ/Login", credenciales,
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST, Constants.getInstance().getURL()+"estudiantesJ/Login", credenciales,
                 new Response.Listener<JSONObject>()
                 {
                     @Override
