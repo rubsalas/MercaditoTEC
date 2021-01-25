@@ -153,6 +153,22 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
 
 
+        /*
+          * GET api/productosJ/Categoria/Preview/{idCategoria}
+          * 
+          * Obtiene los ProductosJ de una Categoria en especifico para presentarlos enlistados como un preview
+          */
+        [Route("api/productosJ/Categoria/Preview/{idCategoria}")]
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductoJReadDto>> GetByCategoriaPreview(int idCategoria)
+        {
+            IEnumerable<ProductoJ> productoJItems = _repository.GetByCategoria(idCategoria);
+
+            //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
+
+            return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
+        }
+
 
 
 

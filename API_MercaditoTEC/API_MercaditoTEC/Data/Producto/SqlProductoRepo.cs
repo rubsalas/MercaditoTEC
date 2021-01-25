@@ -42,9 +42,28 @@ namespace API_MercaditoTEC.Data
             return _context.Producto.FirstOrDefault(p => p.nombre == nombre);
         }
 
+        /*
+         * Retorna una lista de Productos de la Categoria especificada.
+         */
         public IEnumerable<Producto> GetByCategoria(int idCategoria)
         {
-            throw new NotImplementedException();
+            //Se obtienen todos los Productos
+            IEnumerable<Producto> productoItems = GetAll();
+
+            //Se crea una nueva lista donde se dejaran los Productos especificos
+            List<Producto> productosByCategoria = new List<Producto>();
+
+            //Se iterara sobre todos los productos y quedaran solo los de una Categoria especifica
+            for (int i = 0; i < productoItems.Count(); i++)
+            {
+                //Revisa que se cumpla el idCategoria
+                if (productoItems.ElementAt(i).idCategoria == idCategoria)
+                {
+                    productosByCategoria.Add(productoItems.ElementAt(i));
+                }
+            }
+
+            return productosByCategoria;
         }
 
         /*
@@ -58,7 +77,7 @@ namespace API_MercaditoTEC.Data
             //Se crea una nueva lista donde se dejaran los Productos especificos
             List<Producto> productosByEstudiante = new List<Producto>();
 
-            //Se iterara sobre todos los productos y quedaran solo los de un vendedor especifico
+            //Se iterara sobre todos los productos y quedaran solo los de un Estudiante especifico
             for (int i = 0; i < productoItems.Count(); i++)
             {
                 int idVendedor = _vendedorJRepo.GetId(idEstudiante);
@@ -66,8 +85,6 @@ namespace API_MercaditoTEC.Data
                 //Revisa que se cumpla el idVendedor
                 if (productoItems.ElementAt(i).idVendedor == idVendedor)
                 {
-                    //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
-
                     productosByEstudiante.Add(productoItems.ElementAt(i));
                 }
             }
@@ -140,14 +157,5 @@ namespace API_MercaditoTEC.Data
             return (_context.SaveChanges() >= 0);
         }
 
-        public IEnumerable<Producto> GetByCategoria()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Producto> GetByEstudiante()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
