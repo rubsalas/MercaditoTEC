@@ -1,8 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using API_MercaditoTEC.Data;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace API_MercaditoTEC.Dtos.PracticaTutor
+namespace API_MercaditoTEC.Models.ModelsJ
 {
-    public class PracticaTutorReadDto
+    public class PracticaTutorJ
     {
         [Key]
         public int idPracticaTutor { get; set; }
@@ -27,5 +31,11 @@ namespace API_MercaditoTEC.Dtos.PracticaTutor
         [Required]
         [MaxLength(75)]
         public string pdfSolucion { get; set; }
+        [Required]
+        public IEnumerable<TemaPracticaTutor> temas { get; set; }
+        
+        /*[Required]
+        public IEnumerable<PracticaTutorMetodoPagoJ> metodosPago { get; set; } //Hay que cambiarle el nombre a la tabla
+        */
     }
 }
