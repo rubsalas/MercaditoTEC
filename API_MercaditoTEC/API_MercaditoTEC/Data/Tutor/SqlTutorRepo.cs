@@ -44,6 +44,8 @@ namespace API_MercaditoTEC.Data
          */
         public int GetId(int idEstudiante)
         {
+            //VERIFICAR QUE EL ESTUDIANTE EXISTA ANTES< SI NO SE CAE
+            
             return _context.Tutor.FirstOrDefault(t => t.idEstudiante == idEstudiante).idTutor;
         }
 

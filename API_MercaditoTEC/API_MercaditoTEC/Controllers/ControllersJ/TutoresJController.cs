@@ -56,5 +56,29 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             //Si no existe envia un NotFound
             return NotFound();
         }
+
+        /*
+         * GET api/tutoresJ/{id}
+         * 
+         * Obtiene los datos de una sola fila de las tablas Tutor, Estudiante y Persona,
+         * con un id especifico de Tutor.
+         */
+        [Route("api/tutoresJ/Estudiante/{idEstudiante}")]
+        [HttpGet]
+        public ActionResult<TutorJReadDto> GetByEstudiante(int idEstudiante)
+        {
+            //Se trae de la base de datos el TutorJ con el idEstudiante especificado
+            var tutorJItem = _repository.GetByEstudiante(idEstudiante);
+
+            //Se verifica si este existe
+            if (tutorJItem != null)
+            {
+                return Ok(_mapper.Map<TutorJReadDto>(tutorJItem));
+            }
+
+            //Si no existe envia un NotFound
+            return NotFound();
+        }
+        
     }
 }

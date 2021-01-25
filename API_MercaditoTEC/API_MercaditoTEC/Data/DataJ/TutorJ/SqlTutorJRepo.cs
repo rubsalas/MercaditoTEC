@@ -108,9 +108,44 @@ namespace API_MercaditoTEC.Data.DataJ
 
         }
 
+        /*
+         * Retorna un solo TutorJ por su idEstudiante.
+         */
         public TutorJ GetByEstudiante(int idEstudiante)
         {
-            throw new NotImplementedException();
+            //Mappeo de Tutor
+
+            //Se retorna un Tutor especifico por su idEstudiante
+            Tutor tutorItemByEstudiante = _tutorRepo.GetByEstudiante(idEstudiante);
+
+            //Se mappea la parte de Tutor a TutorJ
+            TutorJ tutorJItemByEstudiante = _mapper.Map<TutorJ>(tutorItemByEstudiante);
+
+            //Si el Tutor existe
+            if (tutorJItemByEstudiante != null)
+            {
+                //Mappeo de EstudianteJ
+
+                //Se obtiene el EstudianteJ especifico del idEstudiante
+                Estudiante estudianteItem = _estudianteRepo.GetById(idEstudiante);
+
+                //Se mappea el EstudianteJ al TutorJ
+                _mapper.Map(estudianteItem, tutorJItemByEstudiante);
+
+                //Mappeo de Persona
+
+                //Se obtiene el idPersona del Estudiante
+                int idPersonaI = estudianteItem.idPersona;
+
+                //Se obtiene la Persona especifica del Estudiante
+                Persona personaItem = _personaRepo.GetById(idPersonaI);
+
+                //Se mappea la Persona al TutorJ correspondiente
+                _mapper.Map(personaItem, tutorJItemByEstudiante);
+
+            }
+
+            return tutorJItemByEstudiante;
         }
 
         /*
