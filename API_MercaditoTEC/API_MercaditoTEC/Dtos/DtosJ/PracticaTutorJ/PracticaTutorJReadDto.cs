@@ -1,4 +1,5 @@
 ﻿using API_MercaditoTEC.Models;
+using API_MercaditoTEC.Models.ModelsJ;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,9 +32,8 @@ namespace API_MercaditoTEC.Dtos.DtosJ
         public string pdfSolucion { get; set; }
         [Required]
         public IEnumerable<TemaPracticaTutor> temas { get; set; }
-
-        /*[Required]
-        public IEnumerable<PracticaTutorMetodoPagoJ> metodosPago { get; set; } //Hay que cambiarle el nombre a la tabla
-        */
+        [Required]
+        public IEnumerable<MetodoPagoPracticaTutorJ> metodosPago { get; set; }
+        
     }
 }

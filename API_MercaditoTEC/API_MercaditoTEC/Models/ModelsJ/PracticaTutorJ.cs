@@ -31,11 +31,11 @@ namespace API_MercaditoTEC.Models.ModelsJ
         [Required]
         [MaxLength(75)]
         public string pdfSolucion { get; set; }
+
         [Required]
         public IEnumerable<TemaPracticaTutor> temas { get; set; }
+        [Required]
+        public IEnumerable<MetodoPagoPracticaTutorJ> metodosPago { get; set; }
         
-        /*[Required]
-        public IEnumerable<PracticaTutorMetodoPagoJ> metodosPago { get; set; } //Hay que cambiarle el nombre a la tabla
-        */
     }
 }

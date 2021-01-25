@@ -118,6 +118,9 @@ namespace API_MercaditoTEC
             services.AddScoped<IImagenProductoRepo, SqlImagenProductoRepo>();
             //TemaPracticaTutor
             services.AddScoped<ITemaPracticaTutorRepo, SqlTemaPracticaTutorRepo>();
+            //MetodoPagoPracticaTutor
+            services.AddScoped<IMetodoPagoPracticaTutorRepo, SqlMetodoPagoPracticaTutorRepo>();
+
 
             //EstudianteJ
             services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();
@@ -139,6 +142,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IMetodoPagoProductoJRepo, SqlMetodoPagoProductoJRepo>();
             //UbicacionProductoJ
             services.AddScoped<IUbicacionProductoJRepo, SqlUbicacionProductoJRepo>();
+            //MetodoPagoPracticaTutorJ
+            services.AddScoped<IMetodoPagoPracticaTutorJRepo, SqlMetodoPagoPracticaTutorJRepo>();
         }
 
         /*

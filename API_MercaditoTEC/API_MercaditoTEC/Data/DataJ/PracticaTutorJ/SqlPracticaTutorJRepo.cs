@@ -12,14 +12,16 @@ namespace API_MercaditoTEC.Data.DataJ
         private readonly MercaditoTECContext _context;
         private readonly IPracticaTutorRepo _practicaTutorRepo;
         private readonly ITemaPracticaTutorRepo _temaPracticaTutorRepo;
+        private readonly IMetodoPagoPracticaTutorJRepo _metodoPagoPracticaTutorJRepo;
         private readonly IMapper _mapper;
 
         public SqlPracticaTutorJRepo(MercaditoTECContext context, IPracticaTutorRepo practicaTutorRepo, ITemaPracticaTutorRepo temaPracticaTutorRepo,
-            IMapper mapper)
+            IMetodoPagoPracticaTutorJRepo metodoPagoPracticaTutorJRepo, IMapper mapper)
         {
             _context = context;
             _practicaTutorRepo = practicaTutorRepo;
             _temaPracticaTutorRepo = temaPracticaTutorRepo;
+            _metodoPagoPracticaTutorJRepo = metodoPagoPracticaTutorJRepo;
             _mapper = mapper;
         }
 
@@ -47,10 +49,16 @@ namespace API_MercaditoTEC.Data.DataJ
                 //Se obtiene la lista de TemaPracticaTutor
                 IEnumerable<TemaPracticaTutor> temasI = _temaPracticaTutorRepo.GetByPracticaTutor(idPracticaTutor);
 
-                //Se mappea manualmente los TemaPracticaTutor a la PracticaTutor correspondiente
+                //Se mappea manualmente los TemaPracticaTutor a la PracticaTutorJ correspondiente
                 practicaTutorJItems.ElementAt(i).temas = temasI;
 
                 //Mappeo MetodoPagoPracticaTutor
+
+                //Se obtienen los MetodoPagoPracticaTutorJ
+                IEnumerable<MetodoPagoPracticaTutorJ> metodoPagoPracticaTutorJItems = _metodoPagoPracticaTutorJRepo.GetByPracticaTutor(practicaTutorJItems.ElementAt(i).idPracticaTutor);
+
+                //Se mappea manualmente el MetodoPagoPracticaTutorJ a la PracticaTutorJ correspondiente
+                practicaTutorJItems.ElementAt(i).metodosPago = metodoPagoPracticaTutorJItems;
 
             }
 
@@ -86,6 +94,11 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Mappeo MetodoPagoPracticaTutor
 
+                //Se obtienen los MetodoPagoPracticaTutorJ
+                IEnumerable<MetodoPagoPracticaTutorJ> metodoPagoPracticaTutorJItems = _metodoPagoPracticaTutorJRepo.GetByPracticaTutor(practicaTutorJItem.idPracticaTutor);
+
+                //Se mappea manualmente el MetodoPagoPracticaTutorJ a la PracticaTutorJ correspondiente
+                practicaTutorJItem.metodosPago = metodoPagoPracticaTutorJItems;
             }
 
             return practicaTutorJItem;
@@ -125,6 +138,11 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Mappeo MetodoPagoPracticaTutor
 
+                //Se obtienen los MetodoPagoPracticaTutorJ
+                IEnumerable<MetodoPagoPracticaTutorJ> metodoPagoPracticaTutorJItems = _metodoPagoPracticaTutorJRepo.GetByPracticaTutor(practicaTutorJItems.ElementAt(i).idPracticaTutor);
+
+                //Se mappea manualmente el MetodoPagoPracticaTutorJ a la PracticaTutorJ correspondiente
+                practicaTutorJItems.ElementAt(i).metodosPago = metodoPagoPracticaTutorJItems;
             }
 
             return practicaTutorJItems;

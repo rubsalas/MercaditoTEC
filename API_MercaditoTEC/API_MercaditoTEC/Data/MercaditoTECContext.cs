@@ -41,6 +41,7 @@ namespace API_MercaditoTEC.Data
 
         /* Verde */
         public DbSet<TemaPracticaTutor> TemaPracticaTutor { get; set; }
+        public DbSet<MetodoPagoPracticaTutor> MetodoPagoPracticaTutor { get; set; }
 
     }
 }

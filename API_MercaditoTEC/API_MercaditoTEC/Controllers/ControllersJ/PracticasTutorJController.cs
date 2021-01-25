@@ -2,6 +2,7 @@
 using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Data.DataJ;
 using API_MercaditoTEC.Dtos.DtosJ;
+using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
