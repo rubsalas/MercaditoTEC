@@ -43,7 +43,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         /*
          * GET api/cursosTutorJ/{idCursoTutor}
          * 
-         * Obtiene todos los datos una fila especifica de las tablas CursoTutor, Curso y Tutor.
+         * Obtiene todos los datos de una fila especifica de las tablas CursoTutor, Curso y Tutor.
          */
         [Route("api/cursosTutorJ/{idCursoTutor}")]
         [HttpGet]
@@ -63,7 +63,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         /*
          * GET api/cursosTutorJ/Estudiante/{idEstudiante}
          * 
-         * Obtiene los CursosTutorJ de un Estudiante en especifico
+         * Obtiene los CursosTutorJ de un Estudiante en especifico.
          */
         [Route("api/cursosTutorJ/Estudiante/{idEstudiante}")]
         [HttpGet]
