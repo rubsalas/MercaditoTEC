@@ -8,6 +8,8 @@ namespace API_MercaditoTEC.Data.DataJ
         IEnumerable<ProductoJ> GetAll();
         ProductoJ GetById(int id);
         int GetId(string nombre);
+
+        IEnumerable<ProductoJ> GetByEstudiante(int idEstudiante);
         void Create(ProductoJ productoJ);
         void Update(ProductoJ productoJ);
         void Delete(ProductoJ productoJ);

@@ -8,10 +8,12 @@ namespace API_MercaditoTEC.Data
     public class SqlProductoRepo : IProductoRepo
     {
         private readonly MercaditoTECContext _context;
+        private readonly IVendedorRepo _vendedorJRepo;
 
-        public SqlProductoRepo(MercaditoTECContext context)
+        public SqlProductoRepo(MercaditoTECContext context, IVendedorRepo vendedorJRepo)
         {
             _context = context;
+            _vendedorJRepo = vendedorJRepo;
         }
 
         /*
@@ -38,6 +40,39 @@ namespace API_MercaditoTEC.Data
         {
             //Se retorna el Producto especificado
             return _context.Producto.FirstOrDefault(p => p.nombre == nombre);
+        }
+
+        public IEnumerable<Producto> GetByCategoria(int idCategoria)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*
+         * Retorna una lista de Productos del Estudiante especificado.
+         */
+        public IEnumerable<Producto> GetByEstudiante(int idEstudiante)
+        {
+            //Se obtienen todos los Productos
+            IEnumerable<Producto> productoItems = GetAll();
+
+            //Se crea una nueva lista donde se dejaran los Productos especificos
+            List<Producto> productosByEstudiante = new List<Producto>();
+
+            //Se iterara sobre todos los productos y quedaran solo los de un vendedor especifico
+            for (int i = 0; i < productoItems.Count(); i++)
+            {
+                int idVendedor = _vendedorJRepo.GetId(idEstudiante);
+
+                //Revisa que se cumpla el idVendedor
+                if (productoItems.ElementAt(i).idVendedor == idVendedor)
+                {
+                    //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
+
+                    productosByEstudiante.Add(productoItems.ElementAt(i));
+                }
+            }
+
+            return productosByEstudiante;
         }
 
         /*
@@ -105,5 +140,14 @@ namespace API_MercaditoTEC.Data
             return (_context.SaveChanges() >= 0);
         }
 
+        public IEnumerable<Producto> GetByCategoria()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Producto> GetByEstudiante()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

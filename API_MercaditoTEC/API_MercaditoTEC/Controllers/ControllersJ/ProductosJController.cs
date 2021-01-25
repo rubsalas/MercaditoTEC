@@ -106,10 +106,26 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         }
 
         /*
-         * GET api/productosJ/Categoria/{idCategoria}
+         * GET api/productosJ/Estudiante/Preview/{idEstudiante}
          * 
-         * Obtiene los ProductosJ de una Categoria en especifico
+         * Obtiene los ProductosJ de un Estudiante en especifico para presentarlos enlistados como un preview
          */
+        [Route("api/productosJ/Estudiante/Preview/{idEstudiante}")]
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductoJReadDto>> GetByEstudiantePreview(int idEstudiante)
+        {
+            IEnumerable<ProductoJ> productoJItems = _repository.GetByEstudiante(idEstudiante);
+
+            //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
+
+            return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
+        }
+
+         /*
+          * GET api/productosJ/Categoria/{idCategoria}
+          * 
+          * Obtiene los ProductosJ de una Categoria en especifico
+          */
         [Route("api/productosJ/Categoria/{idCategoria}")]
         [HttpGet]
         public ActionResult<IEnumerable<ProductoJReadDto>> GetByCategoria(int idCategoria)
@@ -134,6 +150,13 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
             return Ok(productoJItemsByCategoria);
         }
+
+
+
+
+
+
+
 
         /*
          * GET api/productosJ/Test
