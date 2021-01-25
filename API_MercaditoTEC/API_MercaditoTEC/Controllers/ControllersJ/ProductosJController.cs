@@ -16,20 +16,11 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
     {
         private readonly IProductoJRepo _repository;
         private readonly IMapper _mapper;
-        private readonly IVendedorJRepo _vendedorJRepository;
-        private readonly IMetodoPagoProductoJRepo _metodoPagoProductoJRepo;
-        private readonly IImagenProductoRepo _imagenProductoRepo;
-        private readonly IUbicacionProductoJRepo _ubicacionProductoJRepo;
 
-        public ProductosJController(IProductoJRepo repository, IMapper mapper, IVendedorJRepo vendedorJRepository,
-            IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IUbicacionProductoJRepo ubicacionProductoJRepo)
+        public ProductosJController(IProductoJRepo repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _vendedorJRepository = vendedorJRepository;
-            _metodoPagoProductoJRepo = metodoPagoProductoJRepo;
-            _imagenProductoRepo = imagenProductoRepo;
-            _ubicacionProductoJRepo = ubicacionProductoJRepo;
         }
 
         /*
@@ -43,9 +34,16 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         {
             IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
 
-            //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
+            //Se verifica si este existe
+            if (productoJItems != null)
+            {
+                //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
 
-            return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
+                return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
+            }
+
+            //Si no existe envia un NotFound
+            return NotFound();
         }
 
         /*
@@ -74,134 +72,49 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         }
 
         /*
-         * GET api/productosJ/Vendedor/{idVendedor}
+         * GET api/productosJ/Estudiante/{idEstudiante}
          * 
-         * Obtiene los ProductosJ de un vendedor en especifico
+         * Obtiene los ProductosJ de un Estudiante en especifico.
          */
         [Route("api/productosJ/Estudiante/{idEstudiante}")]
         [HttpGet]
         public ActionResult<IEnumerable<ProductoJReadDto>> GetByEstudiante(int idEstudiante)
         {
-            //Se obtienen todos los ProductosJ
-            IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
+            IEnumerable<ProductoJ> productoJItemsByEstudiante = _repository.GetByEstudiante(idEstudiante);
 
-            //Esta es la lista que se retornara, cambiar Dto si se hace un diferente, aqui
-            List<ProductoJReadDto> productoJItemsByVendedor = new List<ProductoJReadDto>();
-
-            //Se iterara sobre todos los productos y quedaran solo los de un vendedor especifico
-            for (int i = 0; i < productoJItems.Count(); i++)
+            //Se verifica si este existe
+            if (productoJItemsByEstudiante != null)
             {
-                int idVendedor = _vendedorJRepository.GetId(idEstudiante);
+                //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
 
-                //Revisa que se cumpla el idVendedor
-                if (productoJItems.ElementAt(i).idVendedor == idVendedor)
-                {
-                    //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
-
-                    productoJItemsByVendedor.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
-                }
+                return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItemsByEstudiante));
             }
 
-            return Ok(productoJItemsByVendedor);
+            //Si no existe envia un NotFound
+            return NotFound();
         }
 
         /*
-         * GET api/productosJ/Estudiante/Preview/{idEstudiante}
-         * 
-         * Obtiene los ProductosJ de un Estudiante en especifico para presentarlos enlistados como un preview
-         */
-        [Route("api/productosJ/Estudiante/Preview/{idEstudiante}")]
-        [HttpGet]
-        public ActionResult<IEnumerable<ProductoJReadDto>> GetByEstudiantePreview(int idEstudiante)
-        {
-            IEnumerable<ProductoJ> productoJItems = _repository.GetByEstudiante(idEstudiante);
-
-            //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
-
-            return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
-        }
-
-         /*
           * GET api/productosJ/Categoria/{idCategoria}
           * 
-          * Obtiene los ProductosJ de una Categoria en especifico
+          * Obtiene los ProductosJ de una Categoria en especifico.
           */
         [Route("api/productosJ/Categoria/{idCategoria}")]
         [HttpGet]
         public ActionResult<IEnumerable<ProductoJReadDto>> GetByCategoria(int idCategoria)
         {
-            //Se obtienen todos los ProductosJ
-            IEnumerable<ProductoJ> productoJItems = _repository.GetAll();
+            IEnumerable<ProductoJ> productoJItemsByCategoria = _repository.GetByCategoria(idCategoria);
 
-            //Esta es la lista que se retornara, cambiar Dto si se hace un diferente, aqui
-            List<ProductoJReadDto> productoJItemsByCategoria = new List<ProductoJReadDto>();
-
-            //Se iterara sobre todos los productos y quedaran solo los de una Categoria especifica
-            for (int i = 0; i < productoJItems.Count(); i++)
+            //Se verifica si este existe
+            if (productoJItemsByCategoria != null)
             {
-                //Revisa que se cumpla el idCategoria
-                if (productoJItems.ElementAt(i).idCategoria == idCategoria)
-                {
-                    //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
+                //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
 
-                    productoJItemsByCategoria.Add(_mapper.Map<ProductoJReadDto>(productoJItems.ElementAt(i)));
-                }
+                return Ok(_mapper.Map<IEnumerable<ProductoJ>>(productoJItemsByCategoria));
             }
 
-            return Ok(productoJItemsByCategoria);
-        }
-
-
-
-        /*
-          * GET api/productosJ/Categoria/Preview/{idCategoria}
-          * 
-          * Obtiene los ProductosJ de una Categoria en especifico para presentarlos enlistados como un preview
-          */
-        [Route("api/productosJ/Categoria/Preview/{idCategoria}")]
-        [HttpGet]
-        public ActionResult<IEnumerable<ProductoJReadDto>> GetByCategoriaPreview(int idCategoria)
-        {
-            IEnumerable<ProductoJ> productoJItems = _repository.GetByCategoria(idCategoria);
-
-            //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
-
-            return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
-        }
-
-
-
-
-
-
-        /*
-         * GET api/productosJ/Test
-         * 
-         * TEST
-         */
-        [Route("api/productosJ/Test")]
-        [HttpGet]
-        public ActionResult<IEnumerable<ImagenProducto>> GetTest()
-        {
-            /*
-            //Test de MetodoPagoProductoJReadDto
-            IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = _metodoPagoProductoJRepo.GetAll();
-            return Ok(_mapper.Map<IEnumerable<MetodoPagoProductoJReadDto>>(metodoPagoProductoJItems));
-            */
-
-            /*
-            //Test de MetodoPagoProductoJReadDto
-            IEnumerable<ImagenProducto> Items = _imagenProductoRepo.GetAll();
-            return Ok(Items);
-            */
-
-
-            //Test de MetodoPagoProductoJReadDto
-            IEnumerable<UbicacionProductoJ> Items = _ubicacionProductoJRepo.GetAll();
-            return Ok(Items);
-
-
-            //return NoContent();
+            //Si no existe envia un NotFound
+            return NotFound();
         }
 
     }
