@@ -73,7 +73,6 @@ public class HomeFragment extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("TAG", response.toString());
                         try {
                             ordenarCategorias(response);
                         } catch (JSONException e) {

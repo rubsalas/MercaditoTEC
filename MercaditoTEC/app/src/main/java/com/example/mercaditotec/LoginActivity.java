@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mercaditotec.Controller.LoadingDialogController;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +24,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     EditText correo, contrasena;
+    private LoadingDialogController cargando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,12 @@ public class LoginActivity extends AppCompatActivity {
 
         correo = findViewById(R.id.Correo_Institucional);
         contrasena = findViewById(R.id.Password);
-        correo.setText("teanby@estudiantec.cr");
-        contrasena.setText("6VT87a");
+        correo.setText("lack@estudiantec.cr");
+        contrasena.setText("1234");
+
+        cargando = new LoadingDialogController(LoginActivity.this);
         findViewById(R.id.Ingresar).setOnClickListener(v -> {
+            cargando.iniciarAnimacion();
             try {
                 LoginEstudiante(this, correo.getText().toString(), contrasena.getText().toString());
             } catch (JSONException e) {
@@ -66,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(response.getInt("value") > 0){
                                 ValidacionLogin(context, ""+response.getInt("value"));
                             }else if(response.getInt("value") == 0){
+                                cargando.dismissDialog();
                                 Context context = getApplicationContext();
                                 CharSequence text = "Los credenciales son Incorrectos";
                                 int duration = Toast.LENGTH_SHORT;
@@ -74,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                                 toast.show();
                             }else if(response.getInt("value") == -1){
                                 Context context = getApplicationContext();
+                                cargando.dismissDialog();
                                 CharSequence text = "El correo no está registrado";
                                 int duration = Toast.LENGTH_SHORT;
 

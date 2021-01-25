@@ -34,7 +34,11 @@
     <string name="Perfil">Perfil</string>
     <string name="Salir">Salir</string>
     <string name="Inicio">Inicio</string>
+    <string name="VenderNuevo">Vender un Producto</string>
+    <string name="MisProductosVenta">Mis productos en venta</string>
 
     <string name="Compras">Compras</string>
     <string name="Ventas">Ventas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
