@@ -80,12 +80,14 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Mappeo de Aplicaciones
 
+                // ---------------------
+
                 //Mappeo de Vendedor
 
                 //Se obtiene el Vendedor
                 Vendedor vendedorItem = _vendedorRepo.GetByEstudiante(idEstudianteI);
 
-                //Se mapper el Vendedor al EstudianteJ
+                //Se mappea el Vendedor al EstudianteJ
                 _mapper.Map(vendedorItem, estudianteJItems.ElementAt(i));
             }
 
@@ -118,6 +120,26 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Se mappea la Persona al EstudianteJ
                 _mapper.Map(personaItem, estudianteJItem);
+
+                //Mappeo Tutor
+
+                //Se obtiene el Tutor
+                Tutor tutorItem = _tutorRepo.GetByEstudiante(id);
+
+                //Se mapper el Tutor al EstudianteJ
+                _mapper.Map(tutorItem, estudianteJItem);
+
+                //Mappeo de Aplicaciones
+
+                // ---------------------
+
+                //Mappeo de Vendedor
+
+                //Se obtiene el Vendedor
+                Vendedor vendedorItem = _vendedorRepo.GetByEstudiante(id);
+
+                //Se mappea el Vendedor al EstudianteJ
+                _mapper.Map(vendedorItem, estudianteJItem);
             }
 
             return estudianteJItem;
