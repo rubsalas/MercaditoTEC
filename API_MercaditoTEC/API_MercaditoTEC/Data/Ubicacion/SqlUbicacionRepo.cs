@@ -29,11 +29,6 @@ namespace API_MercaditoTEC.Data
             return _context.Ubicacion.FirstOrDefault(u => u.idUbicacion == id);
         }
 
-        public IEnumerable<Ubicacion> GetByCanton(int idCanton)
-        {
-            throw new System.NotImplementedException();
-        }
-
         /*
          * Retorna la Ubicacion con el distrito indicado.
          */
@@ -41,6 +36,30 @@ namespace API_MercaditoTEC.Data
         {
             //Se retorna la Ubicacion especifica
             return _context.Ubicacion.FirstOrDefault(u => u.distrito == distrito);
+        }
+
+        /*
+         * Retorna una lista de Ubicaciones de un Canton especifico
+         */
+        public IEnumerable<Ubicacion> GetByCanton(int idCanton)
+        {
+            //Se obtienen todos las Ubicaciones
+            IEnumerable<Ubicacion> ubicaciones = GetAll();
+
+            //Se crea una nueva lista donde se dejaran las Ubicaciones especificas
+            List<Ubicacion> ubicacionesEspecificas = new List<Ubicacion>();
+
+            //Se itera en la lista de todos las Ubicaciones
+            for (int i = 0; i < ubicaciones.Count(); i++)
+            {
+                //Se obtiene de la lista de Ubicaciones los que correspondan al idCanton indicado
+                if (ubicaciones.ElementAt(i).idCanton == idCanton)
+                {
+                    ubicacionesEspecificas.Add(ubicaciones.ElementAt(i));
+                }
+            }
+
+            return ubicacionesEspecificas;
         }
 
         /*
