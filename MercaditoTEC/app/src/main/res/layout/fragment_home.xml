@@ -17,11 +17,9 @@
 
     <ListView
         android:id="@+id/listViewCategorias"
-        android:layout_width="410dp"
-        android:layout_height="616dp"
+        android:layout_width="409dp"
+        android:layout_height="574dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

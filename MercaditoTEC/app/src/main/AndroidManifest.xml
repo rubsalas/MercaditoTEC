@@ -12,14 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MercaditoTEC">
+        <activity android:name=".CategorieActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.MercaditoTEC.NoActionBar"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".GuideActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MercaditoTEC.NoActionBar"></activity>
+        <activity
+            android:name=".GuideActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VerificationActivity"
             android:screenOrientation="portrait"
@@ -37,7 +38,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

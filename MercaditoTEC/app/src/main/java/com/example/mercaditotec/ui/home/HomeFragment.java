@@ -2,6 +2,7 @@ package com.example.mercaditotec.ui.home;
 
 import android.app.VoiceInteractor;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +27,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mercaditotec.CategorieActivity;
 import com.example.mercaditotec.Constants;
+import com.example.mercaditotec.MainActivity;
 import com.example.mercaditotec.R;
 
 import org.json.JSONArray;
@@ -54,6 +57,16 @@ public class HomeFragment extends Fragment {
         listaCategorias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent (getContext(), CategorieActivity.class);
+                try {
+                    intent.putExtra("id",
+                            ListaCategoriasObjeto.get(position).getInt("idCategoria"));
+                    intent.putExtra("nombre",
+                            ListaCategoriasObjeto.get(position).getString("nombre"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                startActivityForResult(intent, 0);
             }
         });
         SolicitarCategorías();
