@@ -1,13 +1,13 @@
 package com.example.mercaditotec.Entities;
 
 public class Producto {
-    private String nombre, ubicacion, imagen;
+    private String nombre, descripcion, imagen;
     private int id;
     private float precio;
 
-    public Producto(String imagen, String nombre, String ubicacion, int id, float precio) {
+    public Producto(String imagen, String nombre, String descripcion, int id, float precio) {
         this.nombre = nombre;
-        this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
         this.id = id;
         this.precio = precio;
         this.imagen = imagen;
@@ -29,12 +29,12 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getId() {

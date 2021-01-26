@@ -73,27 +73,12 @@ public class MyProductsFragment extends Fragment {
 
     private void GenerarListaProductos(JSONArray productos) throws JSONException {
         Producto item;
-        String ubicacion;
-        JSONArray ubicaciones;
         JSONObject actual;
-        JSONObject localizacion;
         ArrayList lista = new ArrayList<>();
         for(int i = 0; i < productos.length(); i++){
             actual = productos.getJSONObject(i);
-            ubicacion = "";
-            ubicaciones = productos.getJSONObject(i).getJSONArray("ubicaciones");
-            for (int j = 0; j < ubicaciones.length(); j++){
-                localizacion = ubicaciones.getJSONObject(j).getJSONObject("ubicacion");
-                String provincia = localizacion.getString("provincia");
-                String canton = localizacion.getString("canton");
-                String distrito = localizacion.getString("distrito");
-                ubicacion = ubicacion + provincia+", "+canton+", "+distrito;
-                if(j != ubicaciones.length() - 1){
-                    ubicacion = ubicacion+"\n";
-                }
-            }
             item = new Producto("",actual.getString("nombre"),
-                    ubicacion, actual.getInt("idProducto"),
+                    actual.getString("descripcion"), actual.getInt("idProducto"),
                     actual.getInt("precio"));
             lista.add(item);
         }

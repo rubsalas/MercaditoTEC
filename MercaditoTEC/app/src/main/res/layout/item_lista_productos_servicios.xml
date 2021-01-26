@@ -30,7 +30,7 @@
             android:textSize="16dp" />
 
         <TextView
-            android:id="@+id/tvUbicacion"
+            android:id="@+id/tvDescripcion"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="16dp" />

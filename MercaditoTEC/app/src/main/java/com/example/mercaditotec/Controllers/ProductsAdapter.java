@@ -58,11 +58,11 @@ public class ProductsAdapter extends BaseAdapter {
         ImageView imgProducto = (ImageView) convertView.findViewById(R.id.imgFoto);
         TextView tvTitulo =  (TextView) convertView.findViewById(R.id.tvTitulo);
         TextView tvPrecio =  (TextView) convertView.findViewById(R.id.tvPrecio);
-        TextView tvUbicacion =  (TextView) convertView.findViewById(R.id.tvUbicacion);
+        TextView tvDescripcion =  (TextView) convertView.findViewById(R.id.tvDescripcion);
 
         tvTitulo.setText(producto.getNombre());
-        tvPrecio.setText(""+producto.getPrecio()+" ₡");
-        tvUbicacion.setText(producto.getUbicacion());
+        tvPrecio.setText("₡ "+producto.getPrecio()+"");
+        tvDescripcion.setText(producto.getDescripcion());
 
         try {
             final File tempFile = File.createTempFile("test", "png");
