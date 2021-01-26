@@ -2,19 +2,36 @@ package com.example.mercaditotec.ui.Profile;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.mercaditotec.Constants;
 import com.example.mercaditotec.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ProfileFragment extends Fragment {
+    private TextView nombre,email, telefono, puntos;
 
     private ProfileViewModel mViewModel;
 
@@ -25,8 +42,18 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.profile_fragment, container, false);
+        
+        View v = inflater.inflate(R.layout.profile_fragment, container, false);
+        
+        nombre = v.findViewById(R.id.nombrePerfil);
+        email = v.findViewById(R.id.correoPerfil);
+        telefono = v.findViewById(R.id.numeroPerfil);
+        puntos = v.findViewById(R.id.puntosEstudiante);
+        
+        SolicitarInfoPerfil();
+        return v;
     }
+    
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -35,4 +62,45 @@ public class ProfileFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    private void SolicitarInfoPerfil() {
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET,
+                Constants.getInstance().getURL()+"estudiantesJ/Perfil/"+Constants.getInstance().getId(),
+                null,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response
+                        Log.d("Response", response.toString());
+                        try {
+                            ColocarInfo(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        );
+
+// add it to the RequestQueue
+
+        queue.add(getRequest);
+    }
+
+    private void ColocarInfo(JSONObject info) throws JSONException {
+        nombre.setText(info.getString("nombre")+" "+info.getString("apellidos"));
+        email.setText(info.getString("correoInstitucional"));
+        telefono.setText(info.getString("telefono"));
+        puntos.setText(info.getString("puntosCanje"));
+
+    }
 }

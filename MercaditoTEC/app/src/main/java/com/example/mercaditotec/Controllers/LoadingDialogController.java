@@ -1,4 +1,4 @@
-package com.example.mercaditotec.Controller;
+package com.example.mercaditotec.Controllers;
 
 import android.app.Activity;
 import android.app.AlertDialog;

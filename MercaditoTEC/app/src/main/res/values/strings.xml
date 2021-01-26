@@ -36,7 +36,8 @@
     <string name="Inicio">Inicio</string>
     <string name="VenderNuevo">Vender un Producto</string>
     <string name="MisProductosVenta">Mis productos en venta</string>
-
+    <string name="MisPuntos">Mis Punto de Canje:</string>
+    <string name="PerfilEstudiante">Datos Personales</string>
     <string name="Compras">Compras</string>
     <string name="Ventas">Ventas</string>
     <!-- TODO: Remove or change this placeholder text -->

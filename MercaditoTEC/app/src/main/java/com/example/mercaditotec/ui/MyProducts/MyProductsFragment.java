@@ -17,7 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mercaditotec.Constants;
-import com.example.mercaditotec.Controller.ProductsAdapter;
+import com.example.mercaditotec.Controllers.ProductsAdapter;
 import com.example.mercaditotec.Entities.Producto;
 import com.example.mercaditotec.R;
 

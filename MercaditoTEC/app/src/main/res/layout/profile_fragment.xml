@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Profile.ProfileFragment"/>
+    android:orientation="vertical"
+
+
+    tools:context=".ui.Profile.ProfileFragment">
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="420dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="@string/PerfilEstudiante"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <TextView
+        android:id="@+id/nombrePerfil"
+        android:layout_width="420dp"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/correoPerfil"
+        android:layout_width="420dp"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/numeroPerfil"
+        android:layout_width="420dp"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="@string/MisPuntos"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+    <TextView
+        android:id="@+id/puntosEstudiante"
+        android:layout_width="420dp"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+</LinearLayout>

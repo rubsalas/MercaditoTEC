@@ -1,4 +1,4 @@
-package com.example.mercaditotec.Controller;
+package com.example.mercaditotec.Controllers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -81,7 +81,6 @@ public class ProductsAdapter extends BaseAdapter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return convertView;
     }
