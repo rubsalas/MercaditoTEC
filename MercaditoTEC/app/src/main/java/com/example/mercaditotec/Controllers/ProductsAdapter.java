@@ -40,7 +40,7 @@ public class ProductsAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Producto getItem(int position) {
         return listaProductos.get(position);
     }
 
