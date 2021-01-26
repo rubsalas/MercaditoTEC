@@ -4,11 +4,11 @@ using AutoMapper;
 
 namespace API_MercaditoTEC.Profiles
 {
-    public class ProvinciaProfile : Profile
+    public class MetodoPagoProfile : Profile
     {
-        public ProvinciaProfile()
+        public MetodoPagoProfile()
         {
-            CreateMap<Provincia, ProvinciaReadDto>();
+            CreateMap<MetodoPago, MetodoPagoReadDto>();
         }
     }
 }
