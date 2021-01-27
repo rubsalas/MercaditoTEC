@@ -17,6 +17,16 @@ import { LibraryViewComponent } from './components/library-view/library-view.com
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 import { VerifyRegisterComponent } from './components/user/verify-register/verify-register.component';
+import { GuideViewComponent } from './components/guide-view/guide-view.component';
+import { LoginService } from './services/login.service';
+import { AuthService } from './services/auth.service';
+import { StudentService } from './services/student.service';
+import { TutorViewComponent } from './components/tutor-view/tutor-view.component';
+import { AddCourseTutorComponent } from './components/tutor-view/add-course-tutor/add-course-tutor.component';
+import { HomepageAdminComponent } from './components/admin-view/homepage-admin/homepage-admin.component';
+import { ProfileAdminComponent } from './components/admin-view/profile-admin/profile-admin.component';
+import { MessageCenterComponent } from './components/message-center/message-center.component';
+import { TruncateTextPipe } from './pipes/truncate-text.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +40,14 @@ import { VerifyRegisterComponent } from './components/user/verify-register/verif
     AdminViewComponent,
     EmployerViewComponent,
     LibraryViewComponent,
-    VerifyRegisterComponent
+    VerifyRegisterComponent,
+    GuideViewComponent,
+    TutorViewComponent,
+    AddCourseTutorComponent,
+    HomepageAdminComponent,
+    ProfileAdminComponent,
+    MessageCenterComponent,
+    TruncateTextPipe
   ],
   imports: [
     BrowserModule,
@@ -39,7 +56,7 @@ import { VerifyRegisterComponent } from './components/user/verify-register/verif
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService, AuthService, StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

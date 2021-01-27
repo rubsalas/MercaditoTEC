@@ -1,0 +1,26 @@
+<section id="addcoursetutor" class="mb-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 mx-auto">
+          <div class="card_addcoursetutor">
+            <div class="card">
+              <div class="card-body ">
+                <form #formAddCourseTutor="ngForm">
+                  <h1 class="h3 mb-3 font-weight-normal text-center" >AGREGAR NUEVO CURSO</h1>
+                  <h6 class=" mb-3 font-weight-normal text-center" >Para brindar servicios como tutor</h6>
+                  <br>
+
+                  
+                  <button (click)="addCourse(formAddCourseTutor)" type="button" class="btn btn-lg btn-success btn-block text-center">Agregar</button>
+                  <div class="form-group">
+                    <a routerLink="/" class="form-control login-user text-center"> Cancelar </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

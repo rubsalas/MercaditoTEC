@@ -21,20 +21,23 @@ export class VerifyRegisterComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  //Falta abrir el json y leer el campo 'value'
+  //Falta abrir el json y leer el campo 'value' y validar el paso al registro
   onLogin(form: NgForm) {
     if (form.valid) {
-      console.log(
-        'Informacion a enviar \n  Correo Institucional: '
-        +this.login.correoInstitucional
-        +' , Contraseña: '
-        +this.login.contrasena);
+      console.log(this.login);
 
-      return this.loginService.postDatic(this.login);
+      this.loginService.postDatic(this.login)
+      .subscribe( newDatic => {
+        console.log(newDatic);
+        //this.login = newDatic;
+      });
     }
   }
 
 }
+
+
+
 
 
 

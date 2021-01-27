@@ -1,6 +1,6 @@
-export class RegisterInterface {
-    nombre?: string;
-    apellidos?: string;
-    telefono?: string;
-    correoInstitucional?: string;
+export interface RegisterInterface {
+    nombre: string;
+    apellidos: string;
+    telefono: string;
+    correoInstitucional: string;
 }

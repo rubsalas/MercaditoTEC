@@ -1,23 +1,46 @@
-Put the user ID:
-<input type="text" #textId>
-<button (click)="getUser(textId.value)">Get user</button>
+<section id="homepage" class="mb-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+        <div class="card_homepage">
+          <div class="card">
+            <div class="card-body ">
 
-<hr>
+              <h1 class="h3 mb-3 font-weight-normal text-center" >Bienvenido a MercaditoTEC</h1>
+              
+              <button routerLink="/homepage"
+              class="btn btn-lg btn-success btn-block text-center" >
+              Servicio de Tutorías
+              </button>
 
-<ng-container *ngIf="notFound">
-  User not found
-</ng-container>
+              <button routerLink="/tutorview"
+              class="btn btn-lg btn-success btn-block text-center" >
+              Dar Tutorias
+              </button>
 
-<ng-container *ngIf="user">
-  <div>
-    Id: {{ user.id }}
+              <button routerLink="/homepage"
+              class="btn btn-lg btn-success btn-block text-center" >
+              Ofertas Laborales
+              </button>
+
+              <button routerLink="/homepage"
+              class="btn btn-lg btn-success btn-block text-center" >
+              Chats
+              </button>
+
+              <button routerLink="/homepage"
+              class="btn btn-lg btn-success btn-block text-center" >
+              Notificaciones
+              </button>
+
+              <button routerLink="/homepage"
+              class="btn btn-lg btn-success btn-block text-center" >
+              Perfil
+              </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    Name: {{ user.name }}
-  </div>
-
-  <div>
-    Username: {{ user.username }}
-  </div>
-</ng-container>
+</section>

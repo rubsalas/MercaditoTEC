@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { LoginInterface } from '../models/login-interface';
 import { RegisterInterface } from '../models/register-interface';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,32 +14,39 @@ export class LoginService {
   registerURL = environment.apiURL + 'estudiantesJ/Registro/';
   loginURL = environment.apiURL + 'estudiantesJ/Login';
 
+  //private datic$ = new Subject<LoginInterface[]>();
+
+
   constructor(private http: HttpClient) { }
 
+  /* Función para realizar un POST y verificar correo y contraseña
+  con la base de datos de DATIC */
   postDatic(data: LoginInterface) {
-    this.http.post(this.daticURL, data)
-    .subscribe( newDatic => {
-      console.log(newDatic);
-    });
+    return this.http.post(this.daticURL, data);
   }
 
-
+  /* Función para realizar un POST y hacerla petición de registrar un 
+  nuevo usuario a MercaditoTEC */
   postRegister(data: RegisterInterface) {
-    this.http.post(this.registerURL, data)
-    .subscribe( newRegister => {
-      console.log(newRegister);
-    });
+    return this.http.post(this.registerURL, data);
   }
 
+  /* Función para realizar un POST y verificar correo y contraseña
+  con la base de datos de MercaditoTEC */
   postLogin(data: LoginInterface) {
-    this.http.post(this.loginURL, data)
-    .subscribe( getLogin => {
-      console.log(getLogin);
-    });
+    return this.http.post(this.loginURL, data);
   }
 
 }
 
+
+
+ /*
+ 
+    .subscribe( getLogin => {
+      console.log(getLogin);
+    })
+ */
 
 
 /*

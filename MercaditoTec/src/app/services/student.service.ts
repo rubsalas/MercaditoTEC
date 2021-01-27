@@ -2,18 +2,24 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Student } from '../models/student';
-//import {Operation } from 'fast-json-patch';
+import { StudentInterface } from '../models/student-interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
-  baseURL = environment.apiURL + 'datic/';
+  studentURL = environment.apiURL + 'estudiantesJ/';
   constructor(private http: HttpClient) { }
 
-  /*
+  getStudent(studentId: string): Observable<StudentInterface> {
+    const url = this.studentURL + studentId;
+    return this.http.get<StudentInterface>(url);
+  }
+ 
+}
+
+ /*
   
   getUser(studentId: string): Observable<Student> {
     const url = this.baseURL + studentId;
@@ -59,4 +65,3 @@ export class StudentService {
     const url = this.baseURL + id;
     return this.http.delete(url);
   }*/
-}

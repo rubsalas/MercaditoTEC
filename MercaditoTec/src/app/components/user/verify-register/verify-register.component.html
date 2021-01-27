@@ -2,11 +2,11 @@
 <section id="verifydatic" class="mb-5 mt-5">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+      <div class="col-xs-12 col-md-4 mx-auto">
         <div class="card_verifydatic">
           <div class="card">
             <div class="card-body ">
-              <form #formVerifydatic="ngForm" (ngSubmit)="onLogin(formVerifydatic)">
+              <form #formVerifydatic="ngForm" >
                 <h1 class="h3 mb-3 font-weight-normal text-center" *ngIf="!isError">Verificar Identidad</h1>
                 <h6 class=" mb-3 font-weight-normal text-center" *ngIf="!isError">Ingrese la información solicitada para verificar su identidad como estudiante de XTEC</h6>
                 <br>
@@ -21,8 +21,7 @@
                   <label>Contraseña</label>
                   <input type="password" id="contrasena" name="contrasena" class="form-control text-center" placeholder="* * * * * * * *" [(ngModel)]="login.contrasena" required>
                 </div>
-                <button type="submit" class="btn btn-lg btn-success btn-block text-center" >Verificar</button>
-                <button routerLink="/registerview" class="btn btn-lg btn-block text-center" >Contiuar</button>
+                <button routerLink="/registerview" (click)="onLogin(formVerifydatic)" type="button" class="btn btn-lg btn-success btn-block text-center" >Verificar</button>
                 <div class="form-group">
                   <a routerLink="/" class="form-control login-user text-center"> Regresar </a>
                 </div>

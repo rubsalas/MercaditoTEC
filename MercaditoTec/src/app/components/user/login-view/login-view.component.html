@@ -2,11 +2,11 @@
 <section id="verifydatic" class="mb-5 mt-5">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+      <div class="col-xs-12 col-md-4 mx-auto">
         <div class="card_verifydatic">
           <div class="card">
             <div class="card-body ">
-              <form #formVerifydatic="ngForm" (ngSubmit)="onLogin(formVerifydatic)">
+              <form #formVerifydatic="ngForm" >
                 <h1 class="h3 mb-3 font-weight-normal text-center" *ngIf="!isError">Inicio de sesión</h1>
                 <br>
                 <div class="alert alert-danger" role="alert" *ngIf="isError">
@@ -20,9 +20,9 @@
                   <label>Contraseña</label>
                   <input type="password" id="contrasena" name="contrasena" class="form-control text-center" placeholder="* * * * * * * *" [(ngModel)]="login.contrasena" required>
                 </div>
-                <button type="submit" class="btn btn-lg btn-success btn-block text-center" >Ingresar</button>
+                <button routerLink="/homepage" (click)="onLogin(formVerifydatic)" type="submit" class="btn btn-lg btn-success btn-block text-center" >Ingresar</button>
                 <div class="form-group">
-                  <a routerLink="/" class="form-control login-user text-center"> Registrarse </a>
+                  <a routerLink="/verifyRegister" class="form-control login-user text-center"> Registrarse </a>
                 </div>
               </form>
             </div>

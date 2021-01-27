@@ -1,11 +1,11 @@
 <section id="register" class="mb-5 mt-5">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+      <div class="col-xs-12 mx-auto">
         <div class="card_register">
           <div class="card">
             <div class="card-body ">
-              <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
+              <form #formRegister="ngForm" >
                 <h1 class="h3 mb-3 font-weight-normal text-center" *ngIf="!isError">Registro a MercaditoTEC</h1>
                 <br>
                 <div class="alert alert-danger" role="alert" *ngIf="isError">
@@ -27,7 +27,7 @@
                   <label>Correo Institucional</label>
                   <input type="email" id="correoInstitucional" name="correoInstitucional" class="form-control text-center" placeholder="user@estudiantec.cr" [(ngModel)]="register.correoInstitucional" required>
                 </div>
-                <button type="submit" class="btn btn-lg btn-success btn-block text-center">Registrarme</button>
+                <button routerLink="/" (click)="onRegister(formRegister)" type="button" class="btn btn-lg btn-success btn-block text-center">Registrarme</button>
                 <div class="form-group">
                   <a routerLink="/" class="form-control login-user text-center"> Cancelar </a>
                 </div>

@@ -1,4 +1,4 @@
-export class LoginInterface {
-    correoInstitucional?: string;
-    contrasena?: string;
+export interface LoginInterface {
+    correoInstitucional: string;
+    contrasena: string;
 }

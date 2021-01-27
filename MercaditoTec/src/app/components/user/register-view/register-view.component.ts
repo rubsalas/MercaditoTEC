@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RegisterInterface } from 'src/app/models/register-interface';
-import { RegisterService } from 'src/app/services/register.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-register-view',
@@ -10,7 +10,7 @@ import { RegisterService } from 'src/app/services/register.service';
 })
 export class RegisterViewComponent implements OnInit {
 
-  constructor(public registerService: RegisterService) { }
+  constructor(public registerService: LoginService) { }
 
   public register: RegisterInterface = {
     nombre: '',
@@ -24,21 +24,23 @@ export class RegisterViewComponent implements OnInit {
   ngOnInit(): void { }
 
   //Falta abrir el json y leer el campo 'value'
+  //Falta validar las entradas del ngform
+  
   onRegister(form: NgForm) {
     if (form.valid) {
-      console.log(
-        'Informacion a enviar \n  Nombre: '
-        +this.register.nombre
-        +' , Apellidos: '
-        +this.register.apellidos
-        +' , Telefono: '
-        +this.register.telefono
-        +' , Correo Institucional: '
-        +this.register.correoInstitucional);
+      console.log(this.register);
 
-      return this.registerService.postRegister(this.register);
+      this.registerService.postRegister(this.register)
+      .subscribe( (newRegister: any)  => {
+        console.log(newRegister);
+        if(newRegister.value == 0){
+          console.log("No se pudo registrar");
+        }
+        if(newRegister.value < 0){
+          console.log("Estudiante ya estaa registrado");
+        };
+      });
     }
   }
-
 
 }
