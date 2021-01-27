@@ -259,6 +259,7 @@ CREATE TABLE Producto(
 	idCategoria						INT										NOT NULL,
 	precio							INT										NOT NULL,
 	fechaPublicacion				DATETIME2								NOT NULL,
+	habilitado						BIT										NOT NULL		DEFAULT 1, 
 	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor),
 	FOREIGN KEY(idCategoria)					REFERENCES Categoria(idCategoria)
 )
@@ -273,6 +274,7 @@ CREATE TABLE Servicio(
 	descripcion						VARCHAR(500)							NOT NULL,
 	precio							INT										NOT NULL,
 	fechaPublicacion				DATETIME2								NOT NULL,
+	habilitado						BIT										NOT NULL		DEFAULT 1, 
 	FOREIGN KEY(idVendedor)						REFERENCES Vendedor(idVendedor)
 )
 GO
@@ -308,8 +310,8 @@ CREATE TABLE PracticaTutor(
 	cantidadEjercicios				INT										NOT NULL,
 	dificultad						VARCHAR(75)								NOT NULL,
 	precio							INT										NOT NULL,
-	pdfPractica						VARCHAR(75)								NOT NULL,
-	pdfSolucion						VARCHAR(75)								NOT NULL,
+	pdfPractica						VARCHAR(300)							NOT NULL,
+	pdfSolucion						VARCHAR(300)							NOT NULL,
 	FOREIGN KEY(idCursoTutor)					REFERENCES CursoTutor(idCursoTutor)
 )
 GO
@@ -449,9 +451,9 @@ CREATE TABLE TemaPracticaTutor(
 GO
 
 
-/****** Object:  Table PracticaTutorMetodoPago ******/
-CREATE TABLE PracticaTutorMetodoPago(
-	idPracticaTutorMetodoPago		INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
+/****** Object:  Table MetodoPagoPracticaTutor ******/
+CREATE TABLE MetodoPagoPracticaTutor(
+	idMetodoPagoPracticaTutor		INT	IDENTITY (1, 1) PRIMARY KEY			NOT NULL,
 	idPracticaTutor					INT										NOT NULL,
 	idMetodoPago					INT										NOT NULL,
 	numeroCuenta					VARCHAR(75)								NULL,
