@@ -54,9 +54,19 @@ namespace API_MercaditoTEC.Data
             return imagenProductoEspecificas;
         }
 
+        /*
+         * Ingresa a la base de datos una nueva ImagenProducto.
+         */
         public void Create(ImagenProducto imagenProducto)
         {
-            throw new NotImplementedException();
+            //Se verifica si existe
+            if (imagenProducto == null)
+            {
+                throw new ArgumentNullException(nameof(imagenProducto));
+            }
+
+            //Se crea en la base de datos por medio del context
+            _context.ImagenProducto.Add(imagenProducto);
         }
 
         public void Update(ImagenProducto imagenProducto)

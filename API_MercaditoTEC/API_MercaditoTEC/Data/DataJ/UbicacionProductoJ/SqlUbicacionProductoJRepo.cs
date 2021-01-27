@@ -111,9 +111,24 @@ namespace API_MercaditoTEC.Data.DataJ
             return ubicacionProductoJItemsByProducto;
         }
 
+        /*
+         * Ingresa a la base de datos una nueva UbicacionProducto.
+         */
         public void Create(UbicacionProductoJ ubicacionProductoJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si el ingresado no es nulo
+            if (ubicacionProductoJ == null)
+            {
+                throw new ArgumentNullException(nameof(ubicacionProductoJ));
+            }
+
+            //Mappea la UbicacionProductoJ obtenido a un Modelo UbicacionProducto
+            var ubicacionProductoModel = _mapper.Map<UbicacionProducto>(ubicacionProductoJ);
+
+            //Crea la UbicacionProducto nueva en la base de datos
+            _ubicacionProductoRepo.Create(ubicacionProductoModel);
+            //Guarda los cambios en la tabla Persona en la base de datos
+            _ubicacionProductoRepo.SaveChanges();
         }
 
         public void Update(UbicacionProductoJ ubicacionProductoJ)
@@ -128,9 +143,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
-
-        
     }
 }

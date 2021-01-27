@@ -299,14 +299,95 @@ namespace API_MercaditoTEC.Data.DataJ
         /*
          * Retorna el idProducto de un Producto especifico.
          */
-        public int GetId(string nombre)
+        public int GetId(string nombre, int idVendedor)
         {
-            return _productoRepo.GetId(nombre);
+            return _productoRepo.GetId(nombre, idVendedor);
         }
 
+        /*
+         * Ingresa a la base de datos un nuevo Producto, MetodoPagoProducto, UbicacionProducto e ImagenProducto.
+         */
         public void Create(ProductoJ productoJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si el ProductoJ ingresado no es nulo
+            if (productoJ == null)
+            {
+                throw new ArgumentNullException(nameof(productoJ));
+            }
+
+            /*
+             * Create de Producto
+             */
+
+            //Mappea el ProductoJ obtenido a un Modelo Producto
+            var productoModel = _mapper.Map<Producto>(productoJ);
+
+            //Crea el Producto nuevo en la base de datos
+            _productoRepo.Create(productoModel);
+            //Guarda los cambios en la tabla Producto en la base de datos
+            _productoRepo.SaveChanges();
+
+            //Se obtiene el idProducto recien creado
+            int idProductoJ = _productoRepo.GetId(productoJ.nombre, productoJ.idVendedor);
+
+            /*
+             * Create de MetodoPagoProducto
+             */
+
+            //Se obtienen los MetodoPagoProductoJ
+            IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = productoJ.metodosPago;
+
+            //Se itera atraves de todos los MetodoPagoProductoJ
+            for (int i = 0; i < metodoPagoProductoJItems.Count(); i++)
+            {
+                //Se mappea el idProducto del Producto recien creado
+                metodoPagoProductoJItems.ElementAt(i).idProducto = idProductoJ;
+
+                //Crea el MetodoPagoProducto correspondiente
+                _metodoPagoProductoJRepo.Create(metodoPagoProductoJItems.ElementAt(i));
+                //Guarda los cambios en la tabla MetodoPagoProducto en la base de datos
+                _metodoPagoProductoJRepo.SaveChanges();
+            }
+
+            /*
+             * Create de UbicacionProducto
+             */
+
+            //Se obtienen las UbicacionProductoJ
+            IEnumerable<UbicacionProductoJ> ubicacionProductoJItems = productoJ.ubicaciones;
+
+            //Se itera atraves de todos los UbicacionProductoJ
+            for (int i = 0; i < ubicacionProductoJItems.Count(); i++)
+            {
+                //Se mappea el idProducto del Producto recien creado
+                ubicacionProductoJItems.ElementAt(i).idProducto = idProductoJ;
+
+                //Crea la UbicacionProducto correspondiente
+                _ubicacionProductoJRepo.Create(ubicacionProductoJItems.ElementAt(i));
+                //Guarda los cambios en la tabla UbicacionProducto en la base de datos
+                _ubicacionProductoJRepo.SaveChanges();
+            }
+
+
+            /*
+             * Create de ImagenProducto
+             */
+
+            //Se obtienen las ImagenProducto
+            IEnumerable<ImagenProducto> imagenProductoItems = productoJ.imagenes;
+
+            //Se itera atraves de todos las ImagenProducto
+            for (int i = 0; i < imagenProductoItems.Count(); i++)
+            {
+                //Se mappea el idProducto del Producto recien creado
+                imagenProductoItems.ElementAt(i).idProducto = idProductoJ;
+
+                //Crea la ImagenProducto correspondiente
+                _imagenProductoRepo.Create(imagenProductoItems.ElementAt(i));
+                //Guarda los cambios en la tabla ImagenProducto en la base de datos
+                _imagenProductoRepo.SaveChanges();
+            }
+
         }
 
         public void Update(ProductoJ productoJ)
@@ -321,7 +402,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

@@ -5,6 +5,7 @@ using API_MercaditoTEC.Models;
 using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -115,6 +116,54 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
             //Si no existe envia un NotFound
             return NotFound();
+        }
+
+
+        /*
+         * POST api/productosJ
+         * 
+         * Crea un nuevo Producto
+         */
+        [Route("api/productosJ")]
+        [HttpPost]
+        public ActionResult<Response> CreateProducto(ProductoJCreateDto productoJCreateDto)
+        {
+            //Se crea la respuesta por enviar
+            Response response = new Response("ProductosJ", "api/productosJ", "HttpPost", "Poner a la venta un Producto");
+
+            //No es necesario verificar si ya existe
+
+            //Se agrega la fecha actual de creacion
+            productoJCreateDto.fechaPublicacion = DateTime.Now;
+
+            //Mappea el Producto por crear a un Modelo ProductoJ
+            ProductoJ productoJModel = _mapper.Map<ProductoJ>(productoJCreateDto);
+            //Crea el ProductoJ nuevo en la base de datos
+            _repository.Create(productoJModel);
+            //Guarda los cambios en la base de datos
+            _repository.SaveChanges(); //No implementado para ProductoJ
+
+
+            //Se obtiene el idProducto recien creado
+            int idProductoJ = _repository.GetId(productoJCreateDto.nombre, productoJCreateDto.idVendedor);
+
+            //Se revisa si se completo la creacion del Producto
+            if (idProductoJ == -1)
+            {
+                /*
+                 * Como no se agrego el Producto
+                 * Se agrega un value de 0 al response
+                 */
+                response.setValue(0);
+                return Ok(response);
+            }
+
+            /*
+             * Como se creo el Producto exitosamente
+             * Se agrega un value del idproductoJ que ha hecho login al response
+             */
+            response.setValue(idProductoJ);
+            return Ok(response);
         }
 
     }

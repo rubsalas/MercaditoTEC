@@ -12,15 +12,17 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
         public ProductoJProfile()
         {
             CreateMap<Producto, ProductoJ>();
-            //CreateMap<VendedorJ, ProductoJ>();
             CreateMap<IEnumerable<MetodoPagoProductoJ>, ProductoJ>();
-            //CreateMap<IEnumerable<ImagenProducto>, ProductoJ>();
-           // CreateMap<IUbicacionProductoJRepo, SqlUbicacionProductoJRepo>();
 
             CreateMap<ProductoJ, ProductoJReadDto>();
 
             CreateMap<ProductoJ, ProductoJPreviewDto>();
             CreateMap<Producto, ProductoJPreviewDto>();
+
+            //Create
+            CreateMap<ProductoJCreateDto, ProductoJ>();
+            CreateMap<ProductoJ, Producto>();
+
         }
     }
 }

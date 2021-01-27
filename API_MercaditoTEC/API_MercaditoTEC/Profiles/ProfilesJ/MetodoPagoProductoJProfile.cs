@@ -12,6 +12,8 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             CreateMap<MetodoPago, MetodoPagoProductoJ>();
             CreateMap<MetodoPagoProducto, MetodoPagoProductoJ>();
 
+            CreateMap<MetodoPagoProductoJ, MetodoPagoProducto>();
+
             CreateMap<MetodoPagoProductoJ, MetodoPagoProductoJReadDto>(); 
         }
     }

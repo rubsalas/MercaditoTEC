@@ -95,10 +95,10 @@ namespace API_MercaditoTEC.Data
         /*
          * Retorna el idProducto de un Producto especifico.
          */
-        public int GetId(string nombre)
+        public int GetId(string nombre, int idVendedor)
         {
             //Se obtiene el idProducto de un Producto especifico
-            int idProducto = _context.Producto.FirstOrDefault(p => p.nombre == nombre).idProducto;
+            int idProducto = _context.Producto.FirstOrDefault(p => p.nombre == nombre && p.idVendedor == idVendedor).idProducto;
 
             //Se verifica que el Producto exista
             if (idProducto > 0)

@@ -54,9 +54,19 @@ namespace API_MercaditoTEC.Data
             return metodoPagoProductoEspecificos;
         }
 
+        /*
+         * Ingresa a la base de datos un nuevo MetodoPagoProducto.
+         */
         public void Create(MetodoPagoProducto metodoPagoProducto)
         {
-            throw new NotImplementedException();
+            //Se verifica si existe
+            if (metodoPagoProducto == null)
+            {
+                throw new ArgumentNullException(nameof(metodoPagoProducto));
+            }
+
+            //Se crea en la base de datos por medio del context
+            _context.MetodoPagoProducto.Add(metodoPagoProducto);
         }
 
         public void Update(MetodoPagoProducto metodoPagoProducto)

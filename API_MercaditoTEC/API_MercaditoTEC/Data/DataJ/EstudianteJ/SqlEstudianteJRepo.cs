@@ -154,6 +154,9 @@ namespace API_MercaditoTEC.Data.DataJ
             return _estudianteRepository.GetId(correoInstitucional);
         }
 
+        /*
+         * Ingresa a la base de datos una nueva Persona y Estudiante.
+         */
         public void Create(EstudianteJ estudianteJ)
         {
             //Se verifica si el EstudianteJ ingresado no es nulo

@@ -10,7 +10,7 @@ namespace API_MercaditoTEC.Data
         Producto GetByNombre(string nombre);
         IEnumerable<Producto> GetByCategoria(int idCategoria);
         IEnumerable<Producto> GetByEstudiante(int idEstudiante);
-        int GetId(string nombre);
+        int GetId(string nombre, int idVendedor);
         void Create(Producto producto);
         void Update(Producto producto);
         void Delete(Producto producto);

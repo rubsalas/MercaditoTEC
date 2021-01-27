@@ -54,10 +54,19 @@ namespace API_MercaditoTEC.Data
             return ubicacionProductoEspecificas;
         }
 
-        
+        /*
+         * Ingresa a la base de datos una nueva UbicacionProducto.
+         */
         public void Create(UbicacionProducto ubicacionProducto)
         {
-            throw new NotImplementedException();
+            //Se verifica si existe
+            if (ubicacionProducto == null)
+            {
+                throw new ArgumentNullException(nameof(ubicacionProducto));
+            }
+
+            //Se crea en la base de datos por medio del context
+            _context.UbicacionProducto.Add(ubicacionProducto);
         }
 
         public void Update(UbicacionProducto ubicacionProducto)

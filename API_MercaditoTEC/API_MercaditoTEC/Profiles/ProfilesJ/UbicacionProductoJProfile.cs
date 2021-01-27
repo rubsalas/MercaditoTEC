@@ -10,6 +10,8 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
         public UbicacionProductoJProfile()
         {
             CreateMap<UbicacionProducto, UbicacionProductoJ>();
+
+            CreateMap<UbicacionProductoJ, UbicacionProducto>();
         }
     }
 }

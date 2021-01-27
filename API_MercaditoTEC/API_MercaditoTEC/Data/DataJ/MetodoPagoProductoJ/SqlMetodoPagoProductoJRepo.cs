@@ -116,9 +116,24 @@ namespace API_MercaditoTEC.Data.DataJ
             return metodoPagoProductoJItemsByProducto.ToList();
         }
 
+        /*
+         * Ingresa a la base de datos un nuevo MetodoPagoProducto.
+         */
         public void Create(MetodoPagoProductoJ metodoPagoProductoJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si el ingresado no es nulo
+            if (metodoPagoProductoJ == null)
+            {
+                throw new ArgumentNullException(nameof(metodoPagoProductoJ));
+            }
+
+            //Mappea el MetodoPagoProductoJ obtenido a un Modelo MetodoPagoProducto
+            var metodoPagoProductoModel = _mapper.Map<MetodoPagoProducto>(metodoPagoProductoJ);
+
+            //Crea la UbicacionProducto nueva en la base de datos
+            _metodoPagoProductoRepo.Create(metodoPagoProductoModel);
+            //Guarda los cambios en la tabla Persona en la base de datos
+            _metodoPagoProductoRepo.SaveChanges();
         }
 
         public void Update(MetodoPagoProductoJ metodoPagoProductoJ)
@@ -130,9 +145,10 @@ namespace API_MercaditoTEC.Data.DataJ
         {
             throw new NotImplementedException();
         }
+
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
         
     }

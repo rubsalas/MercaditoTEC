@@ -175,7 +175,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 return Ok(response);
             }
 
-            //Mappea el Estudiante creado a un Modelo EstudianteJ
+            //Mappea el Estudiante por crear a un Modelo EstudianteJ
             EstudianteJ estudianteJModel = _mapper.Map<EstudianteJ>(estudianteJCreateDto);
             //Crea el EstudianteJ nuevo en la base de datos
             _repository.Create(estudianteJModel);
