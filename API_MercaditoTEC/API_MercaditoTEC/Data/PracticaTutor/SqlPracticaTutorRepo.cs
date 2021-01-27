@@ -62,9 +62,35 @@ namespace API_MercaditoTEC.Data
             return practicaTutorEspecificas;
         }
 
+        public int GetId(int idCursoTutor, string nombre, string descripcion)
+        {
+            //Se obtiene el idPracticaTutor de una PracticaTutor especifica
+            int idPracticaTutor = _context.PracticaTutor.FirstOrDefault(pt => pt.idCursoTutor == idCursoTutor && pt.nombre == nombre && pt.descripcion == descripcion).idPracticaTutor;
+
+            //Se verifica que la PracticaTutor exista
+            if (idPracticaTutor > 0)
+            {
+                //Si existe, se retorna el idPracticaTutor
+                return idPracticaTutor;
+            }
+
+            //Si no existe, se retorna un -1
+            return -1;
+        }
+
+        /*
+         * Ingresa a la base de datos una nueva PracticaTutor.
+         */
         public void Create(PracticaTutor practicaTutor)
         {
-            throw new NotImplementedException();
+            //Se verifica si existe
+            if (practicaTutor == null)
+            {
+                throw new ArgumentNullException(nameof(practicaTutor));
+            }
+
+            //Se crea en la base de datos por medio del context
+            _context.PracticaTutor.Add(practicaTutor);
         }
 
         public void Update(PracticaTutor practicaTutor)

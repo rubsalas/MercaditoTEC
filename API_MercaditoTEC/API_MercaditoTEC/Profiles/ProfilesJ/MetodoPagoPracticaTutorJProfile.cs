@@ -12,7 +12,7 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             CreateMap<MetodoPagoPracticaTutor, MetodoPagoPracticaTutorJ>();
             CreateMap<MetodoPago, MetodoPagoPracticaTutorJ>();
 
-            //CreateMap<MetodoPagoPracticaTutorJ, MetodoPagoPracticaTutorJReadDto>();
+            CreateMap<MetodoPagoPracticaTutorJ, MetodoPagoPracticaTutor>();
         }
     }
 }

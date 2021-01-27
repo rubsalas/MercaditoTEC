@@ -160,7 +160,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
             /*
              * Como se creo el Producto exitosamente
-             * Se agrega un value del idproductoJ que ha hecho login al response
+             * Se agrega un value del idproductoJ al response
              */
             response.setValue(idProductoJ);
             return Ok(response);

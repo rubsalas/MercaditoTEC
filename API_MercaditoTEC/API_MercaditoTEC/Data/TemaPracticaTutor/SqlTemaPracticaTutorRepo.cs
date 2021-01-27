@@ -53,9 +53,19 @@ namespace API_MercaditoTEC.Data
             return temaPracticaTutorEspecificos;
         }
 
+        /*
+         * Ingresa a la base de datos un nuevo TemaPracticaTutor.
+         */
         public void Create(TemaPracticaTutor temaPracticaTutor)
         {
-            throw new NotImplementedException();
+            //Se verifica si existe
+            if (temaPracticaTutor == null)
+            {
+                throw new ArgumentNullException(nameof(temaPracticaTutor));
+            }
+
+            //Se crea en la base de datos por medio del context
+            _context.TemaPracticaTutor.Add(temaPracticaTutor);
         }
 
         public void Update(TemaPracticaTutor temaPracticaTutor)

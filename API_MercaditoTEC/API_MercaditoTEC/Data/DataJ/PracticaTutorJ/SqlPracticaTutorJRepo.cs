@@ -148,9 +148,72 @@ namespace API_MercaditoTEC.Data.DataJ
             return practicaTutorJItems;
         }
 
+        public int GetId(int idCursoTutor, string nombre, string descripcion)
+        {
+            return _practicaTutorRepo.GetId(idCursoTutor, nombre, descripcion);
+        }
+
         public void Create(PracticaTutorJ practicaTutorJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si la PracticaTutorJ ingresada no es nula
+            if (practicaTutorJ == null)
+            {
+                throw new ArgumentNullException(nameof(practicaTutorJ));
+            }
+
+            /*
+             * Create de PracticaTutor
+             */
+
+            //Mappea la PracticaTutorJ obtenida a un Modelo PracticaTutor
+            var practicaTutorModel = _mapper.Map<PracticaTutor>(practicaTutorJ);
+
+            //Crea la PracticaTutor nueva en la base de datos
+            _practicaTutorRepo.Create(practicaTutorModel);
+            //Guarda los cambios en la tabla Producto en la base de datos
+            _practicaTutorRepo.SaveChanges();
+
+            //Se obtiene el idPracticaTutor recien creado
+            int idPracticaTutor = _practicaTutorRepo.GetId(practicaTutorJ.idCursoTutor, practicaTutorJ.nombre, practicaTutorJ.descripcion);
+
+            /*
+             * Create de MetodoPagoPracticaTutor
+             */
+
+            //Se obtienen los MetodoPagoPracticaTutorJ
+            IEnumerable<MetodoPagoPracticaTutorJ> metodoPagoPracticaTutorJItems = practicaTutorJ.metodosPago;
+
+            //Se itera atraves de todos los MetodoPagoPracticaTutorJ
+            for (int i = 0; i < metodoPagoPracticaTutorJItems.Count(); i++)
+            {
+                //Se mappea el idPracticaTutor de la PracticaTutor recien creada
+                metodoPagoPracticaTutorJItems.ElementAt(i).idPracticaTutor = idPracticaTutor;
+
+                //Crea el MetodoPagoPracticaTutor correspondiente
+                _metodoPagoPracticaTutorJRepo.Create(metodoPagoPracticaTutorJItems.ElementAt(i));
+                //Guarda los cambios en la tabla MetodoPagoPracticaTutor en la base de datos
+                _metodoPagoPracticaTutorJRepo.SaveChanges();
+            }
+
+            /*
+             * Create de TemaPracticaTutor
+             */
+
+            //Se obtienen los TemaPracticaTutor
+            IEnumerable<TemaPracticaTutor> temaPracticaTutorItems = practicaTutorJ.temas;
+
+            //Se itera atraves de todos los TemaPracticaTutor
+            for (int i = 0; i < temaPracticaTutorItems.Count(); i++)
+            {
+                //Se mappea el idPracticaTutor de la PracticaTutor recien creada
+                temaPracticaTutorItems.ElementAt(i).idPracticaTutor = idPracticaTutor;
+
+                //Crea el TemaPracticaTutor correspondiente
+                _temaPracticaTutorRepo.Create(temaPracticaTutorItems.ElementAt(i));
+                //Guarda los cambios en la tabla TemaPracticaTutor en la base de datos
+                _temaPracticaTutorRepo.SaveChanges();
+            }
+
         }
 
         public void Update(PracticaTutorJ practicaTutorJ)
@@ -165,7 +228,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

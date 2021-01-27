@@ -90,9 +90,24 @@ namespace API_MercaditoTEC.Data.DataJ
             return metodoPagoPracticaTutorJItems;
         }
 
+        /*
+         * Ingresa a la base de datos un nuevo MetodoPagoPracticaTutor.
+         */
         public void Create(MetodoPagoPracticaTutorJ metodoPagoPracticaTutorJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si el ingresado no es nulo
+            if (metodoPagoPracticaTutorJ == null)
+            {
+                throw new ArgumentNullException(nameof(metodoPagoPracticaTutorJ));
+            }
+
+            //Mappea el MetodoPagoPracticaTutorJ obtenido a un Modelo MetodoPagoPracticaTutor
+            var metodoPagoPracticaTutorModel = _mapper.Map<MetodoPagoPracticaTutor>(metodoPagoPracticaTutorJ);
+
+            //Crea el nuevo en la base de datos
+            _metodoPagoPracticaTutor.Create(metodoPagoPracticaTutorModel);
+            //Guarda los cambios en la tabla en la base de datos
+            _metodoPagoPracticaTutor.SaveChanges();
         }
 
         public void Update(MetodoPagoPracticaTutorJ metodoPagoPracticaTutorJ)
@@ -107,7 +122,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
     }

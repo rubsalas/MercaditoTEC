@@ -9,6 +9,7 @@ namespace API_MercaditoTEC.Data
         PracticaTutor GetById(int id);
         PracticaTutor GetByNombre(string nombre);
         IEnumerable<PracticaTutor> GetByCursoTutor(int idCursoTutor);
+        int GetId(int idCursoTutor, string nombre, string descripcion);
         void Create(PracticaTutor practicaTutor);
         void Update(PracticaTutor practicaTutor);
         void Delete(PracticaTutor practicaTutor);

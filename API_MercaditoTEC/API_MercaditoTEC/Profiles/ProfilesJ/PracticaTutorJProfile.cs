@@ -12,6 +12,10 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             CreateMap<PracticaTutor, PracticaTutorJ>();
 
             CreateMap<PracticaTutorJ, PracticaTutorJReadDto>();
+
+            //Create
+            CreateMap<PracticaTutorJCreateDto, PracticaTutorJ>();
+            CreateMap<PracticaTutorJ, PracticaTutor>();
         }
     }
 }

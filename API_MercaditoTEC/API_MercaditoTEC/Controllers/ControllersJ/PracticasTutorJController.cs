@@ -81,5 +81,47 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             return NoContent();
         }
 
+        /*
+         * POST api/practicasTutorJ
+         * 
+         * Crea una nueva PracticaTutor
+         */
+        [Route("api/practicasTutorJ")]
+        [HttpPost]
+        public ActionResult<Response> Create(PracticaTutorJCreateDto practicaTutorJCreateDto)
+        {
+            //Se crea la respuesta por enviar
+            Response response = new Response("PracticasTutor", "api/practicasTutorJ", "HttpPost", "Creacion de PracticaTutor: " + practicaTutorJCreateDto.nombre);
+
+            //Mappea la PracticaTutor por crear a un Modelo PracticaTutorJ
+            PracticaTutorJ practicaTutorJModel = _mapper.Map<PracticaTutorJ>(practicaTutorJCreateDto);
+            //Crea la PracticaTutorJ nueva en la base de datos
+            _repository.Create(practicaTutorJModel);
+            //Guarda los cambios en la base de datos
+            _repository.SaveChanges(); //No implementado para PracticaTutorJ
+
+            //Se obtiene el idPracticaTutor recien creado
+            int idPracticaTutor = _repository.GetId(practicaTutorJModel.idCursoTutor, practicaTutorJModel.nombre, practicaTutorJModel.descripcion);
+
+            //Se revisa si se completo la creacion de la PracticaTutorJ
+            if (idPracticaTutor == -1)
+            {
+                /*
+                 * Como no se agrego el PracticaTutorJ
+                 * Se agrega un value de 0 al response
+                 */
+                response.setValue(0);
+                return Ok(response);
+            }
+
+            /*
+             * Como se creo la PracticaTutorJ exitosamente
+             * Se agrega un value del idPracticaTutor al response
+             */
+            response.setValue(idPracticaTutor);
+            return Ok(response);
+
+        }
+
     }
 }

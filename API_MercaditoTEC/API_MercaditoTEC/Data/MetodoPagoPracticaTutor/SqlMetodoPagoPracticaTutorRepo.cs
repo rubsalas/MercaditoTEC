@@ -53,9 +53,19 @@ namespace API_MercaditoTEC.Data
             return metodoPagoPracticaTutorEspecificos;
         }
 
+        /*
+         * Ingresa a la base de datos un nuevo MetodoPagoPracticaTutor.
+         */
         public void Create(MetodoPagoPracticaTutor metodoPagoPracticaTutor)
         {
-            throw new NotImplementedException();
+            //Se verifica si existe
+            if (metodoPagoPracticaTutor == null)
+            {
+                throw new ArgumentNullException(nameof(metodoPagoPracticaTutor));
+            }
+
+            //Se crea en la base de datos por medio del context
+            _context.MetodoPagoPracticaTutor.Add(metodoPagoPracticaTutor);
         }
 
         public void Update(MetodoPagoPracticaTutor metodoPagoPracticaTutor)
