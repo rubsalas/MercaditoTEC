@@ -23,6 +23,9 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             CreateMap<ProductoJCreateDto, ProductoJ>();
             CreateMap<ProductoJ, Producto>();
 
+            //Update
+            CreateMap<ProductoJUpdateDto, ProductoJ>();
+
         }
     }
 }

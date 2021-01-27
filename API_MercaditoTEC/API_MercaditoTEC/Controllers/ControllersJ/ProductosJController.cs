@@ -126,10 +126,10 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
          */
         [Route("api/productosJ")]
         [HttpPost]
-        public ActionResult<Response> CreateProducto(ProductoJCreateDto productoJCreateDto)
+        public ActionResult<Response> Create(ProductoJCreateDto productoJCreateDto)
         {
             //Se crea la respuesta por enviar
-            Response response = new Response("ProductosJ", "api/productosJ", "HttpPost", "Poner a la venta un Producto");
+            Response response = new Response("ProductosJ", "api/productosJ", "HttpPost", "Creacion de Producto: " + productoJCreateDto.nombre);
 
             //No es necesario verificar si ya existe
 
@@ -164,6 +164,49 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
              */
             response.setValue(idProductoJ);
             return Ok(response);
+        }
+
+        /*
+         * PUT api/productosJ/{idProducto}
+         * 
+         * Actualiza la informacion de un producto
+         */
+        [Route("api/productosJ/{idProducto}")]
+        [HttpPut]
+        public ActionResult<Response> Update(int idProducto, ProductoJUpdateDto productoJUpdateDto)
+        {
+            //Se crea la respuesta por enviar
+            Response response = new Response("ProductosJ", "api/productosJ/" + productoJUpdateDto.idProducto, "HttpPut", "Actualización de Producto: " + productoJUpdateDto.nombre);
+
+            //Se obtiene el Producto, con id especifico, del repositorio
+            ProductoJ productoJFromRepo = _repository.GetById(idProducto);
+
+            //Se verifica que exista el Producto obtenida con el idProducto especifico
+            if (productoJFromRepo == null)
+            {
+                /*
+                 * Como no existe
+                 * Se agrega un value de -1 al response
+                 */
+                response.setValue(-1);
+                return Ok(response);
+            }
+
+            //Mappea el Producto por actualizar a un Modelo ProductoJ
+            ProductoJ productoJModel = _mapper.Map<ProductoJ>(productoJUpdateDto);
+            //Actualiza la informacion del Producto en la base de datos
+            _repository.Update(productoJModel);                                         //IMPLEMENTAR ESTE METODO
+            //Guarda los cambios en la base de datos
+            _repository.SaveChanges(); //No implementado para ProductoJ
+
+
+            /*
+             * Como se actualizo el Producto exitosamente
+             * Se agrega un value de 1 al response
+             */
+            response.setValue(1);
+            return Ok(response);
+
         }
 
     }

@@ -259,9 +259,29 @@ namespace API_MercaditoTEC.Data.DataJ
             return cursoTutorJItemsByTutor.ToList();
         }
 
+        public int GetId(int idTutor, int idCurso)
+        {
+            return _cursoTutorRepo.GetId(idTutor, idCurso);
+        }
+
+        /*
+         * Ingresa a la base de datos un nuevo CursoTutor.
+         */
         public void Create(CursoTutorJ cursoTutorJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si el CursoTutorJ ingresado no es nulo
+            if (cursoTutorJ == null)
+            {
+                throw new ArgumentNullException(nameof(cursoTutorJ));
+            }
+
+            //Mappea el CursoTutorJ obtenido a un Modelo CursoTutor
+            CursoTutor cursoTutorModel = _mapper.Map<CursoTutor>(cursoTutorJ);
+
+            //Crea CursoTutor nuevo en la base de datos
+            _cursoTutorRepo.Create(cursoTutorModel);
+            //Guarda los cambios en la tabla CursoTutor en la base de datos
+            _cursoTutorRepo.SaveChanges();
         }
 
         public void Update(CursoTutorJ cursoTutorJ)
@@ -276,7 +296,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

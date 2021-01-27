@@ -14,6 +14,10 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             CreateMap<CursoJ, CursoTutorJ>();
 
             CreateMap<CursoTutorJ, CursoTutorJReadDto>();
+
+            //Create
+            CreateMap<CursoTutorJCreateDto, CursoTutorJ> ();
+            CreateMap<CursoTutorJ, CursoTutor>();
         }
     }
 }

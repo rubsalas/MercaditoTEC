@@ -79,9 +79,35 @@ namespace API_MercaditoTEC.Data
             return cursoTutorEspecificos;
         }
 
+        public int GetId(int idTutor, int idCurso)
+        {
+            //Se obtiene el idCrusoTutor de un CursoTutor especifico
+            int idCursoTutor = _context.CursoTutor.FirstOrDefault(ct => ct.idTutor == idTutor && ct.idCurso == idCurso).idCursoTutor;
+
+            //Se verifica que el Producto exista
+            if (idCursoTutor > 0)
+            {
+                //Si existe, se retorna el idProducto
+                return idCursoTutor;
+            }
+
+            //Si no existe, se retorna un -1
+            return -1;
+        }
+
+        /*
+         * Ingresa a la base de datos un nuevo CursoTutor.
+         */
         public void Create(CursoTutor cursoTutor)
         {
-            throw new NotImplementedException();
+            //Se verifica si el CursoTutor existe
+            if (cursoTutor == null)
+            {
+                throw new ArgumentNullException(nameof(cursoTutor));
+            }
+
+            //Se crea el CursoTutor en la base de datos por medio del context
+            _context.CursoTutor.Add(cursoTutor);
         }
 
         public void Update(CursoTutor cursoTutor)

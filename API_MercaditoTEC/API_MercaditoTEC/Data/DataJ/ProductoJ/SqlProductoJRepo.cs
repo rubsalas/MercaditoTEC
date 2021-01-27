@@ -368,7 +368,6 @@ namespace API_MercaditoTEC.Data.DataJ
                 _ubicacionProductoJRepo.SaveChanges();
             }
 
-
             /*
              * Create de ImagenProducto
              */
@@ -392,7 +391,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public void Update(ProductoJ productoJ)
         {
-            throw new NotImplementedException();
+            //IMPLEMENTAR
         }
 
         public void Delete(ProductoJ productoJ)

@@ -1,4 +1,5 @@
-﻿using API_MercaditoTEC.Data.DataJ;
+﻿using API_MercaditoTEC.Data;
+using API_MercaditoTEC.Data.DataJ;
 using API_MercaditoTEC.Dtos.DtosJ;
 using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
@@ -118,6 +119,49 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             return NoContent();
+        }
+
+
+        /*
+         * POST api/cursosTutorJ
+         * 
+         * Crea un nuevo CursoTutor
+         */
+        [Route("api/cursosTutorJ")]
+        [HttpPost]
+        public ActionResult<Response> Create(CursoTutorJCreateDto cursoTutorJCreateDto)
+        {
+            //Se crea la respuesta por enviar
+            Response response = new Response("CursoTutorJ", "api/cursosTutorJ", "HttpPost", "Creacion de CursoTutor: " + cursoTutorJCreateDto.idCurso);
+
+            //Mappea el CursoTutor por crear a un Modelo CursoTutorJ
+            CursoTutorJ cursoTutorJModel = _mapper.Map<CursoTutorJ>(cursoTutorJCreateDto);
+            //Crea el CursoTutorJ nuevo en la base de datos
+            _repository.Create(cursoTutorJModel);
+            //Guarda los cambios en la base de datos
+            _repository.SaveChanges(); //No implementado para CursoTutorJ
+
+            //Se obtiene el idCursoTutor recien creado
+            int idProductoJ = _repository.GetId(cursoTutorJCreateDto.idTutor, cursoTutorJCreateDto.idCurso);
+
+            //Se revisa si se completo la creacion del Producto
+            if (idProductoJ == -1)
+            {
+                /*
+                 * Como no se agrego el Producto
+                 * Se agrega un value de 0 al response
+                 */
+                response.setValue(0);
+                return Ok(response);
+            }
+
+            /*
+             * Como se creo el Producto exitosamente
+             * Se agrega un value del idproductoJ que ha hecho login al response
+             */
+            response.setValue(idProductoJ);
+            return Ok(response);
+
         }
     }
 }

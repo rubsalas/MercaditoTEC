@@ -9,6 +9,7 @@ namespace API_MercaditoTEC.Data
         CursoTutor GetById(int id);
         IEnumerable<CursoTutor> GetByCurso(int idCurso);
         IEnumerable<CursoTutor> GetByTutor(int idTutor);
+        int GetId(int idTutor, int idCurso);
         void Create(CursoTutor cursoTutor);
         void Update(CursoTutor cursoTutor);
         void Delete(CursoTutor cursoTutor);
