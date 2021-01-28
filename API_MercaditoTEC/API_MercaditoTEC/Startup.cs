@@ -106,6 +106,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IVendedorRepo, SqlVendedorRepo>();
             //Ubicacion
             services.AddScoped<IUbicacionRepo, SqlUbicacionRepo>();
+            //Comprador
+            services.AddScoped<ICompradorRepo, SqlCompradorRepo>();
             //CursoTutor
             services.AddScoped<ICursoTutorRepo, SqlCursoTutorRepo>();
             //Producto
@@ -138,6 +140,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IVendedorJRepo, SqlVendedorJRepo>();
             //UbicacionJ
             services.AddScoped<IUbicacionJRepo, SqlUbicacionJRepo>();
+            //CompradorJ
+            services.AddScoped<ICompradorJRepo, SqlCompradorJRepo>();
             //CursoTutorJ
             services.AddScoped<ICursoTutorJRepo, SqlCursoTutorJRepo>();
             //ProductoJ

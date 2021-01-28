@@ -48,7 +48,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         }
 
         /*
-         * GET api/productosJ/{id}
+         * GET api/productosJ/{idProducto}
          * 
          * Obtiene los datos de una sola fila de las tablas que forman ProductoJ
          * con un id especifico de Producto.

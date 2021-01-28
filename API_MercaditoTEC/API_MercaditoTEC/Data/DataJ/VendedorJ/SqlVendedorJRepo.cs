@@ -30,7 +30,6 @@ namespace API_MercaditoTEC.Data.DataJ
          */
         public IEnumerable<VendedorJ> GetAll()
         {
-
             //Mappeo de Vendedor
 
             //Se retorna una lista de todos los Vendedores
@@ -64,7 +63,7 @@ namespace API_MercaditoTEC.Data.DataJ
         {
             //Mappeo de Vendedor
 
-            //Se retorna un Estudiante especifico
+            //Se retorna un Vendedor especifico
             Vendedor vendedorItem = _context.Vendedor.FirstOrDefault(v => v.idVendedor == id);
 
             //Se mappea la parte de Vendedor al VendedorJ
@@ -75,7 +74,7 @@ namespace API_MercaditoTEC.Data.DataJ
             {
                 //Mappeo de EstudianteJ
 
-                //Se obtiene el idEstudiante del EstudianteJ
+                //Se obtiene el idEstudiante del VendedorJ
                 int idEstudianteJ = vendedorJItem.idEstudiante;
 
                 //Se obtiene el EstudianteJ especifico del idEstudiante

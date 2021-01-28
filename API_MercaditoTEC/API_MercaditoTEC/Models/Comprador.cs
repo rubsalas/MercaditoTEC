@@ -5,7 +5,7 @@ namespace API_MercaditoTEC.Models
     public class Comprador
     {
         [Key]
-        public int idVendedor { get; set; }
+        public int idComprador { get; set; }
         [Required]
         public int idEstudiante { get; set; }
     }
