@@ -44,7 +44,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             //Si no existe envia un NotFound
-            return NotFound();
+            return NoContent();
         }
 
         /*

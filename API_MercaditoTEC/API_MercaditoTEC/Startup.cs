@@ -98,6 +98,8 @@ namespace API_MercaditoTEC
             services.AddScoped<ICursoRepo, SqlCursoRepo>();
             //Canton
             services.AddScoped<ICantonRepo, SqlCantonRepo>();
+            //Administrador
+            services.AddScoped<IAdministradorRepo, SqlAdministradorRepo>();
             //Tutor
             services.AddScoped<ITutorRepo, SqlTutorRepo>();
             //Vendedor
@@ -126,6 +128,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IEstudianteJRepo, SqlEstudianteJRepo>();
             //CursoJ
             services.AddScoped<ICursoJRepo, SqlCursoJRepo>();
+            //AdministradorJ
+            services.AddScoped<IAdministradorJRepo, SqlAdministradorJRepo>();
             //TutorJ
             services.AddScoped<ITutorJRepo, SqlTutorJRepo>();
             //VendedorJ

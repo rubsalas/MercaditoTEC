@@ -28,8 +28,11 @@ namespace API_MercaditoTEC.Models.ModelsJ
         public bool haIngresadoWeb { get; set; }
         [Required]
         public bool haIngresadoApp { get; set; }
+        public int idTutor { get; set; }
         public Single calificacionPromedioTutor { get; set; }
+        public int idAplicante { get; set; }
         public int cantidadAplicaciones { get; set; }
+        public int idVendedor { get; set; }
         public Single calificacionPromedioProductos { get; set; }
         public Single calificacionPromedioServicios { get; set; }
     }

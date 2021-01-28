@@ -59,6 +59,7 @@ namespace API_MercaditoTEC.Data.DataJ
                 //Se mappea la Persona al EstudianteJ correspondiente
                 _mapper.Map(personaItem, estudianteJItems.ElementAt(i));
 
+                /*
                 //Mappeo de Datic
 
                 //Se obtiene el correoInstitucional del Estudiante
@@ -69,6 +70,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
                 //Se mappea la contrasena de Datic al EstudianteJ correspondiente
                 _mapper.Map(daticItem, estudianteJItems.ElementAt(i));
+                */
 
                 //Mappeo Tutor
 

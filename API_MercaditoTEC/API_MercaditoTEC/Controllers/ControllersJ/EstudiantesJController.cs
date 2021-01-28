@@ -88,7 +88,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         }
 
         /*
-         * GET api/estudiantesLogin
+         * GET api/estudiantesJ/Login
          * 
          * Obtiene los datos de login del Estudiante.
          */
@@ -96,7 +96,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
         [HttpPost]
         public ActionResult<EstudianteJReadDto> LoginStudent(EstudianteJLoginDto estudianteJLoginDto)
         {
-            //Se obtiene el correoInstitucional proveido
+            //Se obtiene el correoInstitucional del usuario
             string correoInstitucional = estudianteJLoginDto.correoInstitucional;
 
             //Trae de la base de datos el correoInstitucional y la contrasena registrada en Datic
@@ -104,9 +104,6 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
             //Trae de la base de datos el idEstudiante registrado con el correo
             int idEstudiante = _repository.GetId(correoInstitucional);
-
-            //NO - Contendra el EstudianteJ por enviar como respuesta si hay un error
-            EstudianteJ estudianteJItemError = new EstudianteJ();
 
             //Se crea la respuesta por enviar
             Response response = new Response("EstudiantesJ", "api/estudiantesJ/Login", "HttpPost", "Login Estudiante");

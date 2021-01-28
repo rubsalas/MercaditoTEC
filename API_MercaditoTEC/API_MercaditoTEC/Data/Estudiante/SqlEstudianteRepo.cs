@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace API_MercaditoTEC.Data
 {
     public class SqlEstudianteRepo : IEstudianteRepo
@@ -38,23 +37,16 @@ namespace API_MercaditoTEC.Data
          */
         public int GetId(string correoInstitucional)
         {
-            //Se obtienen todos los Estudiantes
-            IEnumerable<Estudiante> estudianteItems = GetAll();
+            //Se obtiene el Estudiante
+            Estudiante estudianteJItem = _context.Estudiante.FirstOrDefault(e => e.correoInstitucional == correoInstitucional);
 
-            //Se itera atraves de todos los Estudiantes
-            for (int i = 0; i < estudianteItems.Count(); i++)
+            //Se verifica que exista
+            if (estudianteJItem != null)
             {
-                //Se obtiene un Estudiante
-                Estudiante estudianteI = estudianteItems.ElementAt(i);
-
-                //Se verifica que sea el Estudiante que se busca
-                if (estudianteI.correoInstitucional == correoInstitucional)
-                {
-                    //Si se encuentra, se retorna el idEstudiante deseado
-                    return estudianteI.idEstudiante;
-                }
+                //Si se encuentra, se retorna el idEstudiante deseado
+                return estudianteJItem.idEstudiante;
             }
-
+            
             //Si no se encuentra el Estudiante se retorna un -1
             return -1;
         }

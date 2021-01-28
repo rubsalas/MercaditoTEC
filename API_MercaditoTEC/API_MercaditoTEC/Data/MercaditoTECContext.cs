@@ -23,6 +23,7 @@ namespace API_MercaditoTEC.Data
         public DbSet<Estudiante> Estudiante { get; set; }
         public DbSet<Curso> Curso { get; set; }
         public DbSet<Canton> Canton { get; set; }
+        public DbSet<Administrador> Administrador { get; set; }
 
         /* Rojo */
         public DbSet<Tutor> Tutor { get; set; }
