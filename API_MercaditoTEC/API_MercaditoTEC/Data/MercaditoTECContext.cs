@@ -29,6 +29,7 @@ namespace API_MercaditoTEC.Data
         public DbSet<Tutor> Tutor { get; set; }
         public DbSet<Vendedor> Vendedor { get; set; }
         public DbSet<Ubicacion> Ubicacion { get; set; }
+        public DbSet<Comprador> Comprador { get; set; }
 
         /* Anaranjado */
         public DbSet<CursoTutor> CursoTutor { get; set; }
@@ -39,6 +40,7 @@ namespace API_MercaditoTEC.Data
         public DbSet<MetodoPagoProducto> MetodoPagoProducto { get; set; }
         public DbSet<UbicacionProducto> UbicacionProducto { get; set; }
         public DbSet<ImagenProducto> ImagenProducto { get; set; }
+        public DbSet<CompraProducto> CompraProducto { get; set; }
 
         /* Verde */
         public DbSet<TemaPracticaTutor> TemaPracticaTutor { get; set; }

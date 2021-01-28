@@ -18,9 +18,6 @@ namespace API_MercaditoTEC.Data.DataJ
         private readonly ICategoriaRepo _categoriaRepo;
         private readonly IMapper _mapper;
 
-        /*
-         * Retorna todos los ProductosJ con la informacion de ....
-         */
         public SqlProductoJRepo(MercaditoTECContext context, IProductoRepo productoRepo, IVendedorJRepo vendedorJRepo,
             IMetodoPagoProductoJRepo metodoPagoProductoJRepo, IImagenProductoRepo imagenProductoRepo, IUbicacionProductoJRepo ubicacionProductoJRepo,
             ICategoriaRepo categoriaRepo, IMapper mapper)
