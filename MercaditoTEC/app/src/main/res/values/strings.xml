@@ -46,6 +46,10 @@
     <string name="CalificacionVendedor">Calificación del Vendedor</string>
     <string name="LugarEntrega">Lugar de Entrega</string>
     <string name="FormaPago">Forma de Pago</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="NombreProducto">Nombre del Producto</string>
+    <string name="Continuar">Continuar</string>
+    <string name="CategoriaDelProducto">Categoria del Producto</string>
+
+    NombreProducto
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

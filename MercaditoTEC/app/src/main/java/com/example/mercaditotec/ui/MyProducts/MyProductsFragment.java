@@ -2,7 +2,6 @@ package com.example.mercaditotec.ui.MyProducts;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +18,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.mercaditotec.CategorieActivity;
 import com.example.mercaditotec.Constants;
 import com.example.mercaditotec.Controllers.ProductsAdapter;
 import com.example.mercaditotec.Entities.Producto;
 import com.example.mercaditotec.R;
 import com.example.mercaditotec.ui.Activities.MyProductActivity;
+import com.example.mercaditotec.ui.Activities.PostProductForm.NameDescriptionForm;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,6 +55,11 @@ public class MyProductsFragment extends Fragment {
                 intent.putExtra("id", producto.getId());
                 startActivityForResult(intent, 0);
             }
+        });
+
+        v.findViewById(R.id.btnVenderProducto).setOnClickListener(v1 -> {
+            Intent intent = new Intent (getContext(), NameDescriptionForm.class);
+            startActivityForResult(intent, 0);
         });
 
         return v;
