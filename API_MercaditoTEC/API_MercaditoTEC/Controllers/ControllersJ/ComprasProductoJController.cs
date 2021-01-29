@@ -10,12 +10,12 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 {
     //[Route("api/comprasProductoJ")]
     [ApiController]
-    public class ComprasProductoController : ControllerBase
+    public class ComprasProductoJController : ControllerBase
     {
         private readonly ICompraProductoJRepo _repository;
         private readonly IMapper _mapper;
 
-        public ComprasProductoController(ICompraProductoJRepo repository, IMapper mapper)
+        public ComprasProductoJController(ICompraProductoJRepo repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -60,8 +60,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 return Ok(_mapper.Map<CompraProductoJReadDto>(compraProductoJItem));
             }
 
-            //Si no existe envia un NotFound
-            return NotFound();
+            //Si no existe envia un NoContent
+            return NoContent();
         }
 
         /*

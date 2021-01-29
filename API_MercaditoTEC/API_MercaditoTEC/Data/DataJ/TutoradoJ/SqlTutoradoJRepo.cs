@@ -7,56 +7,56 @@ using System.Linq;
 
 namespace API_MercaditoTEC.Data.DataJ
 {
-    public class SqlCompradorJRepo : ICompradorJRepo
+    public class SqlTutoradoJRepo : ITutoradoJRepo
     {
         private readonly MercaditoTECContext _context;
         private readonly IEstudianteJRepo _estudianteJRepo;
         private readonly IMapper _mapper;
 
-        public SqlCompradorJRepo(MercaditoTECContext context, IEstudianteJRepo estudianteJRepo, IMapper mapper)
+        public SqlTutoradoJRepo(MercaditoTECContext context, IEstudianteJRepo estudianteJRepo, IMapper mapper)
         {
             _context = context;
             _estudianteJRepo = estudianteJRepo;
             _mapper = mapper;
         }
 
-        public IEnumerable<CompradorJ> GetAll()
+        public IEnumerable<TutoradoJ> GetAll()
         {
             throw new NotImplementedException();
         }
 
         /*
-         * Retorna un CompradorJ con la informacion de Comprador y EstudianteJ.
+         * Retorna un CompradorJ con la informacion de Tutorado y EstudianteJ.
          */
-        public CompradorJ GetById(int id)
+        public TutoradoJ GetById(int id)
         {
-            //Mappeo de Comprador
+            //Mappeo de Tutorado
 
-            //Se retorna un Comprador especifico
-            Comprador compradoritem = _context.Comprador.FirstOrDefault(c => c.idComprador == id);
+            //Se retorna un Tutorado especifico
+            Tutorado tutoradoItem = _context.Tutorado.FirstOrDefault(t => t.idTutorado == id);
 
-            //Se mappea la parte de Comprador al CompradorJ
-            CompradorJ compradorJItem = _mapper.Map<CompradorJ>(compradoritem);
+            //Se mappea la parte de Tutorado al TutoradoJ
+            TutoradoJ tutoradoJItem = _mapper.Map<TutoradoJ>(tutoradoItem);
 
-            //Si el Comprador existe
-            if (compradorJItem != null)
+            //Si el Tutorado existe
+            if (tutoradoJItem != null)
             {
                 //Mappeo de EstudianteJ
 
-                //Se obtiene el idEstudiante del CompradorJ
-                int idEstudianteJ = compradorJItem.idEstudiante;
+                //Se obtiene el idEstudiante del TutoradoJ
+                int idEstudianteJ = tutoradoJItem.idEstudiante;
 
                 //Se obtiene el EstudianteJ especifico del idEstudiante
                 EstudianteJ estudianteJItem = _estudianteJRepo.GetById(idEstudianteJ);
 
-                //Se mappea la EstudianteJ al CompradorJ
-                _mapper.Map(estudianteJItem, compradorJItem);
+                //Se mappea la EstudianteJ al TutoradoJ
+                _mapper.Map(estudianteJItem, tutoradoJItem);
             }
 
-            return compradorJItem;
+            return tutoradoJItem;
         }
 
-        public CompradorJ GetByEstudiante(int idEstudiante)
+        public TutoradoJ GetByEstudiante(int idEstudiante)
         {
             throw new NotImplementedException();
         }
@@ -66,17 +66,17 @@ namespace API_MercaditoTEC.Data.DataJ
             throw new NotImplementedException();
         }
 
-        public void Create(CompradorJ compradorJ)
+        public void Create(TutoradoJ tutoradoJ)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(CompradorJ compradorJ)
+        public void Update(TutoradoJ tutoradoJ)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(CompradorJ compradorJ)
+        public void Delete(TutoradoJ tutoradoJ)
         {
             throw new NotImplementedException();
         }
@@ -85,6 +85,5 @@ namespace API_MercaditoTEC.Data.DataJ
         {
             throw new NotImplementedException();
         }
-
     }
 }

@@ -8,12 +8,10 @@ namespace API_MercaditoTEC.Data
     public class SqlCompraProductoRepo : ICompraProductoRepo
     {
         private readonly MercaditoTECContext _context;
-        private readonly IProductoRepo _productoRepo;
 
-        public SqlCompraProductoRepo(MercaditoTECContext context, IProductoRepo productoRepo)
+        public SqlCompraProductoRepo(MercaditoTECContext context)
         {
             _context = context;
-            _productoRepo = productoRepo;
         }
 
         /*
@@ -75,11 +73,6 @@ namespace API_MercaditoTEC.Data
             }
 
             return compraProductoByProducto;
-        }
-
-        public IEnumerable<CompraProducto> GetByVendedor(int idVendedor)
-        {
-            throw new NotImplementedException(); //En CompraProductoJ
         }
 
         /*

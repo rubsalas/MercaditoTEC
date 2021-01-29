@@ -102,6 +102,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IAdministradorRepo, SqlAdministradorRepo>();
             //Tutor
             services.AddScoped<ITutorRepo, SqlTutorRepo>();
+            //Tutorado
+            services.AddScoped<ITutoradoRepo, SqlTutoradoRepo>();
             //Vendedor
             services.AddScoped<IVendedorRepo, SqlVendedorRepo>();
             //Ubicacion
@@ -114,6 +116,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IProductoRepo, SqlProductoRepo>();
             //PracticaTutor
             services.AddScoped<IPracticaTutorRepo, SqlPracticaTutorRepo>();
+            //CursoTutorado
+            services.AddScoped<ICursoTutoradoRepo, SqlCursoTutoradoRepo>();
             //MetodopagoProducto
             services.AddScoped<IMetodoPagoProductoRepo, SqlMetodoPagoProductoRepo>();
             //UbicacionProducto
@@ -136,6 +140,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IAdministradorJRepo, SqlAdministradorJRepo>();
             //TutorJ
             services.AddScoped<ITutorJRepo, SqlTutorJRepo>();
+            //TutoradoJ
+            services.AddScoped<ITutoradoJRepo, SqlTutoradoJRepo>();
             //VendedorJ
             services.AddScoped<IVendedorJRepo, SqlVendedorJRepo>();
             //UbicacionJ
@@ -148,6 +154,8 @@ namespace API_MercaditoTEC
             services.AddScoped<IProductoJRepo, SqlProductoJRepo>();
             //PracticaTutorJ
             services.AddScoped<IPracticaTutorJRepo, SqlPracticaTutorJRepo>();
+            //CursoTutorado
+            services.AddScoped<ICursoTutoradoJRepo, SqlCursoTutoradoJRepo>();
             //MetodopagoProductoJ
             services.AddScoped<IMetodoPagoProductoJRepo, SqlMetodoPagoProductoJRepo>();
             //UbicacionProductoJ

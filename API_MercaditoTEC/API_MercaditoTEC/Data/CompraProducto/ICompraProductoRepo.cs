@@ -8,8 +8,7 @@ namespace API_MercaditoTEC.Data
         IEnumerable<CompraProducto> GetAll();
         CompraProducto GetById(int id);
         IEnumerable<CompraProducto> GetByComprador(int idComprador);
-        IEnumerable<CompraProducto> GetByProducto(int idProducto); //Puede que no
-        IEnumerable<CompraProducto> GetByVendedor(int idVendedor);
+        IEnumerable<CompraProducto> GetByProducto(int idProducto);
         int GetId(int idProducto, int idComprador);
         void Create(CompraProducto compraProducto);
         void Update(CompraProducto compraProducto);
