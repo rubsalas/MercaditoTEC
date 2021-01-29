@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { LoginInterface } from 'src/app/models/login-interface';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verify-register',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class VerifyRegisterComponent implements OnInit {
 
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService, private router: Router) { }
 
   public login: LoginInterface = {
     correoInstitucional: '',
@@ -28,8 +29,8 @@ export class VerifyRegisterComponent implements OnInit {
 
       this.loginService.postDatic(this.login)
       .subscribe( newDatic => {
-        console.log(newDatic);
-        //this.login = newDatic;
+        console.log(newDatic)
+        this.router.navigateByUrl('/registerview');
       });
     }
   }

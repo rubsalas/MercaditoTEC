@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AddCourseInterface } from 'src/app/models/add-course-interface';
+import { CourseLibraryInterface } from 'src/app/models/course-library-interface';
 import { CourseTutorInterface } from 'src/app/models/course-tutor-interface';
+import { AuthService } from 'src/app/services/auth.service';
 import { TutorService } from 'src/app/services/tutor.service';
 
 @Component({
@@ -10,19 +14,49 @@ import { TutorService } from 'src/app/services/tutor.service';
 })
 export class AddCourseTutorComponent implements OnInit {
 
-  constructor(public tutorService: TutorService) { }
+  public course: AddCourseInterface = {
+    idTutor: 0,
+    idCurso: 0,
+    notaObtenida: 0,
+    temas: ' '
+  }
 
-  public course: CourseTutorInterface | undefined;
+  public saveId = '';
+
+  public coursesLibrary: CourseLibraryInterface[] | undefined;
+
+  constructor(public tutorService: TutorService,  
+    public authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.loadCoursesLibrary();
   }
 
   addCourse(form: NgForm) {
     if (form.valid) {
-      console.log(this.course);
+      var myidtutor = this.authService.getIdStudent();
+      
+      if(myidtutor != null){
+        this.course.idTutor = parseInt(myidtutor);
+        this.course.idCurso = parseInt(this.saveId);
+        console.log(this.course);
 
-      //this.tutorService
+        this.tutorService.addTutorCourse(this.course)
+        .subscribe( (response: any) => {
+          console.log(response)
+          this.router.navigateByUrl('/tutorview');;
+        });
+      }
     }
+  }
+
+  loadCoursesLibrary(){
+    this.tutorService.getCoursesLibrary()
+    .subscribe( (coursesFromApi: any) => {
+      console.log(coursesFromApi)
+      this.coursesLibrary = coursesFromApi;
+    });
   }
 
 }

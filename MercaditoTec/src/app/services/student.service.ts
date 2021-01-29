@@ -3,18 +3,26 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StudentInterface } from '../models/student-interface';
+import { EditProfileInterface } from '../models/edit-profile-interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
+  profileStudentURL = environment.apiURL + 'estudiantesJ/Perfil/';
   studentURL = environment.apiURL + 'estudiantesJ/';
   constructor(private http: HttpClient) { }
 
-  getStudent(studentId: string): Observable<StudentInterface> {
-    const url = this.studentURL + studentId;
+  getProfileStudent(studentId: string | null): Observable<StudentInterface> {
+    const url = this.profileStudentURL + studentId;
+    console.log('GET ESTUDENT: '+url);
     return this.http.get<StudentInterface>(url);
+  }
+
+  updateProfileStudent(user: EditProfileInterface): Observable<EditProfileInterface> {
+    const url = this.studentURL + user.idEstudiante;
+    return this.http.put<EditProfileInterface>(url, user);
   }
  
 }
@@ -65,3 +73,55 @@ export class StudentService {
     const url = this.baseURL + id;
     return this.http.delete(url);
   }*/
+
+/*
+  baseURL = environment.apiURL + 'personas/';
+  constructor(private http: HttpClient) { }
+  
+  getPerson(personId: string): Observable<Person> {
+    const url = this.baseURL + personId;
+    return this.http.get<Person>(url);
+  }
+
+  getPersons(): Observable<Person[]> {
+    return this.http.get<Person[]>(this.baseURL);
+  }
+
+  getPersonsWithHeaders(): Observable<any> {
+    return this.http.get(this.baseURL, {observe: 'response'});
+  }
+
+  getPersonsSendHeaders() {
+     // headers HTTP
+     let headers = new HttpHeaders();
+     headers = headers.append('Authorization', 'bearer token2');
+     headers = headers.append('X-Pagination', '3');
+ 
+     // query strings
+     let params = new HttpParams();
+     params = params.append('X-Pagination', '4');
+ 
+     return this.http.get<Person[]>(this.baseURL, {headers, params});
+  }
+
+  createPerson(user: Person): Observable<Person>{
+    return this.http.post<Person>(this.baseURL, user);
+  }
+
+  updatePerson(user: Person): Observable<Person> {
+    const url = this.baseURL + user.idPersona;
+    return this.http.put<Person>(url, user);
+  }
+
+  
+  patchPerson(id: number, operations: Operation[]){
+    const url = this.baseURL + id;
+    return this.http.patch(url, operations);
+  }
+  
+
+ deletePerson(id: number): Observable<any> {
+  const url = this.baseURL + id;
+  return this.http.delete(url);
+}
+*/

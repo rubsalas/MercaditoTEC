@@ -1,1 +1,65 @@
+<div class="container">
+    <div class="row row-cols-2">
+        <div class="col-xs-12 col-sm-8 mx-auto">
+            <div class="card_courses">
+                <div class="card">
+                    <div class="card-body ">
+                        <h1 class="h3 mb-3 font-weight-normal text-center" >Mis cursos como tutor</h1>
+                        <br>
+                        <div class="col">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th scope="col">No.</th>
+                                  <th scope="col">Nombre del Curso</th>
+                                  <th scope="col">Código del Curso</th>
+                                  <th scope="col">&nbsp;</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let Course of coursesList; index as i">
+                                  <td>{{i+1}}</td>
+                                  <td>{{Course.nombreCurso}}</td>
+                                  <td>{{Course.codigo}}</td>
+                                  <td>
+                                    <button class="btn btn-primary menus" (click)="openCourse(Course)">Ver Curso</button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 mx-auto">
+            <div class="card_menu">
+                <div class="card">
+                    <div class="card-body ">
+                        <h1 class="h3 mb-3 font-weight-normal text-center" >Menu</h1>
+                        <button routerLink="/addcoursetutor"
+                        class="btn btn-lg btn-success btn-block text-center" >
+                        Agregar Curso
+                        </button>
+                        <button routerLink="/evaluationsTutor"
+                        class="btn btn-lg btn-success btn-block text-center" >
+                        Ver Evaluaciones
+                        </button>
+                        <button routerLink="/homepage"
+                        class="btn btn-lg btn-success btn-block text-center" >
+                        Regresar
+                        </button>
+                        <br> <br>
+                        <ng-container *ngIf="student">
+                          <div class="h4 mb-3 font-weight-normal text-center">  
+                            Calificación Promedio: {{ student.calificacionPromedioTutor }}                 
+                          </div>  
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

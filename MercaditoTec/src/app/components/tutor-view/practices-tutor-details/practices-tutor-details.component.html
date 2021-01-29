@@ -1,0 +1,46 @@
+<h1 class=" mb-3 font-weight-normal text-center" >Practica {{ practice.nombre }}</h1>
+
+<div class="container">
+    <div class="row row-cols-2">
+        <div class="col-xs-12 col-sm-8 mx-auto">
+            <div class="card_course">
+                <div class="card">
+                  <div class="card-body ">
+                    <h1 class="h3 mb-3 font-weight-normal text-center" >Información de la practica</h1>
+                    <br> 
+                    <ng-container *ngIf="practice">
+                        <div class="h5 mb-3 font-weight-normal text-center">  Nombre de la práctica: {{ practice.nombre }}  </div>
+                        <div class="h5 mb-3 font-weight-normal text-center">  Descripción: {{ practice.descripcion }}                 </div>
+                        <div class="h5 mb-3 font-weight-normal text-center">  Cantidad Ejercicios: {{ practice.cantidadEjercicios }}        </div>
+                        <div class="h5 mb-3 font-weight-normal text-center">  Precio: {{ practice.precio }}                </div>
+                        <div class="h5 mb-3 font-weight-normal text-center">  Temas Relacionados: {{ practice.temas }}           </div>
+                        <div class="h5 mb-3 font-weight-normal text-center">  Metodos Pago: {{ practice.metodosPago }}           </div>
+                    </ng-container>
+                    <br>
+                    <button
+                    class="btn btn-lg container-fluid btn-success text-center" >
+                    Editar
+                    </button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 mx-auto">
+            <div class="card_menu">
+                <div class="card">
+                    <div class="card-body ">
+                        <h1 class="h3 mb-3 font-weight-normal text-center" >Menu</h1>
+                        <button 
+                        class="btn btn-lg btn-success btn-block text-center" >
+                        Eliminar Práctica
+                        </button>
+                        <button routerLink="/practiceTutorList"
+                        class="btn btn-lg btn-block btn-success text-center" >
+                        Regresar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

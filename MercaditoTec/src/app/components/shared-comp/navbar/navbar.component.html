@@ -1,13 +1,11 @@
-<nav class="navbar navbar-expand-md align-items-center bg-dark fg">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
   <a class="navbar-brand hhhh" routerLink="/">{{app_name}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   <div class="collapse navbar-collapse" id="mainNavbar">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngIf="adminLogged">
-        <a class="nav-link menus" routerLink="/adminProfile"> Perfil </a>
-      </li>
-    </ul>
-
     <ul class="navbar-nav ml-auto">
       <li class="nav-item" *ngIf="studentLogged">
         <a class="nav-link menus" routerLink="/profileview"> Perfil</a>
@@ -15,26 +13,24 @@
       <li class="nav-item" *ngIf="studentLogged">
         <a class="nav-link menus" routerLink="/messagecenter"> Mensajes</a>
       </li>
-    </ul>
-    
-    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="!logout">
+        <a routerLink="/" class="btn btn-success" (click)="onLogout()">Salir </a>
+      </li>
+
       <li class="nav-item" *ngIf="logout">
-        <a class="nav-link menus" routerLink="/adminview"> Perfil Administrador </a>
+        <a class="nav-link menus" routerLink="/adminview"> Administrador </a>
       </li>
       <li class="nav-item" *ngIf="logout">
-        <a class="nav-link menus" routerLink="/employeview"> Perfil Empleador </a>
+        <a class="nav-link menus" routerLink="/notfoundpage"> Empleador </a>
       </li>
       <li class="nav-item" *ngIf="logout">
-        <a class="nav-link menus" routerLink="/libraryview"> Sistema Librería </a>
+        <a class="nav-link menus" routerLink="/notfoundpage"> Sistema Librería </a>
       </li>
       <li class="nav-item" *ngIf="logout">
         <a class="btn btn-success" routerLink="/"> Login </a>
       </li>
       <li class="nav-item" *ngIf="logout">
         <a class="btn btn-success" routerLink="/verifyRegister"> Register </a>
-      </li>
-      <li class="nav-item" *ngIf="!logout">
-        <a routerLink="/" class="btn btn-success" (click)="onLogout()">Salir </a>
       </li>
     </ul>
   </div>

@@ -1,5 +1,5 @@
-export interface Person {
-    idPersona: number;
+export interface EditProfileInterface {
+    idEstudiante: number;
     nombre: string;
     apellidos: string;
     telefono: string;

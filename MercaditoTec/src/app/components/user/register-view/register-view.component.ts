@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterInterface } from 'src/app/models/register-interface';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class RegisterViewComponent implements OnInit {
 
-  constructor(public registerService: LoginService) { }
+  constructor(public registerService: LoginService, private router: Router) { }
 
   public register: RegisterInterface = {
     nombre: '',
@@ -32,13 +33,14 @@ export class RegisterViewComponent implements OnInit {
 
       this.registerService.postRegister(this.register)
       .subscribe( (newRegister: any)  => {
-        console.log(newRegister);
+        console.log(newRegister)
         if(newRegister.value == 0){
           console.log("No se pudo registrar");
         }
         if(newRegister.value < 0){
           console.log("Estudiante ya estaa registrado");
-        };
+        }
+        this.router.navigateByUrl('/');
       });
     }
   }

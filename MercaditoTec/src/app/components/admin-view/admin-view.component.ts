@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from 'src/app/models/person';
-import { PersonService } from 'src/app/services/person.service';
+import { LoginService } from 'src/app/services/login.service';
+import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { AdminInterface } from 'src/app/models/admin-interface';
 
 @Component({
   selector: 'app-admin-view',
@@ -9,15 +12,68 @@ import { PersonService } from 'src/app/services/person.service';
 })
 export class AdminViewComponent implements OnInit {
 
-  notFound = false;
-  person: Person | undefined; 
+  public login: AdminInterface = {
+    usuario: '',
+    contrasena: ''
+  };
 
-  constructor(private personService: PersonService) { }
+  constructor(public loginService: LoginService, 
+    public authService: AuthService,
+    private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void { }
+
+  onLogin(form: NgForm) {
+    if (form.valid) {
+      console.log('LOGIN ADMIN A ENVIAR');
+      console.log(this.login);     
+      
+      this.loginService.postLoginAdmin(this.login)
+      .subscribe( (getLogin: any) => {
+        console.log(getLogin)
+        this.router.navigateByUrl('/homepageAdmin');
+      });
+    }
   }
 
-  getPerson(personId: string) {
+}
+
+/*
+
+import { Person } from 'src/app/models/person';
+import { PersonService } from 'src/app/services/person.service';
+
+Put the person ID:
+<input type="text" #textId>
+<button (click)="getPerson(textId.value)">Get person</button>
+
+<hr>
+
+<ng-container *ngIf="notFound">
+  User not found
+</ng-container>
+
+<ng-container *ngIf="person">
+  <div>
+    Id: {{ person.idPersona }}
+  </div>
+
+  <div>
+    Nombre: {{ person.nombre }}
+  </div>
+
+  <div>
+    Apellidos: {{ person.apellidos }}
+  </div>
+
+  <div>
+    Telefono: {{ person.telefono }}
+  </div>
+</ng-container>
+
+notFound = false;
+  person: Person | undefined;
+getPerson(personId: string) {
     this.notFound = false;
     //this.person = null;
 
@@ -28,5 +84,4 @@ export class AdminViewComponent implements OnInit {
       this.notFound = true;
     });
   }
-
-}
+*/

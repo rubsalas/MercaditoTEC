@@ -1,27 +1,32 @@
-Put the person ID:
-<input type="text" #textId>
-<button (click)="getPerson(textId.value)">Get person</button>
+<h1 class="mb-3 font-weight-normal text-center" >Vista del Administrador</h1>
 
-<hr>
-
-<ng-container *ngIf="notFound">
-  User not found
-</ng-container>
-
-<ng-container *ngIf="person">
-  <div>
-    Id: {{ person.idPersona }}
+<section id="loginAdmin" class="mb-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-4 mx-auto">
+        <div class="card_loginAdmin">
+          <div class="card">
+            <div class="card-body ">
+              <form #formLoginAdmin="ngForm" >
+                <h1 class="h3 mb-3 font-weight-normal text-center">Inicio de sesión</h1>
+                <br>
+                <div class="form-group">
+                  <label class="text-left">Usuario</label>
+                  <input type="email" id="correoInstitucional" name="correoInstitucional" class="form-control text-center" [(ngModel)]="login.usuario" required>
+                </div>
+                <div class="form-group">
+                  <label>Contraseña</label>
+                  <input type="password" id="contrasena" name="contrasena" class="form-control text-center" placeholder="* * * * * * * *" [(ngModel)]="login.contrasena" required>
+                </div>
+                <button (click)="onLogin(formLoginAdmin)" type="submit" class="btn btn-lg btn-success btn-block text-center" >Ingresar</button>
+                <div class="form-group">
+                  <a routerLink="/" class="form-control login-user text-center"> Regresar </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    Nombre: {{ person.nombre }}
-  </div>
-
-  <div>
-    Apellidos: {{ person.apellidos }}
-  </div>
-
-  <div>
-    Telefono: {{ person.telefono }}
-  </div>
-</ng-container>
+</section>

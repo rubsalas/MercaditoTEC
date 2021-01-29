@@ -3,6 +3,9 @@ import { TutorService } from 'src/app/services/tutor.service';
 import { CourseTutorInterface } from 'src/app/models/course-tutor-interface';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { StudentService } from 'src/app/services/student.service';
+import { StudentInterface } from 'src/app/models/student-interface';
 
 @Component({
   selector: 'app-tutor-view',
@@ -11,30 +14,64 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class TutorViewComponent implements OnInit {
 
-  public courses: CourseTutorInterface | undefined;
-  pageActual: number = 1;
-  public myCounter: number = 0;
+  public coursesList!: CourseTutorInterface[];
+  notFound = false;
 
-  constructor(public tutorService: TutorService, public authService: AuthService) { }
+  public student: StudentInterface = {
+    idEstudiante: 0,
+    nombre: '',
+    apellidos: '',
+    telefono: '',
+    correoInstitucional: '',
+    puntosCanje: 0,
+    calificacionPromedioTutor: 0,
+    cantidadAplicaciones: 0,
+    calificacionPromedioProductos: 0,
+    calificacionPromedioServicios: 0
+  };
+
+  constructor(public tutorService: TutorService,
+    public studentService: StudentService,
+    public authService: AuthService, 
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getListCourses();
+    var id = this.authService.getIdStudent();
+    this.getStudent(id);
   }
 
   getListCourses(): void {
     this.tutorService
-      .getAllTutorCourses(this.authService.idEstudiante)
+      .getAllTutorCourses(this.authService.getIdStudent())
       .subscribe( (courses: any) => {
-        (this.courses = courses)
-        console.log(this.courses?.apellidos);
+        (this.coursesList = courses)
+        console.log(this.coursesList);
       });
   }
 
+  getStudent(studentId: string | null) {
+    this.notFound = false;
+
+    this.studentService.getProfileStudent(studentId)
+    .subscribe((studentFromTheAPI : any) => {
+      this.student = studentFromTheAPI;
+    });
+  }
+
   openCourse(course: CourseTutorInterface){
-    console.log(course.nombreCurso);
+    console.log(course);
+    this.authService.grabarCursoTutor(course.idCursoTutor.toString(),course.nombreCurso);
+    this.router.navigateByUrl('/courseTutorDetails');
   }
 
 }
+
+/*
+<ng-container *ngIf="student">
+                          <div class="h4 mb-3 font-weight-normal text-center">  Nombre: {{ student.nombre }}                 </div>
+                        </ng-container>
+*/
 
 /*
 <div class="row mt-5">

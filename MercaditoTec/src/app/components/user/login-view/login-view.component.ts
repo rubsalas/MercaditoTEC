@@ -24,11 +24,8 @@ export class LoginViewComponent implements OnInit {
     nombre: '',
     apellidos: '',
     telefono: '',
-    email: '',
     correoInstitucional: '',
     puntosCanje: 0,
-    haIngresadoWeb: false,
-    haIngresadoApp: false,
     calificacionPromedioTutor: 0,
     cantidadAplicaciones: 0,
     calificacionPromedioProductos: 0,
@@ -52,29 +49,16 @@ export class LoginViewComponent implements OnInit {
       
       this.loginService.postLogin(this.login)
       .subscribe( (getLogin: any) => {
-        
         console.log(getLogin)
         this.idEstudiante = getLogin.value
         this.authService.grabarId(this.idEstudiante)
-        this.authService.loginUser("student");
-
-        this.router.navigate(['/shared-comp/homepage']);
-        location.reload();
-        this.isError = false;
-      },
-      error => this.onIsError()
-      ); 
-    }else {
-      this.onIsError();
+        this.authService.loginUser('student')
+        this.router.navigateByUrl('/homepage');
+      }); 
     }
+    
   }
 
-  onIsError(): void {
-    this.isError = true;
-    setTimeout(() => {
-      this.isError = false;
-    }, 4000);
-  }
 
 }
 

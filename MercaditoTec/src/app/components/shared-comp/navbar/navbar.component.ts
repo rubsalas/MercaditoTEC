@@ -10,15 +10,19 @@ import { Location } from '@angular/common';
 export class NavbarComponent implements OnInit {
   //routerLink="/general" routerLinkActive="router-link-active"
 
-  constructor(private authService: AuthService, private location: Location) { }
-  
+  public userLogged = '';
   public app_name = 'Mercadito TEC';
+
+  constructor(private authService: AuthService, private location: Location) { 
+    /*authService.currentUser.subscribe((nextValue) => {
+      this.userLogged=nextValue;
+    })*/
+  }
 
   public adminLogged = false;
   public libraryLogged = false;
   public employeeLogged = false;
   public studentLogged = false;
-
   public logout = true;
   
   ngOnInit(): void { 
@@ -30,7 +34,6 @@ export class NavbarComponent implements OnInit {
     this.libraryLogged = false;
     this.employeeLogged = false;
     this.studentLogged = false;
-
     this.logout = true;
 
     this.authService.logoutUser();
@@ -38,25 +41,28 @@ export class NavbarComponent implements OnInit {
   }
 
   onCheckUser(): void {
-    if (this.authService.getCurrentUser() == 'null') {
+    var myCurrentUser = this.authService.getCurrentUser();
+    console.log(myCurrentUser);
+
+    if (myCurrentUser == 'null') {
       this.adminLogged = false;
       this.libraryLogged = false;
       this.employeeLogged = false;
       this.studentLogged = false;
     } 
-    if (this.authService.getCurrentUser() == 'student') {
+    if (myCurrentUser == 'student') {
       this.studentLogged = true;
       this.logout = false;
     }
-    if (this.authService.getCurrentUser() == 'admin') {
+    if (myCurrentUser == 'admin') {
       this.adminLogged = true;
       this.logout = false;
     }
-    if (this.authService.getCurrentUser() == 'employee') {
+    if (myCurrentUser == 'employee') {
       this.employeeLogged = true;
       this.logout = false;
     }
-    if (this.authService.getCurrentUser() == 'library') {
+    if (myCurrentUser == 'library') {
       this.libraryLogged = true;
       this.logout = false;
     }
@@ -104,29 +110,45 @@ export class NavbarComponent implements OnInit {
 */
 
 /*
-<div class="nav d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 shadow-sm">
-  <h3 class="my-0 mr-md-auto fg font-weight-strong">
-    MercaditoTEC
-  </h3>
-  <nav class="my-2 my-md-0 mr-md-3 navBar">
-    <div class="row"> 
-      <div>
-        <a class="btn btn-primary menus" routerLink="/adminview"> Perfil Administración </a>
-      </div>
+<nav class="navbar navbar-expand-md align-items-center bg-dark fg">
+  <a class="navbar-brand hhhh" routerLink="/">{{app_name}}</a>
 
-      <div>
-        <a class="btn btn-primary menus" routerLink="/employerview"> Perfil Empleador </a>
-      </div>
+  <div class="collapse navbar-collapse" id="mainNavbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="adminLogged">
+        <a class="nav-link menus" routerLink="/adminProfile"> Perfil </a>
+      </li>
+    </ul>
 
-      <div>
-        <a class="btn btn-primary menus" routerLink="/libraryview"> Sistema Librería </a>
-      </div>
-
-      <div>
-        <!-- <a class="btn btn-primary btn-register" [routerLink]="'/register'">Sign up</a> -->
-        <a class="btn btn-outline-secondary btn-register" routerLink="/verifyRegister"> Registrarse</a>
-      </div>
-    </div>
-  </nav>
-</div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="studentLogged">
+        <a class="nav-link menus" routerLink="/profileview"> Perfil</a>
+      </li>
+      <li class="nav-item" *ngIf="studentLogged">
+        <a class="nav-link menus" routerLink="/messagecenter"> Mensajes</a>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="logout">
+        <a class="nav-link menus" routerLink="/adminview"> Administrador </a>
+      </li>
+      <li class="nav-item" *ngIf="logout">
+        <a class="nav-link menus" routerLink="/employeview"> Empleador </a>
+      </li>
+      <li class="nav-item" *ngIf="logout">
+        <a class="nav-link menus" routerLink="/libraryview"> Sistema Librería </a>
+      </li>
+      <li class="nav-item" *ngIf="logout">
+        <a class="btn btn-success" routerLink="/"> Login </a>
+      </li>
+      <li class="nav-item" *ngIf="logout">
+        <a class="btn btn-success" routerLink="/verifyRegister"> Register </a>
+      </li>
+      <li class="nav-item" *ngIf="!logout">
+        <a routerLink="/" class="btn btn-success" (click)="onLogout()">Salir </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 */

@@ -6,11 +6,8 @@
           <div class="card">
             <div class="card-body ">
               <form #formRegister="ngForm" >
-                <h1 class="h3 mb-3 font-weight-normal text-center" *ngIf="!isError">Registro a MercaditoTEC</h1>
+                <h1 class="h3 mb-3 font-weight-normal text-center" >Registro a MercaditoTEC</h1>
                 <br>
-                <div class="alert alert-danger" role="alert" *ngIf="isError">
-                  Something is wrong!
-                </div>
                 <div class="form-group">
                   <label >Nombre</label>
                   <input type="text" id="nombre" name="nombre" class="form-control text-center" [(ngModel)]="register.nombre" required>
@@ -27,7 +24,7 @@
                   <label>Correo Institucional</label>
                   <input type="email" id="correoInstitucional" name="correoInstitucional" class="form-control text-center" placeholder="user@estudiantec.cr" [(ngModel)]="register.correoInstitucional" required>
                 </div>
-                <button routerLink="/" (click)="onRegister(formRegister)" type="button" class="btn btn-lg btn-success btn-block text-center">Registrarme</button>
+                <button (click)="onRegister(formRegister)" type="button" class="btn btn-lg btn-success btn-block text-center">Registrarme</button>
                 <div class="form-group">
                   <a routerLink="/" class="form-control login-user text-center"> Cancelar </a>
                 </div>

@@ -1,1 +1,46 @@
-<p>profile-view works!</p>
+<h1 class=" mb-3 font-weight-normal text-center" >Perfil de Estudiante</h1>
+
+<div class="container">
+  <div class="row row-cols-2">
+      <div class="col-xs-12 col-sm-8 mx-auto">
+          <div class="card_courses">
+              <div class="card">
+                <div class="card-body ">
+                  <ng-container *ngIf="student">
+                      <div class="h4 mb-3 font-weight-normal text-center">  Nombre: {{ student.nombre }}                 </div>
+                      <div class="h4 mb-3 font-weight-normal text-center">  Apellidos: {{ student.apellidos }}           </div>
+                      <div class="h4 mb-3 font-weight-normal text-center">  Telefono: {{ student.telefono }}             </div>
+                      <div class="h4 mb-3 font-weight-normal text-center">  Correo Institucional: {{ student.telefono }}  </div>
+                      <div class="h4 mb-3 font-weight-normal text-center">  Puntos Canje: {{ student.puntosCanje }}           </div>
+                      <div class="h4 mb-3 font-weight-normal text-center">  Calificacion Tutor: {{ student.calificacionPromedioTutor }}     </div>
+                      <div class="h4 mb-3 font-weight-normal text-center">  Cantidad Aplicaciones Ofertas Laborales: {{ student.cantidadAplicaciones }}  </div>
+                  </ng-container>
+                  <br>
+                  <button routerLink="/homepage"
+                  class="btn btn-lg container-fluid btn-success text-center" >
+                  Regresar
+                  </button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4 mx-auto">
+          <div class="card_menu">
+              <div class="card">
+                  <div class="card-body ">
+                      <h1 class="h3 mb-3 font-weight-normal text-center" >Menu</h1>
+                      <button routerLink="/editprofile"
+                      class="btn btn-lg btn-success btn-block text-center" >
+                      Editar Perfil
+                      </button>
+                      <button routerLink="/homepage"
+                      class="btn btn-lg btn-success btn-block text-center" >
+                      Dashboard del estudiante
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
