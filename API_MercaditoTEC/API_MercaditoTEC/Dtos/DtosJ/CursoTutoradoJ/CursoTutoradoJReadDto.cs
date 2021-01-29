@@ -1,7 +1,4 @@
-﻿using API_MercaditoTEC.Models;
-using API_MercaditoTEC.Models.ModelsJ;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace API_MercaditoTEC.Dtos.DtosJ

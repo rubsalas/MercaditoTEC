@@ -164,14 +164,32 @@ namespace API_MercaditoTEC.Data.DataJ
             throw new NotImplementedException();
         }
 
+        /*
+         * Retorna el idCursoTutorado de un CursoTutorado especifico.
+         */
         public int GetId(int idTutorado, int idCursoTutor)
         {
-            throw new NotImplementedException();
+            return _cursoTutoradoRepo.GetId(idTutorado, idCursoTutor);
         }
 
+        /*
+         * Ingresa a la base de datos un nuevo CursoTutorado.
+         */
         public void Create(CursoTutoradoJ cursoTutoradoJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si el CursoTutoradoJ ingresado no es nulo
+            if (cursoTutoradoJ == null)
+            {
+                throw new ArgumentNullException(nameof(cursoTutoradoJ));
+            }
+
+            //Mappea el CursoTutoradoJ obtenido a un Modelo CursoTutorado
+            CursoTutorado cursoTutoradoModel = _mapper.Map<CursoTutorado>(cursoTutoradoJ);
+
+            //Se crea el CursoTutorado nuevo en la base de datos
+            _cursoTutoradoRepo.Create(cursoTutoradoModel);
+            //Se guardan los cambios en la tabla CursoTutorado en la base de datos
+            _cursoTutoradoRepo.SaveChanges();
         }
 
         public void Update(CursoTutoradoJ cursoTutoradoJ)
@@ -186,7 +204,7 @@ namespace API_MercaditoTEC.Data.DataJ
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
     }

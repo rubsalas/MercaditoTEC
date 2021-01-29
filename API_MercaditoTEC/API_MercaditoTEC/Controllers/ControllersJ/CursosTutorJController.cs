@@ -142,13 +142,13 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             _repository.SaveChanges(); //No implementado para CursoTutorJ
 
             //Se obtiene el idCursoTutor recien creado
-            int idProductoJ = _repository.GetId(cursoTutorJCreateDto.idTutor, cursoTutorJCreateDto.idCurso);
+            int idCursoTutor = _repository.GetId(cursoTutorJCreateDto.idTutor, cursoTutorJCreateDto.idCurso);
 
-            //Se revisa si se completo la creacion del Producto
-            if (idProductoJ == -1)
+            //Se revisa si se completo la creacion del CursoTutor
+            if (idCursoTutor == -1)
             {
                 /*
-                 * Como no se agrego el Producto
+                 * Como no se agrego el CursoTutor
                  * Se agrega un value de 0 al response
                  */
                 response.setValue(0);
@@ -156,10 +156,10 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             /*
-             * Como se creo el Producto exitosamente
-             * Se agrega un value del idproductoJ que ha hecho login al response
+             * Como se creo el CursoTutor exitosamente
+             * Se agrega un value del idCursoTutor al response
              */
-            response.setValue(idProductoJ);
+            response.setValue(idCursoTutor);
             return Ok(response);
 
         }
