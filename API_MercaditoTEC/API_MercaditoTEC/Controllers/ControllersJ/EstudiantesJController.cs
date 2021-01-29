@@ -215,7 +215,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             Estudiante estudiante = _estudianteRepository.GetById(estudianteJGuideDto.idEstudiante);
 
             //Se crea la respuesta por enviar
-            Response response = new Response("EstudiantesJ", "api/estudiantesJ/Guia", "HttpPost", "Guia Estudiante");
+            Response response = new Response("EstudiantesJ", "api/estudiantesJ/Guia", "HttpPut", "Guia Estudiante");
 
             //Se verifica si el estudiante existe
             if (estudiante == null)

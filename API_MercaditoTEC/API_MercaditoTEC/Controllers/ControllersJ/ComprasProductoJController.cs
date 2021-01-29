@@ -3,6 +3,7 @@ using System.Linq;
 using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Data.DataJ;
 using API_MercaditoTEC.Dtos.DtosJ;
+using API_MercaditoTEC.Models;
 using API_MercaditoTEC.Models.ModelsJ;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,15 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
     {
         private readonly ICompraProductoJRepo _repository;
         private readonly MercaditoTECContext _context;
+        private readonly ICompraProductoRepo _compraProductoRepo;
         private readonly IMapper _mapper;
 
-        public ComprasProductoJController(ICompraProductoJRepo repository, MercaditoTECContext context, IMapper mapper)
+        public ComprasProductoJController(ICompraProductoJRepo repository, MercaditoTECContext context, ICompraProductoRepo compraProductoRepo,
+            IMapper mapper)
         {
             _repository = repository;
             _context = context;
+            _compraProductoRepo = compraProductoRepo;
             _mapper = mapper;
         }
 
@@ -120,7 +124,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             Response response = new Response("CompraProductoJ", "api/comprasProductoJ", "HttpPost",
                 "Creacion de CompraProducto: [" + compraProductoJCreateDto.idProducto + ", " + compraProductoJCreateDto.idComprador + "]");
 
-            //Se verifica que exita el Producto y el Comprador este registrado
+            //Se verifica que exista el Producto y el Comprador este registrado
             if (_context.Producto.Any(p => p.idProducto == compraProductoJCreateDto.idProducto) &&
                 _context.Comprador.Any(c => c.idComprador== compraProductoJCreateDto.idComprador))
             {
@@ -158,6 +162,80 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
              * Se agrega un value de -1 al response
              */
             response.setValue(-1);
+            return Ok(response);
+        }
+
+        /*
+         * PUT api/comprasProductoJ/Confirmacion
+         * 
+         * El Comprador y el Vendedor confirmaran la compra de un Producto.
+         */
+        [Route("api/comprasProductoJ/Confirmacion")]
+        [HttpPut]
+        public ActionResult<Response> CompraProductoConfirmation(CompraProductoJConfirmationDto compraProductoJConfirmationDto)
+        {
+            //Se crea la respuesta por enviar
+            Response response = new Response("ComprasProductoJ", "api/comprasProductoJ/Confirmacion", "HttpPut", 
+                "Confirmacion en CompraProducto: " + compraProductoJConfirmationDto.idCompraProducto);
+
+            //Se obtiene la CompraProducto, con id especifico, del repositorio
+            CompraProducto compraProductoFromRepo = _compraProductoRepo.GetById(compraProductoJConfirmationDto.idCompraProducto);
+
+            //Se verifica que exista la CompraProducto
+            if (_context.CompraProducto.Any(cp => cp.idCompraProducto == compraProductoJConfirmationDto.idCompraProducto))
+            {
+                //Si proviene del Comprador
+                if (compraProductoJConfirmationDto.confirmacionComprador == true)
+                {
+                    //Se actualiza el dato en la Tabla de la base de datos
+                    compraProductoFromRepo.confirmacionComprador = true;
+                }
+                //Si proviene del Vendedor
+                else if (compraProductoJConfirmationDto.confirmacionVendedor == true)
+                {
+                    //Se actualiza el dato en la Tabla de la base de datos
+                    compraProductoFromRepo.confirmacionVendedor = true;
+                }
+                else
+                {
+                    /*
+                     * Como la CompraProducto por actualizar no recibio ninguna actualizacion
+                     * Se agrega un value de -1 al response
+                     */
+                    response.setValue(-1);
+                    return Ok(response);
+                }
+
+                //Guarda los cambios en la base de datos
+                _compraProductoRepo.SaveChanges();
+
+                //Si se actualizo algun valor, se definira si ambos han confirmado para proceder a la Evaluacion
+                if (compraProductoFromRepo.confirmacionComprador == true == compraProductoFromRepo.confirmacionVendedor)
+                {
+                    /*
+                     * Como el Comprador y el Vendedor han confirmado
+                     * Se agrega un value de 2 al response
+                     */
+                    response.setValue(2);
+                    return Ok(response);
+                }
+                else
+                {
+                    /*
+                     * Como falta alguno por confirmar
+                     * Se agrega un value de 1 al response
+                     */
+                    response.setValue(1);
+                    return Ok(response);
+                }
+
+            }
+
+            /*
+             * Como la CompraProducto por actualizar no existe
+             * Se agrega un value de 0 al response
+             */
+            response.setValue(0);
             return Ok(response);
         }
 

@@ -16,9 +16,12 @@ namespace API_MercaditoTEC.Profiles.ProfilesJ
             
             CreateMap<CompraProductoJ, CompraProductoJReadDto>();
 
-            //Create CompraProductoJCreateDto
+            //Create
             CreateMap<CompraProductoJCreateDto, CompraProductoJ>();
             CreateMap<CompraProductoJ, CompraProducto>();
+
+            //Confirmation
+            CreateMap<CompraProductoJConfirmationDto, CompraProductoJ>();
 
         }
     }
