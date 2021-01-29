@@ -30,10 +30,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreProducto" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreProductoForm" />
 
     <EditText
-        android:id="@+id/nombreProducto"
+        android:id="@+id/nombreProductoForm"
         android:layout_width="320dp"
         android:layout_height="75dp"
         android:layout_marginTop="16dp"

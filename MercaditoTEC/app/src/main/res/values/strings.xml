@@ -49,6 +49,9 @@
     <string name="NombreProducto">Nombre del Producto</string>
     <string name="Continuar">Continuar</string>
     <string name="CategoriaDelProducto">Categoria del Producto</string>
+    <string name="Fotos">Fotos del Producto (Máximo 5)</string>
+    <string name="SelectFotos">Seleccionar Fotos</string>
+    Fotos del Producto (máximo 5)
 
     NombreProducto
     <string name="hello_blank_fragment">Hello blank fragment</string>

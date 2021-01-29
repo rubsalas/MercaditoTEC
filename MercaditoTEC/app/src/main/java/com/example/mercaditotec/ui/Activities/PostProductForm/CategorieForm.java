@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mercaditotec.CategorieActivity;
 import com.example.mercaditotec.Constants;
+import com.example.mercaditotec.Entities.ProductForm;
 import com.example.mercaditotec.R;
 
 import org.json.JSONArray;
@@ -37,57 +38,50 @@ public class CategorieForm extends AppCompatActivity {
         setContentView(R .layout.activity_categorie_form);
 
         listaCategorias = (ListView) findViewById(R.id.listCategoriasForm);
-        listaCategorias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent (getApplicationContext(), ImagesForm.class);
-                startActivityForResult(intent, 0);
+
+        listaCategorias.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent (getApplicationContext(), ImagesForm.class);
+            try {
+                ProductForm.getInstance().setIdCategoria(ListaCategoriasObjeto.get(position).getInt("idCategoria"));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            startActivityForResult(intent, 0);
         });
         SolicitarCategorías();
-
     }
 
     public void SolicitarCategorías(){
-        // Initialize a new RequestQueue instance
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        // Initialize a new JsonArrayRequest instance
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 Constants.getInstance().getURL()+"categorias",
                 null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            ordenarCategorias(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                response -> {
+                    try {
+                        ordenarCategorias(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error){
+                error -> {
 
-                    }
                 }
         );
         requestQueue.add(jsonArrayRequest);
     }
 
     public void ordenarCategorias(JSONArray categorias) throws JSONException {
-        ListaCategoriasObjeto = new ArrayList<JSONObject>();
-        ListaCategoriasString = new ArrayList<String>();
+        ListaCategoriasObjeto = new ArrayList<>();
+        ListaCategoriasString = new ArrayList<>();
         for(int i = 0; i < categorias.length(); i ++){
 
             ListaCategoriasString.add(categorias.getJSONObject(i).getString("nombre"));
             ListaCategoriasObjeto.add(categorias.getJSONObject(i));
 
         }
-        Log.d("TAG", ListaCategoriasString.toString());
-        ArrayAdapter adaptador = new ArrayAdapter<String>(getApplicationContext(),
+        ArrayAdapter adaptador = new ArrayAdapter<>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, ListaCategoriasString);
         listaCategorias.setAdapter(adaptador);
     }
