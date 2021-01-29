@@ -239,14 +239,32 @@ namespace API_MercaditoTEC.Data.DataJ
             return compraProductoJByVendedor;
         }
 
+        /*
+         * Retorna el idCompraProducto de una CompraProducto especifica.
+         */
         public int GetId(int idProducto, int idComprador)
         {
-            throw new NotImplementedException();
+            return _compraProductoRepo.GetId(idProducto, idComprador);
         }
 
+        /*
+         * Ingresa a la base de datos una nueva CompraProducto.
+         */
         public void Create(CompraProductoJ compraProductoJ)
         {
-            throw new NotImplementedException();
+            //Se verifica si la CompraProductoJ ingresada no es nulo
+            if (compraProductoJ == null)
+            {
+                throw new ArgumentNullException(nameof(compraProductoJ));
+            }
+
+            //Mappea la CompraProductoJ obtenido a un Modelo CompraProducto
+            CompraProducto compraProductoModel = _mapper.Map<CompraProducto>(compraProductoJ);
+
+            //Se crea la CompraProductoJ nueva en la base de datos
+            _compraProductoRepo.Create(compraProductoModel);
+            //Se guardan los cambios en la tabla CompraProducto en la base de datos
+            _compraProductoRepo.SaveChanges();
         }
 
         public void Update(CompraProductoJ compraProductoJ)

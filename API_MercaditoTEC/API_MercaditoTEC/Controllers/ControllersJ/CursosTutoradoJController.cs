@@ -134,12 +134,11 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             /*
-             * Como no existe
+             * Como no existe alguno
              * Se agrega un value de -1 al response
              */
             response.setValue(-1);
             return Ok(response);
-
         }
     }
 }
