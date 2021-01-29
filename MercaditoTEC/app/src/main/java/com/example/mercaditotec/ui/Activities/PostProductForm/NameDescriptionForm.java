@@ -22,6 +22,7 @@ public class NameDescriptionForm extends AppCompatActivity {
         setContentView(R.layout.activity_name_description_form);
         nombre = findViewById(R.id.nombreProductoForm);
         descripcion = findViewById(R.id.descripcionProducto);
+        ProductForm.getInstance().clearAll();
 
         findViewById(R.id.btnContinuar).setOnClickListener(v -> {
             if (ComprobarCampos()){

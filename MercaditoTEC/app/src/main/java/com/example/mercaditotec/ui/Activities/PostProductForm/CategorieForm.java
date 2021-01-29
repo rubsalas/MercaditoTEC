@@ -43,6 +43,7 @@ public class CategorieForm extends AppCompatActivity {
             Intent intent = new Intent (getApplicationContext(), ImagesForm.class);
             try {
                 ProductForm.getInstance().setIdCategoria(ListaCategoriasObjeto.get(position).getInt("idCategoria"));
+                ProductForm.getInstance().setPuntosCanje(ListaCategoriasObjeto.get(position).getInt("puntaje"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

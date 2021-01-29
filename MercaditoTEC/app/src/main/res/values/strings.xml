@@ -51,7 +51,19 @@
     <string name="CategoriaDelProducto">Categoria del Producto</string>
     <string name="Fotos">Fotos del Producto (Máximo 5)</string>
     <string name="SelectFotos">Seleccionar Fotos</string>
-    Fotos del Producto (máximo 5)
+    <string name="LugaresEntrega">Lugares de Entrega para el producto</string>
+    <string name="AgregarUbi">Agregar Ubicación</string>
+    <string name="UbiActuales">Ubicaciones Agregadas</string>
+    <string name="Metodos">Métodos de Pago </string>
+    <string name="Precio">Precio</string>
+    <string name="Efectivo">Efectivo</string>
+    <string name="TransferenciaBancaria">Transferencia Bancaria</string>
+    <string name="Sinpe">SINPE Móvil</string>
+    <string name="Puedeseleccionarmasdeuno">Puede seleccionar más de uno</string>
+    <string name="Colones">₡</string>
+    <string name="Cuenta">Cuenta:</string>
+    <string name="Numero">Número:</string>
+
 
     NombreProducto
     <string name="hello_blank_fragment">Hello blank fragment</string>
