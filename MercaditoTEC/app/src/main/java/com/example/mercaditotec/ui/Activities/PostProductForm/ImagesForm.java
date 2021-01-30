@@ -48,7 +48,7 @@ public class ImagesForm extends AppCompatActivity {
 
     private void elegirFotos() {
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("image/jpeg");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Seleccionar Foto(s)"), IMAGES_CODE);
@@ -89,15 +89,4 @@ public class ImagesForm extends AppCompatActivity {
         }
     }
 
-    /*private void subirFoto() {
-
-        StorageReference imageRef = storageReference.child("Productos/");
-
-        imageRef.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
-
-        }).addOnFailureListener(e -> {
-
-        });
-
-    }*/
 }

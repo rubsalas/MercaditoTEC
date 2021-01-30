@@ -1,11 +1,17 @@
 package com.example.mercaditotec.Entities;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class Producto {
-    private String nombre, descripcion, imagen;
+    private String nombre, descripcion;
+    private JSONArray imagen;
     private int id;
     private float precio;
 
-    public Producto(String imagen, String nombre, String descripcion, int id, float precio) {
+        public Producto(JSONArray imagen, String nombre, String descripcion, int id, float precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.id = id;
@@ -13,11 +19,11 @@ public class Producto {
         this.imagen = imagen;
     }
 
-    public String getImagen() {
+    public JSONArray getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(JSONArray imagen) {
         this.imagen = imagen;
     }
 

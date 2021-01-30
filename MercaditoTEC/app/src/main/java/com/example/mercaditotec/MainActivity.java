@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        IdUsuarioActual = getIntent().getExtras().getString("id");
-        correoActual = getIntent().getExtras().getString("correo");
-        NombreCompleto = getIntent().getExtras().getString("nombreC");
+        IdUsuarioActual = Constants.getInstance().getId()+"";
+        correoActual = Constants.getInstance().getEmail();
+        NombreCompleto = Constants.getInstance().getNombreCompleto();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         MenuCompat.setGroupDividerEnabled(menu, true);
 

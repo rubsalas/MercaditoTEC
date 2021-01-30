@@ -2,6 +2,7 @@ package com.example.mercaditotec.ui.MyProducts;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,8 +98,9 @@ public class MyProductsFragment extends Fragment {
         JSONObject actual;
         ArrayList lista = new ArrayList<>();
         for(int i = 0; i < productos.length(); i++){
+            Log.d("Soy este id de producto", productos.getJSONObject(i).getString("idProducto"));
             actual = productos.getJSONObject(i);
-            item = new Producto("",actual.getString("nombre"),
+            item = new Producto(actual.getJSONArray("imagenes"),actual.getString("nombre"),
                     actual.getString("descripcion"), actual.getInt("idProducto"),
                     actual.getInt("precio"));
             lista.add(item);

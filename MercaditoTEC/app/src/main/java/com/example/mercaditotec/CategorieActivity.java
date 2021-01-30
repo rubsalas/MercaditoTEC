@@ -70,7 +70,7 @@ public class CategorieActivity extends AppCompatActivity {
         ArrayList lista = new ArrayList<>();
         for(int i = 0; i < productos.length(); i++){
             actual = productos.getJSONObject(i);
-            item = new Producto("",actual.getString("nombre"),
+            item = new Producto(actual.getJSONArray("imagenes"),actual.getString("nombre"),
                     actual.getString("descripcion"), actual.getInt("idProducto"),
                     actual.getInt("precio"));
             lista.add(item);

@@ -6,6 +6,7 @@ public class Constants extends AppCompatActivity {
 
     public String URL = "https://mercaditotec.azurewebsites.net/api/";
     public int id;
+    public String email, nombreCompleto;
 
     private static Constants instancia = null;
     private Constants(){}
@@ -31,5 +32,21 @@ public class Constants extends AppCompatActivity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 }

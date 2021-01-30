@@ -121,15 +121,14 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             if(response.getBoolean("haIngresadoApp")){
                                 Intent intent = new Intent (context, MainActivity.class);
-                                intent.putExtra("id", response.getString("idEstudiante"));
-                                intent.putExtra("correo", response.getString("correoInstitucional"));
-                                intent.putExtra("nombreC", response.getString("nombre")
+                                Constants.getInstance().setId(Integer.parseInt(response.getString("idEstudiante")));
+                                Constants.getInstance().setEmail(response.getString("correoInstitucional"));
+                                Constants.getInstance().setNombreCompleto(response.getString("nombre")
                                         +" "+response.getString("apellidos"));
-                                Constants.getInstance().setId(Integer.parseInt(id));
                                 startActivityForResult(intent, 0);
                             }else{
                                 Intent intent = new Intent (context, GuideActivity.class);
-                                intent.putExtra("id", response.getString("idEstudiante"));
+                                Constants.getInstance().setId(Integer.parseInt(response.getString("idEstudiante")));
                                 startActivityForResult(intent, 0);
                             }
                         } catch (JSONException e) {

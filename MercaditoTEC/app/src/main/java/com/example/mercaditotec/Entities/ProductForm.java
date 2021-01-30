@@ -19,6 +19,7 @@ public class ProductForm {
     private ArrayList<Integer> ubicaciones;
     private ArrayList<String> ubicacionesPreviw;
     private ArrayList<String> metodosPagoPreview;
+    private ArrayList<String> otrasSenas;
 
 
     private static ProductForm instancia = null;
@@ -32,6 +33,7 @@ public class ProductForm {
         this.imagenes = new ArrayList<>();
         this.ubicaciones = new ArrayList<>();
         this.ubicacionesPreviw = new ArrayList<>();
+        this.otrasSenas = new ArrayList<>();
     }
     public static ProductForm getInstance() {
         if (instancia == null)
@@ -120,6 +122,8 @@ public class ProductForm {
         this.imagenes = new ArrayList<>();
         this.ubicaciones = new ArrayList<>();
         this.ubicacionesPreviw = new ArrayList<>();
+        this.otrasSenas = new ArrayList<>();
+
     }
 
     public JSONArray getMetodosPago() {
@@ -143,5 +147,13 @@ public class ProductForm {
 
     public void clearMetodosPreview() {
         this.metodosPagoPreview = new ArrayList<>();
+    }
+
+    public ArrayList<String> getOtrasSenas() {
+        return otrasSenas;
+    }
+
+    public void setOtrasSenas(ArrayList<String> otrasSenas) {
+        this.otrasSenas = otrasSenas;
     }
 }

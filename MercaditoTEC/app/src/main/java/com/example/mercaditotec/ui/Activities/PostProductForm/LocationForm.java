@@ -112,6 +112,7 @@ public class LocationForm extends AppCompatActivity {
                 int idUbi = ListaDistritosObjeto.get(distritos.getSelectedItemPosition()).getInt("idUbicacion");
                 ArrayList ubicaciones = ProductForm.getInstance().getUbicaciones();
                 ArrayList ubicacionesPreview = ProductForm.getInstance().getUbicacionesPreviw();
+                ArrayList otrasSenass = ProductForm.getInstance().getOtrasSenas();
                 if(!Existe(idUbi, ubicaciones)){
                     String addUbi = "-"+ListaProvinciasObjeto.get(provincias.getSelectedItemPosition()).getString("nombre")+", "+
                             ListaCantonesObjeto.get(cantones.getSelectedItemPosition()).getString("nombre")+", "+
@@ -120,6 +121,8 @@ public class LocationForm extends AppCompatActivity {
                     ubicacionesPreview.add(addUbi);
                     ubiActuales.setText(ubiActuales.getText()+"\n"+addUbi);
                     ubicaciones.add(idUbi);
+                    otrasSenass.add(otrasSenas.getText());
+                    ProductForm.getInstance().setOtrasSenas(otrasSenass);
                     ProductForm.getInstance().setUbicaciones(ubicaciones);
                     ProductForm.getInstance().setUbicacionesPreviw(ubicacionesPreview);
                 }else{

@@ -3,6 +3,7 @@ package com.example.mercaditotec.Controllers;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import org.json.JSONException;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +55,6 @@ public class ProductsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Producto producto = (Producto) getItem(position);
-        mStorageRef = FirebaseStorage.getInstance().getReference().child("Productos/test.png");
 
         convertView = LayoutInflater.from(context).inflate(R.layout.item_lista_productos_servicios, null);
         ImageView imgProducto = (ImageView) convertView.findViewById(R.id.imgFoto);
@@ -64,23 +66,25 @@ public class ProductsAdapter extends BaseAdapter {
         tvPrecio.setText("₡ "+producto.getPrecio()+"");
         tvDescripcion.setText(producto.getDescripcion());
 
-        try {
-            final File tempFile = File.createTempFile("test", "png");
-            mStorageRef.getFile(tempFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap = BitmapFactory.decodeFile(tempFile.getAbsolutePath());
-                    imgProducto.setImageBitmap(bitmap);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
 
-                }
+
+        try {
+            String ruta = producto.getImagen().getJSONObject(0).getString("imagen");
+            mStorageRef = FirebaseStorage.getInstance().getReference().child(ruta);
+            String[] partes = ruta.split("/");
+            final File tempFile = File.createTempFile(partes[1], "jpeg");
+            mStorageRef.getFile(tempFile).addOnSuccessListener(taskSnapshot -> {
+                Bitmap bitmap = BitmapFactory.decodeFile(tempFile.getAbsolutePath());
+                imgProducto.setImageBitmap(bitmap);
+            }).addOnFailureListener(e -> {
+
             });
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+
+
 
         return convertView;
     }
