@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "+ZhTlmh/GvhrraQ40BJLsT8gLZLgJs5mxJnWfhtd9OaUwG4AqB6l8uDna8AP5qE01irKQT5Ae5or73vOF/JSog==",
+  "dgSpecHash": "LidUn5C54C+CJTn8LRGrQoWnkkOOVpquh6F/D2UbOVDcOoYmwS8UoxIDRrrbed92Fq00L9OQ8BcNqVMI5mhWhw==",
   "success": true,
   "projectFilePath": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\main\\API_MercaditoTEC\\XUnitTest_API_MercaditoTEC\\XUnitTest_API_MercaditoTEC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
+    "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.2\\microsoft.aspnetcore.http.features.5.0.2.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.2\\microsoft.aspnetcore.jsonpatch.5.0.2.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.codecoverage\\16.8.3\\microsoft.codecoverage.16.8.3.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -87,6 +88,7 @@
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
