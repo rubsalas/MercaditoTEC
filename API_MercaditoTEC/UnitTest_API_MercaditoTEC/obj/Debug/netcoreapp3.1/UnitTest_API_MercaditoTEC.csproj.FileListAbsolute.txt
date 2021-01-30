@@ -139,14 +139,11 @@ D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoT
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\obj\Debug\netcoreapp3.1\UnitTest_API_MercaditoTEC.dll
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\obj\Debug\netcoreapp3.1\UnitTest_API_MercaditoTEC.pdb
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\obj\Debug\netcoreapp3.1\UnitTest_API_MercaditoTEC.genruntimeconfig.cache
-D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\Castle.Core.dll
-D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\Moq.dll
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\testhost.exe
-D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\Autofac.dll
-D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\Autofac.Extras.Moq.dll
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
-D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\obj\Debug\netcoreapp3.1\UnitTest_API_MercaditoTEC.csproj.CoreCompileInputs.cache
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\UnitTest_API_MercaditoTEC.dll.config
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\API_MercaditoTEC.dll.config
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\obj\Debug\netcoreapp3.1\UnitTest_API_MercaditoTEC.dll.config
+D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\Autofac.dll
+D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\UnitTest_API_MercaditoTEC\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll

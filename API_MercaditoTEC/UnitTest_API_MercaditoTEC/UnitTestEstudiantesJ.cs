@@ -1,7 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using API_MercaditoTEC.Data;
-using Autofac.Extras.Moq;
-using System.Collections.Generic;
 using System.Linq;
 using API_MercaditoTEC.Models;
 using Microsoft.EntityFrameworkCore;
