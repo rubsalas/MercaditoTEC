@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "crIZUm+I94/VvN4q/s8v6joOm4p5NXxIUtvgyJRXGEEOd5+H1QdYdURZjinrYnEnkifT6GWJ+J+hE3JrfmRpUQ==",
-  "success": true,
+  "dgSpecHash": "X/PQRPHXq7140d6ZEZqtNfQgmrukXW7YHrAGPwMlEBqkueGssBYvAtLKsUykr8vfnhbw3mEsIyGm8ZhvuB5A8Q==",
+  "success": false,
   "projectFilePath": "D:\\Desktop - HDD\\XTEC MercaditoTEC\\main\\API_MercaditoTEC\\UnitTest_API_MercaditoTEC\\UnitTest_API_MercaditoTEC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
@@ -23,7 +23,6 @@
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
-    "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.1\\microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
@@ -147,5 +146,15 @@
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Ruben Salas\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1102",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.Extensions.DependencyInjection with version (>= 5.0.2)\r\n  - Found 61 version(s) in nuget.org [ Nearest version: 5.0.1 ]\r\n  - Found 0 version(s) in Microsoft Visual Studio Offline Packages",
+      "libraryId": "Microsoft.Extensions.DependencyInjection",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
