@@ -16,8 +16,7 @@ namespace API_MercaditoTEC.Data.DataJ
         private readonly IMapper _mapper;
 
         public SqlCompraProductoJRepo(MercaditoTECContext context, ICompraProductoRepo compraProductoRepo, //ICompradorJRepo compradorJRepo,
-            IProductoJRepo productoJRepo, ICompradorJRepo compradorJRepo,
-            IMapper mapper)
+            IProductoJRepo productoJRepo, ICompradorJRepo compradorJRepo, IMapper mapper)
         {
             _context = context;
             _compraProductoRepo = compraProductoRepo;

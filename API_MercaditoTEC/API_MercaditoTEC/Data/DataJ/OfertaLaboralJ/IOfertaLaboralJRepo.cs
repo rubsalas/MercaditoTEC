@@ -7,8 +7,8 @@ namespace API_MercaditoTEC.Data.DataJ
     {
         IEnumerable<OfertaLaboralJ> GetAll();
         OfertaLaboralJ GetById(int id);
-        IEnumerable<OfertaLaboralJ> GetByCarrera(int idCategoria);
-        IEnumerable<OfertaLaboralJ> GetByEmpleador(int idCategoria);
+        IEnumerable<OfertaLaboralJ> GetByCarrera(int idCarrera);
+        IEnumerable<OfertaLaboralJ> GetByEmpleador(int idEmpleador);
         int GetId(int idEmpleador, string nombrePuesto);
         void Create(OfertaLaboralJ ofertaLaboralJ);
         void Update(OfertaLaboralJ ofertaLaboralJ);

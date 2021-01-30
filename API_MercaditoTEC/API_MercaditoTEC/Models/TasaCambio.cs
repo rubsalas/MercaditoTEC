@@ -8,7 +8,7 @@ namespace API_MercaditoTEC.Models
         [Key]
         public int idTasaCambio { get; set; }
         [Required]
-        public Single monto { get; set; } //Cambiar int por Single cuando se cambie en la base de datos
+        public Single monto { get; set; }
         [Required]
         public DateTime fechaPublicacion { get; set; }
     }

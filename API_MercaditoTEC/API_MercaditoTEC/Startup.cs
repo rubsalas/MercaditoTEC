@@ -154,6 +154,8 @@ namespace API_MercaditoTEC
             services.AddScoped<ICursoTutorJRepo, SqlCursoTutorJRepo>();
             //ProductoJ
             services.AddScoped<IProductoJRepo, SqlProductoJRepo>();
+            //OfertaLaboralJ
+            services.AddScoped<IOfertaLaboralJRepo, SqlOfertaLaboralJRepo>();
             //PracticaTutorJ
             services.AddScoped<IPracticaTutorJRepo, SqlPracticaTutorJRepo>();
             //CursoTutorado
