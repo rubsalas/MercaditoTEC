@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="col-md-5  mx-auto">
+      <div class="card_courses">
+          <div class="card">
+              <div class="card-body ">
+                  <h1 class="h3 mb-3 font-weight-normal text-center" >PERFIL DE TUTOR</h1> 
+                  <h1 class="h6 mb-3 font-weight-normal text-center" >Agregar un nuevo curso para brindar tutoría</h1>  
+                </div>
+          </div>
+      </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5  mx-auto">
+      <div class="card_addcoursetutor">
+        <div class="card">
+          <div class="card-body ">
+            <form #formAddCourseTutor="ngForm">
+              <h1 class="h3 mb-3 font-weight-normal text-center" >AGREGAR NUEVO CURSO</h1>
+              <h6 class=" mb-3 font-weight-normal text-center" >Complete el siguiente formulario</h6>
+              <br>
+              <div class="form-group">
+                <label for="idCurso"> Curso </label>
+                <select type= "number" id="idCurso" name="idCurso" [(ngModel)]="saveId" class="form-control" required>
+                  <option *ngFor= "let courselibrary of coursesLibrary" [value]="courselibrary.idCurso"> {{courselibrary.nombre}} ----- {{courselibrary.codigo}} </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Nota Obtenida en el curso</label>
+                <input type="number" id="notaObtenida" name="notaObtenida" class="form-control text-center" [(ngModel)]="course.notaObtenida" required>
+              </div>
+              <div class="form-group">
+                <label>Temas Asosiados</label>
+                <input type="text" id="temas" name="temas" class="form-control text-center" [(ngModel)]="course.temas" required>
+              </div>
+              
+              <button (click)="addCourse(formAddCourseTutor)" type="button" class="btn btn-lg btn-success btn-block text-center">Agregar</button>
+              <div class="form-group">
+                <a routerLink="/tutorview" class="form-control login-user text-center"> Cancelar </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

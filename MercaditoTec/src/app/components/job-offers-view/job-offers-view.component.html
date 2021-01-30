@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="col-md-6  mx-auto">
+        <div class="card_courses">
+            <div class="card">
+                <div class="card-body ">
+                    <h1 class="h3 mb-3 font-weight-normal text-center" >VISTA DE OFERTAS LABORALES</h1> 
+                    <h1 class="h6 mb-3 font-weight-normal text-center" > Opción de búsqueda de Ofertas Laborales </h1>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row row-cols-2">
+        <div class="col-sm-9 mx-auto">
+            <div class="card_courses">
+                <div class="card">
+                    <div class="card-body ">
+                        
+                        <div class="col">
+                            <ng-container *ngIf="isSearch">
+                                <h1 class="h3 mb-3 font-weight-normal text-center" >Resultado de la Busqueda</h1>
+                                <br>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Nombre Puesto</th>
+                                        <th scope="col">Jornada Laboral</th>
+                                        <th scope="col">Responsabilidades</th>
+                                        <th scope="col">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let jobOffer of jobOffersList">
+                                        <td>{{jobOffer.nombrePuesto}}</td>
+                                        <td>{{jobOffer.jornadaLaboral}}</td>
+                                        <td>{{jobOffer.responsabilidades}}</td>
+                                        <td>
+                                            <button class="btn btn-primary menus" (click)="openJobOffer(jobOffer)"> Ver Oferta</button>
+                                        </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ng-container>
+                            <ng-container *ngIf="!isSearch">
+                                <h1 class="h3 mb-3 font-weight-normal text-center" >Buscar Ofertas laborales</h1>
+                                <h1 class="h6 mb-3 font-weight-normal text-center" > En la columna de menu puede buscar una oferta laboral seleccionando una carrera </h1>  
+
+                                <br>
+                                
+                            </ng-container>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-3 mx-auto">
+              <div class="card_menu">
+                  <div class="card">
+                      <div class="card-body ">
+                          <h1 class="h3 mb-3 font-weight-normal text-center" >Menu</h1>
+                          <div class="form-group">
+                            <label for="idCarrera"> Seleccione una Carrera </label>
+                            <select type= "number" id="idCarrera" name="idCarrera" [(ngModel)]="searchCarrer" class="form-control" required>
+                              <option *ngFor= "let carrerLibrary of carrersLibrary" [value]="carrerLibrary.idCarrera"> {{carrerLibrary.nombre}} </option>
+                            </select>
+                          </div>
+                          <button (click)="buscarCarrera()"
+                          class="btn btn-lg btn-success btn-block text-center" >
+                          Buscar Oferta Laboral
+                          </button>
+                          <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                          <button routerLink="/homepage"
+                          class="btn btn-lg btn-success btn-block text-center" >
+                          Regresar
+                          </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

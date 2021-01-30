@@ -1,0 +1,32 @@
+<h1 class="mb-3 font-weight-normal text-center" >Vista del Administrador</h1>
+
+<section id="loginAdmin" class="mb-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-4 mx-auto">
+        <div class="card_loginAdmin">
+          <div class="card">
+            <div class="card-body ">
+              <form #formLoginAdmin="ngForm" >
+                <h1 class="h3 mb-3 font-weight-normal text-center">Inicio de sesión</h1>
+                <br>
+                <div class="form-group">
+                  <label class="text-left">Usuario</label>
+                  <input type="email" id="correoInstitucional" name="correoInstitucional" class="form-control text-center" [(ngModel)]="login.usuario" required>
+                </div>
+                <div class="form-group">
+                  <label>Contraseña</label>
+                  <input type="password" id="contrasena" name="contrasena" class="form-control text-center" placeholder="* * * * * * * *" [(ngModel)]="login.contrasena" required>
+                </div>
+                <button (click)="onLogin(formLoginAdmin)" type="submit" class="btn btn-lg btn-success btn-block text-center" >Ingresar</button>
+                <div class="form-group">
+                  <a routerLink="/" class="form-control login-user text-center"> Regresar </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
