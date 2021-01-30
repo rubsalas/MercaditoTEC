@@ -17,7 +17,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    projects: 'API_MercaditoTEC/UnitTest_API_MercaditoTEC.sln'
+    projects: 'API_MercaditoTEC/API_MercaditoTEC.sln'
     arguments: '--confirguration $(buildConfiguration)'
 
 - script: dotnet build API_MercaditoTEC --configuration $(buildConfiguration)
