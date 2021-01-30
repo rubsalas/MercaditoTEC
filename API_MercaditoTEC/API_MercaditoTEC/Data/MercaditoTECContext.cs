@@ -35,6 +35,7 @@ namespace API_MercaditoTEC.Data
         /* Anaranjado */
         public DbSet<CursoTutor> CursoTutor { get; set; }
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<OfertaLaboral> OfertaLaboral { get; set; }
 
         /* Amarillo */
         public DbSet<PracticaTutor> PracticaTutor { get; set; }
