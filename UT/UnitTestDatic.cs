@@ -1,14 +1,11 @@
-using API_MercaditoTEC.Controllers;
 using API_MercaditoTEC.Data;
 using API_MercaditoTEC.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using XUnitTest_MercaditoTEC.Infrastructure;
 
-namespace XUnitTest_API_MercaditoTEC
+namespace XUnitTest_MercaditoTEC
 {
     public class UnitTestDatic : IDisposable
     {
@@ -67,45 +64,11 @@ namespace XUnitTest_API_MercaditoTEC
 
         }
 
-
-
-
-
-
-
-
-
-
         public void Dispose()
         {
             _context.Database.EnsureDeleted();
             _context.Dispose();
         }
-
-
-
-
-
-        /*
-        [Fact]
-        public void Test1()
-        {
-            var options = new DbContextOptionsBuilder<MercaditoTECContext>()
-                .UseInMemoryDatabase(databaseName: "Test1")
-                .Options;
-
-            var context = new MercaditoTECContext(options);
-
-            var _personaRepo = new SqlPersonaRepo(context);
-
-            var result = _personaRepo.GetAll();
-
-            //Esto es del ejemplo
-            Assert.Equal(5, result.Count());
-        }*/
-
-
-
 
     }
 }
