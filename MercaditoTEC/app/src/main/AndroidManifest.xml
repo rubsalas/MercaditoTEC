@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mercaditotec" >
+    package="com.example.mercaditotec">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -11,17 +11,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MercaditoTEC" >
-        <activity android:name=".ui.Activities.PostProductForm.PreviewProductActivity" >
-        </activity>
+        android:theme="@style/Theme.MercaditoTEC">
+        <activity android:name=".ui.Activities.BuyProduct.ProductViewActivity"></activity>
+        <activity android:name=".ui.Activities.PostProductForm.PreviewProductActivity"></activity>
         <activity android:name=".ui.Activities.PostProductForm.PaymentMethodsForm" />
         <activity android:name=".ui.Activities.PostProductForm.LocationForm" />
-        <activity android:name=".ui.Activities.PostProductForm.ImagesForm" >
-        </activity>
+        <activity android:name=".ui.Activities.PostProductForm.ImagesForm"></activity>
         <activity android:name=".ui.Activities.PostProductForm.CategorieForm" />
-        <activity android:name=".ui.Activities.PostProductForm.NameDescriptionForm">
-
-        </activity>
+        <activity android:name=".ui.Activities.PostProductForm.NameDescriptionForm"></activity>
         <activity android:name=".ui.Activities.MyProductActivity" />
         <activity android:name=".CategorieActivity" />
         <activity
@@ -44,13 +41,12 @@
             android:name=".LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -63,7 +63,7 @@
     <string name="Colones">₡</string>
     <string name="Cuenta">Cuenta:</string>
     <string name="Numero">Número:</string>
-
+    <string name="ValorPunto">Valor del Punto de Canje:</string>
 
     NombreProducto
     <string name="hello_blank_fragment">Hello blank fragment</string>

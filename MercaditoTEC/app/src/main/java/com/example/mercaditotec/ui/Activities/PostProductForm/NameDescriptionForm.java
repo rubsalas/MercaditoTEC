@@ -15,7 +15,7 @@ import com.example.mercaditotec.ui.Activities.MyProductActivity;
 
 public class NameDescriptionForm extends AppCompatActivity {
 
-    EditText nombre, descripcion;
+    private EditText nombre, descripcion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,7 @@ public class NameDescriptionForm extends AppCompatActivity {
         nombre = findViewById(R.id.nombreProductoForm);
         descripcion = findViewById(R.id.descripcionProducto);
         ProductForm.getInstance().clearAll();
+
 
         findViewById(R.id.btnContinuar).setOnClickListener(v -> {
             if (ComprobarCampos()){

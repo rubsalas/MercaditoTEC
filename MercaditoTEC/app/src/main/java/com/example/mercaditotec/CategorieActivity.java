@@ -2,7 +2,10 @@ package com.example.mercaditotec;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,6 +17,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.mercaditotec.Controllers.ProductsAdapter;
 import com.example.mercaditotec.Entities.Producto;
+import com.example.mercaditotec.ui.Activities.BuyProduct.ProductViewActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +29,7 @@ public class CategorieActivity extends AppCompatActivity {
     private ListView listaProductos;
     private int idCategoriaActual;
     private TextView nombreCategor;
+    private ProductsAdapter productsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,11 @@ public class CategorieActivity extends AppCompatActivity {
         nombreCategor.setText(getIntent().getExtras().getString("nombre"));
 
         listaProductos = (ListView) findViewById(R.id.lvProductosCategoria);
+        listaProductos.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent (getApplicationContext(), ProductViewActivity.class);
+            intent.putExtra("id", productsAdapter.getItem(position).getId());
+            startActivityForResult(intent, 0);
+        });
         SolicitarProductos();
     }
 
@@ -44,21 +54,15 @@ public class CategorieActivity extends AppCompatActivity {
                 Request.Method.GET,
                 Constants.getInstance().getURL()+"productosJ/Categoria/"+idCategoriaActual,
                 null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            GenerarListaProductos(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                response -> {
+                    try {
+                        GenerarListaProductos(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error){
+                error -> {
 
-                    }
                 }
         );
         requestQueue.add(jsonArrayRequest);
@@ -75,6 +79,7 @@ public class CategorieActivity extends AppCompatActivity {
                     actual.getInt("precio"));
             lista.add(item);
         }
-        listaProductos.setAdapter(new ProductsAdapter(lista, getApplicationContext()));
+        productsAdapter = new ProductsAdapter(lista, getApplicationContext());
+        listaProductos.setAdapter(productsAdapter);
     }
 }

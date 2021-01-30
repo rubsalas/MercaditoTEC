@@ -65,7 +65,7 @@ public class PreviewProductActivity extends AppCompatActivity {
         findViewById(R.id.btnPublicar).setOnClickListener(v -> {
             PublicarProducto();
             Toast.makeText(getApplicationContext(),"El producto se ha Publicado",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent (getApplicationContext(),  MyProductsFragment.class);
+            Intent intent = new Intent (getApplicationContext(),  MainActivity.class);
             startActivityForResult(intent, 0);
 
         });
@@ -167,7 +167,7 @@ public class PreviewProductActivity extends AppCompatActivity {
         }
         tvDesc.setText(p.getDescripcion());
         String pago = "";
-        for(int i = 0; i < p.getMetodosPagoPreview().size() ;i++){
+        for(int i = 0; i < p.getMetodosPagoPreview().size(); i++){
             pago = pago + p.getMetodosPagoPreview().get(i);
         }
         tvFormasPago.setText(pago);
