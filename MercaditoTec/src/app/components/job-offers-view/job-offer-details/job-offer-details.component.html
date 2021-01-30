@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="col-md-6  mx-auto">
+        <div class="card_courses">
+            <div class="card">
+                <div class="card-body ">
+                    <h1 class="h3 mb-3 font-weight-normal text-center" >VISTA DE OFERTAS LABORALES</h1> 
+                    <h1 class="h6 mb-3 font-weight-normal text-center" > Detalles de la Oferta Laboral</h1>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+  <div class="row row-cols-2">
+      <div class="col-xs-12 col-sm-8 mx-auto">
+          <div class="card_course">
+              <div class="card">
+                <div class="card-body ">
+                  <h1 class="h3 mb-3 font-weight-normal text-center" >Información de la Oferta Laboral</h1>
+                  <br> 
+                  <ng-container *ngIf="jobOffer">
+                      <div class="h5 mb-3 font-weight-normal text-center">  Nombre del puesto: {{ jobOffer.nombrePuesto }}                 </div>
+                      <div class="h5 mb-3 font-weight-normal text-center">  Responsabilidades: {{ jobOffer.responsabilidades }}           </div>
+                      <div class="h5 mb-3 font-weight-normal text-center">  Requerimientos: {{ jobOffer.requerimientos }}             </div>
+                      <div class="h5 mb-3 font-weight-normal text-center">  Jornada Laboral: {{ jobOffer.jornadaLaboral }}  </div>
+                      <div class="h5 mb-3 font-weight-normal text-center">  Link: {{ jobOffer.link }}           </div>
+                      <div class="h5 mb-3 font-weight-normal text-center">  Fecha Publicacion: {{ jobOffer.fechaPublicacion }}           </div>
+                  </ng-container>
+                  <br>
+                  <button
+                  class="btn btn-lg container-fluid menus text-center" >
+                  Editar
+                  </button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4 mx-auto">
+          <div class="card_menu">
+              <div class="card">
+                  <div class="card-body ">
+                      <h1 class="h3 mb-3 font-weight-normal text-center" >Menu</h1>
+                      
+                      <button 
+                      class="btn btn-lg btn-success btn-block text-center" >
+                      Enviar CURRICULUM
+                      </button>
+                      <br> <br> <br> <br> <br> <br> <br>
+                      <button routerLink="/joboffersview"
+                      class="btn btn-lg btn-block btn-success text-center" >
+                      Regresar
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+

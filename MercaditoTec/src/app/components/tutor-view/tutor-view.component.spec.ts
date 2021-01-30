@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TutorViewComponent } from './tutor-view.component';
 
 describe('TutorViewComponent', () => {
@@ -19,7 +18,5 @@ describe('TutorViewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });

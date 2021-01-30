@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="col-md-5  mx-auto">
+      <div class="card_courses">
+              <div class="card">
+                  <div class="card-body ">
+                      <h1 class="h3 mb-3 font-weight-normal text-center" >PERFIL DE TUTORADO</h1> 
+                      <h1 class="h6 mb-3 font-weight-normal text-center" > Lista de cursos guardados para consultas de tutoría </h1>  
+                      </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row row-cols-2">
+        <div class="col-sm-9 mx-auto">
+            <div class="card_courses">
+                <div class="card">
+                    <div class="card-body ">
+                        <h1 class="h3 mb-3 font-weight-normal text-center" >Mis cursos de tutoría</h1>
+                        <br>
+                        <div class="col">
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Nombre Curso</th>
+                                  <th scope="col">Código Curso</th>
+                                  <th scope="col">Nombre Tutor</th>
+                                  <th scope="col">Calificación</th>
+                                  <th scope="col">&nbsp;</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let Course of coursesList">
+                                  <td>{{Course.nombreCurso}}</td>
+                                  <td>{{Course.codigo}}</td>
+                                  <td>{{Course.nombreTutor}}</td>
+                                  <td>{{Course.calificacionPromedioTutor}}</td>
+                                  <td>
+                                    <button class="btn btn-primary menus" (click)="openCourse(Course)"> Ver curso</button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 mx-auto">
+            <div class="card_menu">
+                <div class="card">
+                    <div class="card-body ">
+                        <h1 class="h3 mb-3 font-weight-normal text-center" >Menu</h1>
+                        <div class="form-group">
+                          <label for="idCurso"> Seleccione un Curso </label>
+                          <select type= "number" id="idCurso" name="idCurso" [(ngModel)]="searchCourse" class="form-control" required>
+                            <option *ngFor= "let courselibrary of coursesLibrary" [value]="courselibrary.idCurso"> {{courselibrary.nombre}} ----- {{courselibrary.codigo}} </option>
+                          </select>
+                        </div>
+                        <button (click)="buscarCurso()"
+                        class="btn btn-lg btn-success btn-block text-center" >
+                        Buscar Curso
+                        </button>
+                        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                        <button routerLink="/homepage"
+                        class="btn btn-lg btn-success btn-block text-center" >
+                        Regresar
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,7 +19,5 @@ describe('AddTutorPracticesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });

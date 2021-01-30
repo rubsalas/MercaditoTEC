@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { StudentService } from 'src/app/services/student.service';
 import { StudentInterface } from 'src/app/models/student-interface';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-view',
@@ -38,7 +38,8 @@ export class LoginViewComponent implements OnInit {
   constructor(public loginService: LoginService, 
     public authService: AuthService,
     public studentService: StudentService,
-    private router: Router) { }
+    private router: Router,
+    public activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void { }
 

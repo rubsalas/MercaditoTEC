@@ -33,7 +33,8 @@ export class EditProfileComponent implements OnInit {
 
       if(myId != null){
         this.editprofile.idEstudiante = parseInt(myId);
-        
+
+        console.log('EDITAR PERFIL: ');
         console.log(this.editprofile);
         this.router.navigateByUrl('/profileview');
         /*

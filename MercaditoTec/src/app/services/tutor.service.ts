@@ -20,13 +20,13 @@ export class TutorService {
   listPracticesURL = environment.apiURL + 'practicasTutorJ/CursoTutor/';
 
   addCourseURL = environment.apiURL + 'cursosTutorJ';
-  coursesLibrary = environment.apiURL + 'cursosJ';
+  coursesLibraryURL = environment.apiURL + 'cursosJ';
 
   constructor(private http: HttpClient) { }
 
   getCoursesLibrary(): Observable<CourseLibraryInterface[]>{
-    console.log('SOLICITAR BIBLIOTECA DE CURSOS: '+ this.coursesLibrary)
-    return this.http.get<CourseLibraryInterface[]>(this.coursesLibrary);
+    console.log('SOLICITAR BIBLIOTECA DE CURSOS: '+ this.coursesLibraryURL)
+    return this.http.get<CourseLibraryInterface[]>(this.coursesLibraryURL);
   }
 
   getTutorCourse(idCursoTutor: string): Observable<CourseTutorInterface> {
