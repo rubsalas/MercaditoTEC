@@ -2,6 +2,7 @@ package com.example.mercaditotec.ui.Activities.BuyProduct;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class ProductViewActivity extends AppCompatActivity {
     private LinearLayout imagenes;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-    private int idProductoActual;
+    private int idProductoActual, idComprador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,21 +51,52 @@ public class ProductViewActivity extends AppCompatActivity {
         nombre = findViewById(R.id.nombrePbuy);
         precio = findViewById(R.id.precioMiProductoBuy);
         puntos = findViewById(R.id.puntosBuy);
+        valorPuntoCanje = findViewById(R.id.TVpuntosCanje);
         calificacion = findViewById(R.id.starsBarBuy);
         lugares = findViewById(R.id.tvLugaresBuy);
         tvDesc = findViewById(R.id.tvDescBuy);
         tvFormasPago = findViewById(R.id.tvFormasPagoBuy);
         idProductoActual = getIntent().getExtras().getInt("id");
+        idComprador = Constants.getInstance().getId();
         setearInformacion();
 
         findViewById(R.id.btnComprar).setOnClickListener(v -> {
-
+            ComprarProducto();
         });
+
+    }
+
+    private void ComprarProducto() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("idProducto", idProductoActual);
+            json.put("idComprador", idComprador);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.POST,
+                Constants.getInstance().getURL()+"comprasProductoJ", json,
+                (Response.Listener<JSONObject>) response -> {
+                    Intent intent = new Intent (getApplicationContext(), ChatActivity.class);
+                    try {
+                        intent.putExtra("idCompra", response.getInt("value"));
+                        Log.d("Id compra", response.getString("value"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    startActivityForResult(intent, 0);
+                },
+                (Response.ErrorListener) error -> Log.d("Error.Response", error.toString())
+        );
+        queue.add(getRequest);
 
     }
 
     private void setearInformacion() {
         SolicitarInfoProducto();
+        SolicitarCanje();
     }
 
     private void SolicitarInfoProducto() {
@@ -80,6 +112,25 @@ public class ProductViewActivity extends AppCompatActivity {
 
         queue.add(getRequest);
         
+    }
+
+    private void SolicitarCanje() {
+
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET,
+                Constants.getInstance().getURL()+"tasasCambio/Actual", null,
+                (Response.Listener<JSONObject>) response -> {
+                    try {
+                        valorPuntoCanje.setText("Valor del Punto de Canje: ₡ "+response.getString("monto"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                (Response.ErrorListener) error -> Log.d("Error.Response", error.toString())
+        );
+
+        queue.add(getRequest);
+
     }
 
     private void ordenarInfoProducto(JSONObject info) {
@@ -138,7 +189,7 @@ public class ProductViewActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         View v = inflater.inflate(R.layout.item_image, imagenes, false);
         ImageView image = v.findViewById(R.id.imagenP);
-        image.getLayoutParams().width = 500; image.getLayoutParams().height = 500; image.setAdjustViewBounds(true);
+        image.getLayoutParams().width = 300; image.getLayoutParams().height = 300; image.setAdjustViewBounds(true);
         image.setImageBitmap(bitmap);
         imagenes.addView(v);
     }

@@ -4,9 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +34,8 @@ public class ImagesForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images_form);
 
+
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         imagenes = findViewById(R.id.ImagenesLayout);
@@ -47,11 +51,12 @@ public class ImagesForm extends AppCompatActivity {
     }
 
     private void elegirFotos() {
+
         Intent intent = new Intent();
         intent.setType("image/jpeg");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Seleccionar Foto(s)"), IMAGES_CODE);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,false);
+        startActivityForResult(Intent.createChooser(intent, "Selecciona Fotos"), IMAGES_CODE);
     }
 
     @Override
@@ -60,8 +65,9 @@ public class ImagesForm extends AppCompatActivity {
         imagesUris = new ArrayList<>();
         imagenes.removeAllViews();
         if(requestCode == IMAGES_CODE && resultCode==Activity.RESULT_OK && data != null && data.getData() != null){
-            if(data.getClipData() != null){
-                int count = data.getClipData().getItemCount();
+            ClipData clipData = data.getClipData();
+            if(clipData != null){
+                int count = clipData.getItemCount();
                 if(count >= 5){
 
                 }else{

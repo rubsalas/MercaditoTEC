@@ -31,7 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProfileFragment extends Fragment {
-    private TextView nombre,email, telefono, puntos;
+    private TextView nombre,email, telefono, puntos, calificacion;
 
     private ProfileViewModel mViewModel;
 
@@ -49,6 +49,7 @@ public class ProfileFragment extends Fragment {
         email = v.findViewById(R.id.correoPerfil);
         telefono = v.findViewById(R.id.numeroPerfil);
         puntos = v.findViewById(R.id.puntosEstudiante);
+        calificacion = v.findViewById(R.id.calificacionPerfil);
         
         SolicitarInfoPerfil();
         return v;
@@ -68,30 +69,17 @@ public class ProfileFragment extends Fragment {
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET,
                 Constants.getInstance().getURL()+"estudiantesJ/Perfil/"+Constants.getInstance().getId(),
                 null,
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // display response
-                        Log.d("Response", response.toString());
-                        try {
-                            ColocarInfo(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
+                response -> {
+                    Log.d("Response", response.toString());
+                    try {
+                        ColocarInfo(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
+
                 },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Error.Response", error.toString());
-                    }
-                }
+                error -> Log.d("Error.Response", error.toString())
         );
-
-// add it to the RequestQueue
 
         queue.add(getRequest);
     }
@@ -101,6 +89,7 @@ public class ProfileFragment extends Fragment {
         email.setText(info.getString("correoInstitucional"));
         telefono.setText(info.getString("telefono"));
         puntos.setText(info.getString("puntosCanje"));
+        calificacion.setText(info.getDouble("calificacionPromedioProductos")+"");
 
     }
 }

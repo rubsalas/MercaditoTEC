@@ -110,42 +110,29 @@ public class LoginActivity extends AppCompatActivity {
     public void ValidacionLogin(Context context, String id){
         RequestQueue queue = Volley.newRequestQueue(context);
 
-        // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, Constants.getInstance().getURL()+"/estudiantesJ/"+id, null,
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // display response
-                        Log.d("Response", response.toString());
-                        try {
-                            if(response.getBoolean("haIngresadoApp")){
-                                Intent intent = new Intent (context, MainActivity.class);
-                                Constants.getInstance().setId(Integer.parseInt(response.getString("idEstudiante")));
-                                Constants.getInstance().setEmail(response.getString("correoInstitucional"));
-                                Constants.getInstance().setNombreCompleto(response.getString("nombre")
-                                        +" "+response.getString("apellidos"));
-                                startActivityForResult(intent, 0);
-                            }else{
-                                Intent intent = new Intent (context, GuideActivity.class);
-                                Constants.getInstance().setId(Integer.parseInt(response.getString("idEstudiante")));
-                                startActivityForResult(intent, 0);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                response -> {
+                    Log.d("Response", response.toString());
+                    try {
+                        if(response.getBoolean("haIngresadoApp")){
+                            Intent intent = new Intent (context, MainActivity.class);
+                            Constants.getInstance().setId(Integer.parseInt(response.getString("idEstudiante")));
+                            Constants.getInstance().setEmail(response.getString("correoInstitucional"));
+                            Constants.getInstance().setNombreCompleto(response.getString("nombre")
+                                    +" "+response.getString("apellidos"));
+                            startActivityForResult(intent, 0);
+                        }else{
+                            Intent intent = new Intent (context, GuideActivity.class);
+                            Constants.getInstance().setId(Integer.parseInt(response.getString("idEstudiante")));
+                            startActivityForResult(intent, 0);
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Error.Response", error.toString());
-                    }
-                }
+                error -> Log.d("Error.Response", error.toString())
         );
 
-// add it to the RequestQueue
         queue.add(getRequest);
     }
 }

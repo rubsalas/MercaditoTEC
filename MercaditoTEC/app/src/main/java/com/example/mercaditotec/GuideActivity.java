@@ -26,7 +26,7 @@ public class GuideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
 
-        idActual = getIntent().getExtras().getString("id");
+        idActual = Constants.getInstance().getId()+"";
 
         findViewById(R.id.BtnConfirmar).setOnClickListener(v -> {
             try {
@@ -36,9 +36,6 @@ public class GuideActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.BtnOmitir).setOnClickListener(v -> {
-            Omitir(v.getContext(), idActual);
-        });
     }
 
 

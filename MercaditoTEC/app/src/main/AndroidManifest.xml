@@ -12,13 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MercaditoTEC">
-        <activity android:name=".ui.Activities.BuyProduct.ProductViewActivity"></activity>
-        <activity android:name=".ui.Activities.PostProductForm.PreviewProductActivity"></activity>
+        <activity android:name=".ui.Activities.BuyProduct.ChatActivity"></activity>
+        <activity android:name=".ui.Activities.BuyProduct.ProductViewActivity" />
+        <activity android:name=".ui.Activities.PostProductForm.PreviewProductActivity" />
         <activity android:name=".ui.Activities.PostProductForm.PaymentMethodsForm" />
         <activity android:name=".ui.Activities.PostProductForm.LocationForm" />
-        <activity android:name=".ui.Activities.PostProductForm.ImagesForm"></activity>
+        <activity android:name=".ui.Activities.PostProductForm.ImagesForm" />
         <activity android:name=".ui.Activities.PostProductForm.CategorieForm" />
-        <activity android:name=".ui.Activities.PostProductForm.NameDescriptionForm"></activity>
+        <activity android:name=".ui.Activities.PostProductForm.NameDescriptionForm" />
         <activity android:name=".ui.Activities.MyProductActivity" />
         <activity android:name=".CategorieActivity" />
         <activity

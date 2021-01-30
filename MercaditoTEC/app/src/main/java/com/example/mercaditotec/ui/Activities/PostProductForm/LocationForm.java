@@ -226,7 +226,6 @@ public class LocationForm extends AppCompatActivity {
                 Constants.getInstance().getURL()+"ubicaciones/Canton/"+idCant,
                 null,
                 response -> {
-                    Log.d("asda", response.toString());
                     try {
                         ordenarDistritos(response);
                     } catch (JSONException e) {

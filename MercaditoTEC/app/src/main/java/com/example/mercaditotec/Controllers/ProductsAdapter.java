@@ -64,7 +64,13 @@ public class ProductsAdapter extends BaseAdapter {
 
         tvTitulo.setText(producto.getNombre());
         tvPrecio.setText("₡ "+producto.getPrecio()+"");
-        tvDescripcion.setText(producto.getDescripcion());
+        if(producto.getDescripcion().length() > 65){
+            tvDescripcion.setText(producto.getDescripcion().substring(0, 65)+"...");
+        }else{
+            tvDescripcion.setText(producto.getDescripcion());
+        }
+
+
 
 
 
@@ -75,6 +81,9 @@ public class ProductsAdapter extends BaseAdapter {
             final File tempFile = File.createTempFile(partes[1], "jpeg");
             mStorageRef.getFile(tempFile).addOnSuccessListener(taskSnapshot -> {
                 Bitmap bitmap = BitmapFactory.decodeFile(tempFile.getAbsolutePath());
+                imgProducto.getLayoutParams().width = 250;
+                imgProducto.getLayoutParams().height = 250;
+                imgProducto.setAdjustViewBounds(true);
                 imgProducto.setImageBitmap(bitmap);
             }).addOnFailureListener(e -> {
 

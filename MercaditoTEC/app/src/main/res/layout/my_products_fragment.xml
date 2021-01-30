@@ -9,16 +9,18 @@ tools:context=".ui.MyProducts.MyProductsFragment">
 
     <ListView
         android:id="@+id/listViewProductos"
-        android:layout_width="wrap_content"
-        android:layout_height="562dp"
+        android:layout_width="376dp"
+        android:layout_height="621dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.629"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnVenderProducto"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+    </ListView>
 
     <TextView
         android:id="@+id/textView"
@@ -35,17 +37,18 @@ tools:context=".ui.MyProducts.MyProductsFragment">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnVenderProducto"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/VenderNuevo"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
         app:backgroundTint="@color/green1"
-        app:layout_constraintBottom_toTopOf="@+id/listViewProductos"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
