@@ -8,12 +8,10 @@ namespace API_MercaditoTEC.Data
     public class SqlOfertaLaboralRepo : IOfertaLaboralRepo
     {
         private readonly MercaditoTECContext _context;
-        private readonly IVendedorRepo _vendedorJRepo;
 
-        public SqlOfertaLaboralRepo(MercaditoTECContext context, IVendedorRepo vendedorJRepo)
+        public SqlOfertaLaboralRepo(MercaditoTECContext context)
         {
             _context = context;
-            _vendedorJRepo = vendedorJRepo;
         }
 
         /*
@@ -24,9 +22,12 @@ namespace API_MercaditoTEC.Data
             return _context.OfertaLaboral.ToList();
         }
 
+        /*
+         * Retorna un solo OfertaLaboral por su id.
+         */
         public OfertaLaboral GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.OfertaLaboral.FirstOrDefault(p => p.idOfertaLaboral == id);
         }
 
         /*

@@ -43,7 +43,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 return Ok(_mapper.Map<IEnumerable<ProductoJReadDto>>(productoJItems));
             }
 
-            //Si no existe envia un NotFound
+            //Si no existe envia un NoContent
             return NoContent();
         }
 
@@ -68,8 +68,8 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
                 return Ok(_mapper.Map<ProductoJReadDto>(productoJItem));
             }
 
-            //Si no existe envia un NotFound
-            return NotFound();
+            //Si no existe envia un NoContent
+            return NoContent();
         }
 
         /*
@@ -92,7 +92,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             //Si no existe envia un NotFound
-            return NotFound();
+            return NoContent();
         }
 
         /*
@@ -115,7 +115,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             //Si no existe envia un NotFound
-            return NotFound();
+            return NoContent();
         }
 
 
@@ -139,7 +139,7 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
             }
 
             //Si no existe envia un NotFound
-            return NotFound();
+            return NoContent();
         }
 
 

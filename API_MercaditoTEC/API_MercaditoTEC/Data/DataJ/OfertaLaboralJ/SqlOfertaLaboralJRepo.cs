@@ -26,6 +26,29 @@ namespace API_MercaditoTEC.Data.DataJ
         }
 
         /*
+         * Retorna un OfertaLaboralJ con la informacion de OfertaLaboral, Empleador y Ubicacion.
+         */
+        public OfertaLaboralJ GetById(int id)
+        {
+            //Mappeo de OfertaLaboral
+
+            //Se retorna una OfertaLaboral con un id especifico
+            OfertaLaboral ofertaLaboralItem = _ofertaLaboralJRepo.GetById(id);
+
+            //Se mappea la parte de OfertaLaboral al OfertaLaboralJ
+            OfertaLaboralJ ofertaLaboralJItem = _mapper.Map<OfertaLaboralJ>(ofertaLaboralItem);
+
+            //Si la OfertaLaboral existe
+            if (ofertaLaboralJItem != null)
+            {
+                //Mappeo
+            }
+
+            return ofertaLaboralJItem;
+
+        }
+
+        /*
          * Retorna todos los OfertaLaboralJ con la informacion de OfertaLaboral y ... .
          */
         public IEnumerable<OfertaLaboralJ> GetByCarrera(int idCarrera)
@@ -52,10 +75,7 @@ namespace API_MercaditoTEC.Data.DataJ
             throw new NotImplementedException();
         }
 
-        public OfertaLaboralJ GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public int GetId(int idEmpleador, string nombrePuesto)
         {
