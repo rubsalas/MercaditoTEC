@@ -26,6 +26,14 @@ namespace API_MercaditoTEC.Data
         }
 
         /*
+         * Retorna todos los Productos de la base de datos ordenador por precio.
+         */
+        public IEnumerable<Producto> GetOrderedByPrecio()
+        {
+            return _context.Producto.OrderBy(p => p.precio).ToList();
+        }
+
+        /*
          * Retorna un solo Producto por su id.
          */
         public Producto GetById(int id)
@@ -49,6 +57,30 @@ namespace API_MercaditoTEC.Data
         {
             //Se obtienen todos los Productos
             IEnumerable<Producto> productoItems = GetAll();
+
+            //Se crea una nueva lista donde se dejaran los Productos especificos
+            List<Producto> productosByCategoria = new List<Producto>();
+
+            //Se iterara sobre todos los productos y quedaran solo los de una Categoria especifica
+            for (int i = 0; i < productoItems.Count(); i++)
+            {
+                //Revisa que se cumpla el idCategoria
+                if (productoItems.ElementAt(i).idCategoria == idCategoria)
+                {
+                    productosByCategoria.Add(productoItems.ElementAt(i));
+                }
+            }
+
+            return productosByCategoria;
+        }
+
+        /*
+         * Retorna una lista de Productos de la Categoria especificada ordenada por precio
+         */
+        public IEnumerable<Producto> GetByCategoriaOrderedByPrecio(int idCategoria)
+        {
+            //Se obtienen todos los Productos
+            IEnumerable<Producto> productoItems = GetOrderedByPrecio();
 
             //Se crea una nueva lista donde se dejaran los Productos especificos
             List<Producto> productosByCategoria = new List<Producto>();

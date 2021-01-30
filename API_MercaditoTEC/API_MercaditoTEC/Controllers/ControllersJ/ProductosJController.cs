@@ -120,6 +120,30 @@ namespace API_MercaditoTEC.Controllers.ControllersJ
 
 
         /*
+          * GET api/productosJ/Categoria/{idCategoria}/Precio
+          * 
+          * Obtiene los ProductosJ de una Categoria en especifico  ordenados por precio.
+          */
+        [Route("api/productosJ/Categoria/{idCategoria}/Precio")]
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductoJReadDto>> GetByCategoriaOrderByPrecio(int idCategoria)
+        {
+            IEnumerable<ProductoJ> productoJItemsByCategoria = _repository.GetByCategoriaOrderedByPrecio(idCategoria);
+
+            //Se verifica si este existe
+            if (productoJItemsByCategoria != null)
+            {
+                //Aqui es donde se podria cambiar al ReadDto de MetodoPago, Ubicaciones, Imagenes
+
+                return Ok(_mapper.Map<IEnumerable<ProductoJ>>(productoJItemsByCategoria));
+            }
+
+            //Si no existe envia un NotFound
+            return NotFound();
+        }
+
+
+        /*
          * POST api/productosJ
          * 
          * Crea un nuevo Producto

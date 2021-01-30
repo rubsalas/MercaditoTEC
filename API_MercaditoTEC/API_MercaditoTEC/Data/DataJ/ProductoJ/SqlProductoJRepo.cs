@@ -98,6 +98,71 @@ namespace API_MercaditoTEC.Data.DataJ
         }
 
         /*
+         * Retorna todos los ProductoJ ordenados por precio
+         */
+        public IEnumerable<ProductoJ> GetOrderedByPrecio()
+        {
+            //Mappeo de Productos
+
+            //Se retorna una lista de todos los Productos
+            IEnumerable<Producto> productosItems = _productoRepo.GetOrderedByPrecio();
+
+            //Se mappea la parte de Producto al ProductoJ
+            IEnumerable<ProductoJ> productosJItems = _mapper.Map<IEnumerable<ProductoJ>>(productosItems);
+
+            //Se itera atraves de todos los productos para mapearlos con su respectiva informacion restante de ProductosJ
+            for (int i = 0; i < productosJItems.Count(); i++)
+            {
+                //Mappeo de Vendedor
+
+                //Se obtiene el idVendedor del ProductoJ
+                int idVendedor = productosJItems.ElementAt(i).idVendedor;
+
+                //Se obtiene el VendedorJ especifico del Producto
+                VendedorJ vendedorJItem = _vendedorJRepo.GetById(idVendedor);
+
+                //Se mappea el VendedorJ al ProductoJ a mano por ser nombres diferentes
+                //productoJItem.idVendedor = idVendedor;
+                productosJItems.ElementAt(i).nombreVendedor = vendedorJItem.nombre + ' ' + vendedorJItem.apellidos;
+                productosJItems.ElementAt(i).calificacionPromedioVendedor = vendedorJItem.calificacionPromedioProductos;
+
+                //Mappeo de MetodoPagoProducto
+
+                //Se obtienen los MetodoPagoProductoJ
+                IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = _metodoPagoProductoJRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea el MetodoPagoProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).metodosPago = metodoPagoProductoJItems;
+
+                //Mappeo de ImagenProducto
+
+                //Se obtienen los ImagenProducto
+                IEnumerable<ImagenProducto> imagenProductoItems = _imagenProductoRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea la ImagenProducto al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).imagenes = imagenProductoItems;
+
+                //Mappeo de UbicacionProducto
+
+                //Se obtienen las UbicacionProducto
+                IEnumerable<UbicacionProductoJ> ubicacionProductoJItems = _ubicacionProductoJRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea la UbicacionProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).ubicaciones = ubicacionProductoJItems;
+
+                //Mappeo de Categoria
+
+                //Se obtiene la Categoria
+                Categoria categoriaItem = _categoriaRepo.GetById(productosJItems.ElementAt(i).idCategoria);
+
+                //Se mappean los puntos de Canje al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).puntosCanje = categoriaItem.puntaje;
+            }
+
+            return productosJItems.ToList();
+        }
+
+        /*
          * Retorna un ProductoJ con la informacion de Producto, Vendedor, MetodoPagoProductos, ....
          */
         public ProductoJ GetById(int id)
@@ -171,6 +236,71 @@ namespace API_MercaditoTEC.Data.DataJ
 
             //Se retorna una lista de todos los Productos de la Categoria indicada
             IEnumerable<Producto> productosItems = _productoRepo.GetByCategoria(idCategoria);
+
+            //Se mappea la parte de Producto al ProductoJ
+            IEnumerable<ProductoJ> productosJItems = _mapper.Map<IEnumerable<ProductoJ>>(productosItems);
+
+            //Se itera atraves de todos los productos para mapearlos con su respectiva informacion restante de ProductosJ
+            for (int i = 0; i < productosJItems.Count(); i++)
+            {
+                //Mappeo de Vendedor
+
+                //Se obtiene el idVendedor del ProductoJ
+                int idVendedor = productosJItems.ElementAt(i).idVendedor;
+
+                //Se obtiene el VendedorJ especifico del Producto
+                VendedorJ vendedorJItem = _vendedorJRepo.GetById(idVendedor);
+
+                //Se mappea el VendedorJ al ProductoJ a mano por ser nombres diferentes
+                //productoJItem.idVendedor = idVendedor;
+                productosJItems.ElementAt(i).nombreVendedor = vendedorJItem.nombre + ' ' + vendedorJItem.apellidos;
+                productosJItems.ElementAt(i).calificacionPromedioVendedor = vendedorJItem.calificacionPromedioProductos;
+
+                //Mappeo de MetodoPagoProducto
+
+                //Se obtienen los MetodoPagoProductoJ
+                IEnumerable<MetodoPagoProductoJ> metodoPagoProductoJItems = _metodoPagoProductoJRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea el MetodoPagoProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).metodosPago = metodoPagoProductoJItems;
+
+                //Mappeo de ImagenProducto
+
+                //Se obtienen los ImagenProducto
+                IEnumerable<ImagenProducto> imagenProductoItems = _imagenProductoRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea la ImagenProducto al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).imagenes = imagenProductoItems;
+
+                //Mappeo de UbicacionProducto
+
+                //Se obtienen las UbicacionProducto
+                IEnumerable<UbicacionProductoJ> ubicacionProductoJItems = _ubicacionProductoJRepo.GetByProducto(productosJItems.ElementAt(i).idProducto);
+
+                //Se mappea la UbicacionProductoJ al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).ubicaciones = ubicacionProductoJItems;
+
+                //Mappeo de Categoria
+
+                //Se obtiene la Categoria
+                Categoria categoriaItem = _categoriaRepo.GetById(productosJItems.ElementAt(i).idCategoria);
+
+                //Se mappean los puntos de Canje al ProductoJ correspondiente a mano por ser nombres diferentes
+                productosJItems.ElementAt(i).puntosCanje = categoriaItem.puntaje;
+            }
+
+            return productosJItems.ToList();
+        }
+
+        /*
+         * Retorna una lista de ProductosJ de la Categoria especificada ordenada por precio
+         */
+        public IEnumerable<ProductoJ> GetByCategoriaOrderedByPrecio(int idCategoria)
+        {
+            //Mappeo de Productos
+
+            //Se retorna una lista de todos los Productos de la Categoria indicada
+            IEnumerable<Producto> productosItems = _productoRepo.GetByCategoriaOrderedByPrecio(idCategoria);
 
             //Se mappea la parte de Producto al ProductoJ
             IEnumerable<ProductoJ> productosJItems = _mapper.Map<IEnumerable<ProductoJ>>(productosItems);

@@ -65,3 +65,4 @@ D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\API_MercaditoTEC\obj\De
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\API_MercaditoTEC\obj\Debug\netcoreapp3.1\API_MercaditoTEC.dll
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\API_MercaditoTEC\obj\Debug\netcoreapp3.1\API_MercaditoTEC.pdb
 D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\API_MercaditoTEC\obj\Debug\netcoreapp3.1\API_MercaditoTEC.genruntimeconfig.cache
+D:\Desktop - HDD\XTEC MercaditoTEC\main\API_MercaditoTEC\API_MercaditoTEC\obj\Debug\netcoreapp3.1\API_MercaditoTEC.csprojAssemblyReference.cache
