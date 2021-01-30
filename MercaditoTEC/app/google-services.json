@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "729533341817",
+    "project_id": "mercaditotec-2d167",
+    "storage_bucket": "mercaditotec-2d167.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729533341817:android:944971695906a4de1974a8",
+        "android_client_info": {
+          "package_name": "com.example.mercaditotec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729533341817-9e2bjg2p9knv54cc6d67r6utaadl9naf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mercaditotec",
+            "certificate_hash": "d4a7ae09f764f7d4a83b3098899bbdffd7c17905"
+          }
+        },
+        {
+          "client_id": "729533341817-d3dbv60l0c5sunlsvlcev31dm8jkc6t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYuK0p2PZ4pbGvdbnOdSXUHN6LXDHW4y4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729533341817-d3dbv60l0c5sunlsvlcev31dm8jkc6t5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
